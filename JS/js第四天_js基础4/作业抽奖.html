@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			input{
+				background-color: sandybrown;
+			}
+		</style>
+	</head> 
+	<body>
+		<input id="ming" type="button" value="中奖名字" />
+		<script type="text/javascript">
+			var aaa = document.getElementById("ming");
+			var arr1 = ["高明","张欣","刘心","张涵予","李兄","张三","王五","李四"];
+			
+             	aaa.onclick = function() {
+				var rnnn = Math.floor(Math.random() * 8);
+				alert("中奖者名字是:"+arr1[rnnn]);
+//				console.log(arr1[rnnn]);
+			}
+		</script>
+	</body>
+
+</html>

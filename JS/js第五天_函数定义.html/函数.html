@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>函数定义</title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		  <div class="" id="div1"></div>
+		
+		　<script type="text/javascript">
+//			函数:一段可重用并具有特定功能的代码块
+//			函数定义:
+			//用关键字function来进行定义;函数的名字(函数参数){
+			                        // 函数的内容(功能代码块)
+                                    // return 返回值;
+                                    //}
+                                    
+            //1.function:声明函数的关键字
+            //2.函数名：用来标识函数
+            //3.参数列表：由外部向函数内部传入的内容(可以为多个，用"，"隔开)
+            //4.函数体：用于执行特定功能的代码块
+            //5.return返回值：由函数内部向外传出的内容
+//			function sayHello(na,na1){
+//				alert("hello"+na+"和"+na1);
+//			}
+			//函数的调用：通过函数的名字来进行调用，有几个参数写几个参数
+//			sayHello("张乘荣","叔强");
+			
+			
+//			函数的定义:
+//          1.无参数无返回值:
+//              function sayHello1(){
+//			     alert("hello");
+//			}
+              
+//          2.有参数无返回值的函数
+            function sayHello2(na){
+            	  alert("hello"+na);
+            }
+             var a=prompt("请输入你的名字");
+            sayHello2(a);
+
+//          3.无参数有返回值的函数
+//          function sayHello3(){
+//          	return"hello world";
+//          }
+//          var hw = sayHello3();
+//          alert(hw);
+            
+//          3.有参数有返回值
+//          function addmum(num1,num2){
+//          	  if(isNaN(num1)||isNaN(num2)){
+//          	  	return"输入有误";
+//          	  }else{
+//          	  	return num1+num2;
+//          	  }
+//          }
+//          var nums =addmum(3,4);
+//           alert(nums);
+             
+             //作用域
+//           (1)局部变量
+             function abc(){
+             	//局部变量:是在函数内部进行声明的变量，只有在该函数内部才可以访问、调用；
+             	var index=4;
+             	index=index*2;
+             	alert(index);
+             }
+             abc();
+             //报错，没找到index
+//           alert(index);
+
+//           (2)全局变量
+              //全局变量：没有在方法里面进行定义声明的变量，在方法的里面外面都可以访问和调用
+             var count=1;
+             function addNum(){
+             	alert(count);
+             }
+             addNum();
+             
+             
+             
+//            匿名函数:没有实际名字的函数
+              //方法1.
+              document.getElementById("div1").onclick=function(){
+              	//div点击时页面自动调用
+              }
+              //方法2.
+              var asd=function(){
+               }
+              asd();
+
+             
+             
+            
+		</script>
+	</body>
+</html>

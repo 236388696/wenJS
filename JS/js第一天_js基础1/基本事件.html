@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>基本事件</title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			
+		</style>
+		<script type="text/javascript">
+		
+//	  基本事件:
+	  // (1)window.onload:
+	  // 当页面加载完成后再执行 (数据量大的时候，写在头部)
+		window.onload=function(){
+				var div1=document.getElementById("div1");
+				console.log(div1);
+			
+				
+//	  (2)点击事件onclick
+	        div1.onclick=function(){
+			div1.style.backgroundColor= "green";
+			div1.style.width = "300px";
+		}
+	        
+	        
+//	  (3)鼠标移入移出事件:
+	     // 移入onmouseover
+	     div1.onmouseover = function(){
+	     	div1.style.opacity ="0.5";
+	     }
+//	     移出onmouseout
+	     div1.onmouseout = function(){
+	     	div1.style.opacity ="0.2"
+	     }
+
+	    }
+			
+	  
+		</script>
+	</head>
+	<body>
+		<div id="div1" onclick="alert('你点击到我了')"></div>
+	    <!--<div id="div1" onclick= "style.backgroundColor = 'yellow';alert('你点到我了');"></div>-->
+	   
+	</body>
+</html>

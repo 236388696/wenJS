@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>1 ready</title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 300px;
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		   //括号里加“ ”，表示查找这个标签；
+//			var div=$("div");
+//			console.log(div[0]);
+//			
+//			var docu=$("document");
+//			console.log(docu);
+
+
+          window.onload=function(){
+          	alert("onload方法执行");
+          }
+          
+          $(document).ready(function(){
+          	alert("ready执行");
+          });
+          //ready方法：这个方法是document加载完dom之后就会触发，比之前的window.onload方法调用要早，这样能保证方法触发时内容已经完成，能提高效率
+			
+		</script>
+	</body>
+</html>

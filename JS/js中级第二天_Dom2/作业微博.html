@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>作业微博</title>
+		<style>
+			.all{
+				width: 800px;
+				height: 1000px;
+				background-color: ghostwhite;
+				border: 1px solid gray;
+				margin: 20px auto;
+				text-align: center;
+			}
+			span{
+				vertical-align: top;
+			}
+			#top{
+				text-align: center;
+				margin-top:20px ;
+			}
+			#top textarea{
+				width: 650px;
+				height:30px;
+				resize: none;
+			}
+			#middle{
+				text-align: center;
+				margin-top: 10px;
+				overflow: hidden;
+				
+			}
+			#middle textarea{
+				width: 650px;
+				height: 200px;
+				resize: none;
+				
+			}
+			input{
+				font-size: 17px;
+		        width: 80px;
+				height: 30px;
+				background-color: white;
+				float: left;
+				border-radius:5px ;
+				margin-left: 95px;
+				margin-top: 5px;
+				
+			}
+			/*#bottom{
+				width: 700px;
+				height: 50px;
+				background-color: #CCCCCC;
+				margin: 0 auto;
+			}*/
+			#bottom p{
+				margin-right: 650px;
+				margin-top: 20px;
+				
+			}
+			.big{
+				width: 650px;
+				height: 200px;
+				margin-left: 100px;
+				background-color: lightpink;
+				border: 1px solid gainsboro;
+				position: relative;
+			}
+			.top4{
+				width: 600px;
+				height: 30px;
+				margin: 10px auto;
+				background-color: white;
+				border: 1px solid gainsboro;
+				border-radius: 5px;
+			}
+			.top2{
+				width: 600px;
+				height: 120px;
+				margin: 10px auto;
+				background-color: white;
+                border: 1px solid gainsboro;	
+                border-radius: 5px;			
+			}
+			.close{
+				width: 50px;
+				height: 20px;
+				position: absolute;
+				top:180px;
+				right:20px;
+				
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<div id="top">
+			    <span> 姓名：</span><textarea id="top1" name="" rows="" cols=""></textarea>
+			</div>
+			<div id="middle">
+				<span>内容：</span><textarea id="middle1" name="" rows="" cols=""></textarea>
+				<input type="button" value="提交" id="btn" onclick="but()" />
+			</div>
+			<div id="bottom">
+				<p>显示留言</p>
+			</div>
+			<div id="div1">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			var top1 = document.getElementById("top1");
+			var middle1=document.getElementById("middle1");
+			var div1 = document.getElementById("div1");
+			
+			
+			function but(){
+				if(!top1.value.length){
+					alert("请输入姓名");
+				}else if(!middle1.value.length){
+					alert("请输入内容");
+				}
+					
+				else{
+					var bigDiv = createDiv("","big");
+					
+					
+					
+					var nameDiv=createDiv(top1.value,"top4");
+					bigDiv.appendChild(nameDiv);
+					
+					var neirongDiv=createDiv(middle1.value,"top2");
+					bigDiv.appendChild(neirongDiv);
+					
+					 
+					
+					var closeDiv=createDiv("删除","close")
+					closeDiv.onclick=function(){
+					div1.removeChild(bigDiv);
+					   
+					}
+					 closeDiv.onmouseover=function(){
+					 	closeDiv.style.color="red";
+					 }
+					bigDiv.appendChild(closeDiv);
+					div1.insertBefore(bigDiv,div1.firstElementChild);
+					top1.value=null;
+					middle1.value=null;
+				}
+			}
+			
+			
+			
+			function createDiv(txt,className){
+				var div=document.createElement("div");
+				div.innerHTML = txt;
+				div.setAttribute("class",className);
+				return div;
+			}
+			
+			
+		</script>
+	</body>
+</html>

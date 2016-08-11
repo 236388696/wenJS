@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function factorical(num){
+				if(num<=1){
+					return 1;
+				}else{
+					return num*factorical(num-1);
+				}
+			}
+			//求的是5的阶层
+			console.log(factorical(5));
+			
+			var another=factorical;
+			console.log(another);
+			console.log(another(5));
+			
+			console.log(anoter);
+			factorical=null;
+			
+			console.log(anoter);
+			console.log(another(5));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>字符串</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a=true;
+//			console.log(String(a));
+           //强制转换为字符串
+            console.log(a.toString());
+            
+            
+            //创建字符串
+            var str="hello";
+            var str1=new String("hello world");
+             
+//          charAt返回字符串中的某一位,从0开始
+//          alert(str1.charAt(4));
+            
+//          search查找某字符,返回首个该字符的位置（字符串查找）
+//          如果未找到,则返回－1
+           alert(str1.search("o"));
+           
+           
+//         indexof在数组里查找某个元素,返回首个该数组元素的位置, 如果未找到,则返回－1;（数组里查找）
+           var arr=new Array(1,2,3);
+           alert(arr.indexOf(3));
+           
+           //从后向前找，返回倒数首个该数组元素的位置
+           alert(arr.lastIndexOf(3));
+           
+//         substring字符串截取:返回的是一个新的字符串。
+//         参数1:起始截取位置
+//         参数2:结束截取位置
+//          (区间为左闭右开)
+//         alert(str1.substring(1,9));
+           alert(str1.slice(2,9));
+           
+           
+           //只写起始截取位置，相当于截取从起始位置到最后；
+           alert(str1.slice(2));
+           
+           
+           //substr:字符串截取
+//         参数1:起始截取位置
+//         参数2:截取的数量
+           alert(str1.substr(1,5));
+           
+           
+           
+           var str3="abcabcabc";
+//         replace:匹配首个该字符串,并替换
+//         参数1:需要匹配的字符串
+//         参数2:替换的字符串
+           alert(str3.replace("c","q"));
+           
+           
+           var str4="GMT LOVE * and *and * ";
+           //按特定要求分割字符串
+           alert(str4.split(""));
+           alert(str3.split(""));
+           
+           
+//         concat字符串拼接,获得一个新的字符串
+           var str5="gmy";
+           var str6="hmh";
+           var str7="cd";
+           alert(str5.concat(str6,str7," are good friends"));
+           
+          
+           
+		</script>
+	</body>
+</html>

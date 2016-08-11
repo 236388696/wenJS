@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>滚轮事件</title>
+		<style>
+			div{
+				width: 300px;
+				height: 300px;
+				background-color: darkgray;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			var div=document.querySelector("div");
+//			div.onmousewheel=function(){
+//				alert("滚轮");
+//			}
+
+
+//			onmousewheel事件在火狐里不兼容,为了实现通用的效果，需要对浏览器进行判断
+            var fff=window.navigator.userAgent.indexOf("Firefox");
+              alert(fff);   //－1是除了火狐浏览器的值
+            if(fff !=-1){
+            	 //火狐的鼠标滚轮事件DOMMouseScroll，
+            	 div.addEventListener("DOMMouseScroll",wheel,false);
+            }else{
+            	div.onmousewheel=wheel;
+            }
+            
+            function wheel(ev){
+//             alert("滚动了");	
+               //判断滚动的方向，向下或者向上
+               var evObj=ev||window.event;
+               //火狐
+//             alert(evObj.detail);
+               //谷歌
+//             alert(evObj.wheelDelta);
+               //注意方向，谷歌向下是正数，火狐向下是负数
+               
+               
+               //通用的判断方向的方法，根据dedail或者wheelDelta值的正负
+               var dowm=true;
+               if(evObj.datail){
+               	dowm=evObj.detail<0;
+               }else{
+               	dowm=evObj.wheelDelta>0;
+               }
+               //向下是true,向上是false
+//             alert(dowm);
+//             console.log(dowm);
+            }
+            
+              
+            
+		</script>
+	</body>
+</html>

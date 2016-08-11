@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>老师百度</title>
+		<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+			.all{
+				width: 100px;
+				margin: 0 auto;
+				text-align: center;
+			}
+			#box{
+				width: 100px;
+				height:140px;
+				border: 1px solid gray;
+				margin: 20px auto;
+				display:none;
+			}
+			#box a{
+				text-decoration: none;
+				color: black;
+			}
+			#box p{
+				height: 35px;
+				line-height: 35px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all" class="all">
+	       <a id="setting" href="">设置</a>
+	         <div id="box">
+	         	<!--p*4>a[href="###"]{选项$}-->
+	         	<p><a href="###">选项1</a></p>
+	         	<p><a href="###">选项2</a></p>
+	         	<p><a href="###">选项3</a></p>
+	         	<p><a href="###">选项4</a></p>
+	         </div>
+		</div>
+		
+		<script type="text/javascript">
+		  //设置按钮
+			var setting =document.getElementById("setting");
+		  //显示隐藏的框
+			var box=document.getElementById("box");
+		  //获取所有需要背景变色的p
+			var ps=document.getElementsByTagName("p");
+//			console.log(ps);
+            var ass=document.querySelectorAll("#box a");
+          //获取所有的
+           var all=document.getElementById("all");
+           all.onmouseover = function(){
+           	box.style.display="block";
+           }
+           all.onmouseout = function(){
+           	box.style.display="none";
+           }
+           
+           ps[0].onmouseover=function(){
+           	ps[0].style.backgroundColor="skyblue";
+           	ass[0].style.color="white";
+           }
+           ps[0].onmouseout=function(){
+           	ps[0].style.backgroundColor="";
+           	ps[0].style.Color="";
+           }
+           ps[1].onmouseover=function(){
+           	ps[1].style.backgroundColor="skyblue";
+           	ass[1].style.color="white";
+           }
+           ps[1].onmouseout=function(){
+           	ps[1].style.backgroundColor="";
+           	ps[1].style.Color="";
+           }
+           ps[2].onmouseover=function(){
+           	ps[2].style.backgroundColor="skyblue";
+           	ass[2].style.color="white";
+           }
+           ps[2].onmouseout=function(){
+           	ps[2].style.backgroundColor="";
+           	ps[2].style.Color="";
+           }
+           ps[3].onmouseover=function(){
+           	ps[3].style.backgroundColor="skyblue";
+           	ass[3].style.color="white";
+           }
+           ps[3].onmouseout=function(){
+           	ps[3].style.backgroundColor="";
+           	ps[3].style.Color="";
+           }
+		</script>
+	</body>
+</html>

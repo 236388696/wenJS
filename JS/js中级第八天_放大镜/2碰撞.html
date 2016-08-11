@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>碰撞</title>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: orange;
+				position: absolute;
+			}
+			#div2{
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;
+				position: absolute;
+				font-size: 20px;
+				top: 400px;
+				left: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			div1
+		</div>
+		<div id="div2">
+			div2
+		</div>
+		<script type="text/javascript">
+			var div1=document.querySelector("#div1");
+			var div2=document.querySelector("#div2");
+			
+			
+			
+			div1.onmousedown=function (e) {
+				var evObj=e||window.event;
+				//计算相对距离
+				var diX=evObj.clientX-div1.offsetLeft;
+				var diY=evObj.clientY-div1.offsetTop;
+				//在down里边写onmousemove
+				//鼠标移动事件
+				document.onmousemove=function (ev) {
+					var ee=ev||window.event;
+					//计算div定位的点
+					var X=ee.clientX-diX;
+					var Y=ee.clientY-diY;
+					div1.style.left=X+"px";
+					div1.style.top=Y+"px";
+					
+					if (div1.offsetLeft<0) {
+						//document.onmousemove="";
+						div1.style.left=0+"px";
+						
+						
+					}else if (div1.offsetTop<0) {
+						//document.onmousemove="";
+						div1.style.top=0+"px";
+					} else if (div1.offsetLeft>document.documentElement.clientWidth-div1.offsetWidth){
+						//document.onmousemove="";
+						div1.style.left=document.documentElement.clientWidth-div1.offsetWidth+"px";
+					}
+					else if (div1.offsetTop>document.documentElement.clientHeight-div1.offsetHeight){
+						//document.onmousemove="";
+						div1.style.top=document.documentElement.clientHeight-div1.offsetHeight+"px";
+					}
+					
+					
+					
+					if (rectCrash(div1,div2)) {
+						console.log("撞上了");
+					} else{
+						console.log("没撞上");
+					}
+					
+					
+					}
+				//鼠标松开事件
+				document.onmouseup=function () {
+					document.onmousemove="";
+				}
+			}
+			
+			
+			//完成碰撞函数的封装
+			function rectCrash (obj1,obj2) {
+				//判断碰撞
+					var t1=obj1.offsetTop;
+					var b1=t1+obj1.offsetHeight;
+					var l1=obj1.offsetLeft;
+					var r1=l1+obj1.offsetWidth;
+					
+					var t2=obj2.offsetTop;
+					var b2=t2+obj2.offsetHeight;
+					var l2=obj2.offsetLeft;
+					var r2=l2+obj2.offsetWidth;
+					//没有撞上，然后else就是撞上的结果
+					if (b1<t2||t1>b2||r1<l2||l1>r2) {
+						//console.log("走开！！！");
+						return false;
+					}else{
+						//console.log("1");
+						return true;
+					}
+			}
+		</script>
+	</body>
+</html>

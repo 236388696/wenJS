@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input id="input1" type="button" value="来一注" />
+		<div id="div1"></div>
+		<script type="text/javascript">
+			var input1 = document.getElementById("input1");
+			var div1 = document.getElementById("div1");
+			input1.onclick = function() {
+				var t = 30;
+				var timer = setInterval(function() {
+					var arr = new Array();
+					for(var i = 0; i < 7; i++) {
+						var a = Math.floor(Math.random() * 33 + 1);
+						if(arr.indexOf(a) == -1) {
+							arr.push(a);
+						} else {
+							i--;
+						}
+					}
+					if(t==0){
+							clearInterval(timer);
+						}
+						else{
+							t--;
+						}
+					div1.innerHTML = arr;
+				}, 100)
+			}
+		</script>
+	</body>
+
+</html>

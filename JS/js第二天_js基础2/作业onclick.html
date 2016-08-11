@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+    	.div1{
+    		width: 200px;
+    		height: 200px;
+    		background-color: red;
+    	}
+    </style>
+</head>
+
+<body>
+    <button onclick="abc();" value="tijiao">提交</button>
+    <button onclick="eee();" value="tijiao">变色</button>
+     <button onclick="qqq();" value="tijiao">大小</button>
+    <div class="div1"></div>
+
+
+    <script>
+    	var ccc="true";
+    	var ddd=document.getElementsByClassName('div1');
+    	function abc(){
+    		if(ccc=="true"){
+
+    			ddd[0].style.display="none";
+    			ccc="asd";
+    		}else{
+    			ddd[0].style.display="block";
+    			ccc="true";
+    		}
+    	}
+
+       var fff="aw";
+        function eee(){
+        	if(fff=="aw"){
+        		ddd[0].style.backgroundColor="skyblue";
+        		fff="wer";
+        	}else{
+        		ddd[0].style.backgroundColor="red";
+        		fff="aw";
+        	}
+        }
+
+        var fgg="df";
+        function qqq(){
+        	if(fgg=="df"){
+        		ddd[0].style.width="100px";
+        		ddd[0].style.height="150px";
+        		fgg="vg";
+        	}else{
+              ddd[0].style.wi dth="200px";
+        	 ddd[0].style.height="200px";
+        	 fgg="df";
+        	 }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM节点的关系</title>
+	</head>
+	<body>
+		<div id="div1">
+			<p>第一段文字</p>
+		    <p>第二段文字</p>
+		</div>
+		<div id="div2">
+			随便写
+			<!--注释-->
+			<div class="test">
+				1
+			</div>
+			<div id="div3">
+				<div id="div5">
+					你好
+				</div>
+				<div id="div4">
+					2
+				</div>
+				<p>hello</p>
+			</div>
+		</div>
+		<input type="button" name="" id="" value="" />
+		<script type="text/javascript">
+			/*节点关系
+			 DOM的节点关系是很常用的寻找节点的方式，只要明确层级结构即可
+			 */
+			var div4=document.getElementById("div4");
+			//parentElement 父级元素节点
+//			console.log(div4.parentElement);
+  
+            //同级的下一个兄弟元素
+//          console.log(div4.nextElementSibling);
+            
+            //同级的上一个元素
+//          console.log(div4.previousElementSibling);
+
+             var div3=document.getElementById("div3");
+             //children获取所有的元素
+//           console.log(div3.children);
+//           
+//           console.log(div3.firstElementChild);
+//           console.log(div3.lastElementChild);
+
+             
+             //childNodes和children的区别就是后者只显示标签，但是前者会保留所有节点内容，包括空格、回车、tab内容
+             console.log(div3.childNodes);
+
+           //手动创建标签
+           document.body
+           //创建标签，元素节点
+           var div=document.createElement("div");
+		   div.innerHTML="我困了";
+		   div3.appendChild(div);
+		   
+		   
+		   var aa=document.createElement("script");
+		   document.body.appendChild(aa);
+		   
+		   var div=document.createElement("div");
+		   div.innerHTML="我要放在p的上面";
+		   
+		   div3.insertBefore(div,div3.lastElementChild);
+		   //appendChild是添加到最后一位，insertBefore是添加到指定位置
+		   
+		   
+		   //删除节点
+//		   div3.removeChild(div);是删除子元素的方法
+//		   div3.remove();是连同自身都移除的方法,remove有兼容性问题
+           //div3.removeChild();
+           //div3.remove();
+           
+            
+           //替换，参数1是新节点，参数2是老节点
+//         div3.replaceChild(); 
+		   
+		</script>
+	</body>
+</html>

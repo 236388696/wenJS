@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>键盘控制上下左右</title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript">
+			var div1=document.querySelector("#div1");
+			//代表上下左右
+			var left=false;
+			var right=false;
+			var top=false;
+			var bottom=false;
+			
+			//当键盘摁下去的时候去判断 上下左右是true
+			div.onkeydown=function(ev){
+				var evobj=ev||window.event;
+				//ev.keyCode 键盘的数
+				switch(ev.keyCode){
+				case 37:
+					left=true;
+				    break;
+				    
+				case 38:
+				    top=true;
+				    break;
+				    
+				case 39:
+					right = true;
+					break;
+					
+				case 40:
+					bottom = true;
+					break;    
+				}
+		}
+			
+			　//松手一瞬间都是false
+			div.onkeyup=function(){
+				left=false;
+				top=false;
+				bottom=false;
+				right=false;
+			}
+			
+			var timer=setInterval(function(){
+					if (left){
+				div1.style.left = div1.offsetLeft-5+"px";
+			}
+			       if (right){
+				div1.style.left = div1.offsetLeft+5+"px";
+			}
+			       if (top){
+				div1.style.top = div1.offsetTop-5+"px";
+			}
+			      if (bottom){
+				div1.style.top = div1.offsetTop+5+"px";
+			}			},30);
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

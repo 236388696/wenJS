@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>输入男女</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script>
+    var sex = prompt("请输入性别");
+    var num = prompt("请输入年龄");
+    num = Number(num);
+    if (sex == "男") {
+        if (num <= 10 && num >= 18) {
+            alert("少年，你好");
+        } else if (num < 30 && num >= 19) {
+            alert("帅哥，你好");
+        } else if (num < 60 && num >= 30) {
+            alert("先生，你好");
+        } else if (num < 80 && num >= 60) {
+            alert("大爷，你好");
+        } else {
+            alert("年龄还是个秘密吗？");
+        }
+    } else if (sex == "女") {
+        if (num <= 10 && num >= 18) {
+            alert("少女，你好");
+        } else if (num < 30 && num >= 19) {
+            alert("美女，你好");
+        } else if (num < 60 && num >= 30) {
+            alert("阿姨，你好");
+        } else if (num < 80 && num >= 60) {
+            alert("大婶，你好");
+        } else {
+            alert("年龄还是个秘密吗？");
+        }
+    }
+    </script>
+</body>
+
+</html>

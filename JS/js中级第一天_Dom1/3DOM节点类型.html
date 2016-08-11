@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>节点类型</title>
+	</head>
+	<body>
+		<div id="div1" name="nihao" class="buhao">
+			<!--我渴了-->
+			测试
+			<div class="div2">
+				你好
+			</div>
+		</div>
+		<input type="button" id="btn" value="提交"/>
+		<div id="test1">
+			不好
+		</div>
+		<div id="test2">
+			你猜呢
+		</div>
+		<script type="text/javascript">
+			//在文档范围内不光有元素节点（标签），还有其他的节点，比如属性、文本、注释等节点
+			var div1=document.getElementById("div1");
+			var nodes=div1.childNodes;
+//			       console.log(nodes);
+
+            //标签 1
+            //属性 2
+            //文本 3
+            //注释 8
+            //文档 9
+           //nodeType能获取节点的类型
+//         alert(div1.nodeType);
+           
+           
+           //nodeName节点名,节点名大写
+//         alert(div1.nodeName);
+           
+           //如果是元素节点，这个nodeValue是null或者undefined
+//         alert(div1.nodeValue);
+
+
+            //3.文本节点
+           var txt=nodes[0];
+           console.log(txt.nodeType);
+           //获取文本本身的内容
+           alert(txt.nodeValue);
+           //只要是text，就是一个文本节点
+//         alert(txt.nodeName);
+           
+           
+           
+           //创建文本节点
+           var textNode=document.createTextNode("你饿了");
+           //添加
+           div1.appendChild(textNode);
+           //移除
+//         div1.removeChild(textNode);
+           
+           
+           //注释节点 8
+//         var commentNode=nodes[1];
+//           alert(commentNode.nodeType);
+//           //注释内容
+//           alert(commentNode.nodeValue);
+//           //comment
+//           alert(commentNode.nodeName);
+//           document.createComment();
+             
+             //创建注释节点
+             var text=document.createComment("不好不好");
+             div1.appendChild(text);
+
+
+
+             //属性节点2
+             var attribute=div1.getAttributeNode("name");
+//           alert(attribute.nodeType);
+//           alert(attribute.nodeName);
+//           alert(attribute.nodeValue);
+             
+             
+             //创建属性节点
+             //属性名
+             var attribute=document.createAttribute("value");
+             //属性的值
+             attribute.value="testttt";
+             //添加属性
+             div1.setAttributeNode(attribute);
+             //移除属性
+             div1.removeAttributeNode(attribute);
+             
+             
+		</script>
+	</body>
+</html>

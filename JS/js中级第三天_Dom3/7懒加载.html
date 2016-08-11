@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>懒加载</title>
+		<style type="text/css">
+			img{
+				width: 600px;
+				height: 400px;
+				background-color: gray;
+				position: absolute;
+				top:1000px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="" data-src = "http://image.kejixun.com/2015/0923/20150923104113224.jpg"/>
+		
+		<script type="text/javascript">
+			/*
+			    什么是懒加载：  网页中有很多img标签，这些标签里的src指向了服务器的地址，当浏览器从上向下读取的时候，
+			    src对应的网址就会加载这张图片，但是不会一次性的加载所有的图片，只加载用户可视范围内的图片这种加载成为懒加载
+		    */
+			
+			
+			
+			/* 
+			   懒加载的目的：1.避免一次请求过多的内容，加快网页加载速度
+			                2.提高页面的友好度，提升SEO;
+			                3.减少服务器的压力
+			 */
+			
+			
+			/*
+              懒加载不会直接使用src进行图片的加载，而是先通过data-src先保存请求的路径，当图片到了指定的显示位置的时候，
+              把data-src的值放到src中进行加载
+			 */
+			
+			
+			var img=document.querySelector("img");
+			
+			var imgOffsetTop=img.offsetTop;
+			//屏幕的可见区域的高
+			var height=document.documentElement.clientHeight;
+			//计算滚动出现时候的距离
+			//滚动图片显示一半的时候，加载图片
+			var distance=imgOffsetTop-height+200;
+			
+			var scrollValue;
+			
+			window.onscroll=function(){
+				scrollValue=document.body.scrollTop;
+//				console.log(scrollValue);
+				if(scrollValue>=distance){
+					//获取data-src属性内容
+					var imgPath=img.getAttribute("data-src");
+//					alert(imgPath);
+					img.setAttribute("src",imgPath);
+				}
+			}
+			
+			//递归
+			//1-100加法
+//			function test(a){
+//				if(a==1){
+//					return 1;
+//				}
+//				return test(a-1)+a;
+//			}
+//			alert(test(100));
+
+            
+            //5的阶层
+            function test(a){
+            	if(a==1){
+            		return 1;
+            	}
+            	return test(a-1)*a;
+            }
+			alert(test(5));
+			
+			
+			function maxIn3(a,b,c){
+				return (a>b?a:b)>c?(a>b?a:b):c;
+			}
+			function maxIn4(a,b,c,d){
+				var max=maxIn3(a,b,c);
+				max>d?max:d;
+			}
+			function maxIn5(a,b,c,d,e){
+				var max=maxIn4(a,b,c,d);
+				max>e?max:e;
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>右键点击菜单</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#ul1{
+				width: 1000px;
+				height: 1000px;
+				position: absolute;
+				display: none;
+			}
+			ul{
+				list-style: none;
+			}
+			li{
+				border: 1px solid black;
+				position: relative;
+				background-color: #ccc;
+				width:300px;
+				text-align: center;
+			}
+			li>ul{
+				border: 1px solid black;
+				width: 300px;
+				position: absolute;
+				left: 200px;
+				/*top:-2px;*/
+				display: none;
+				z-index: 1;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>我是li1</li>
+			<li>我是li2</li>
+			<li>我是li3
+				<ul>
+					<li>我是li3下的li1</li>
+					<li>我是li3下的li2</li>
+					<li>我是li3下的li3</li>
+				</ul>
+			</li>
+			<li>我是li4
+				<ul>
+					<li>我是li4下的li1</li>
+					<li>我是li4下的li2
+						<ul>
+							<li>我是li3下的li1</li>
+							<li>我是li3下的li2</li>
+							<li>我是li3下的li3</li>
+						</ul>
+					</li>
+					<li>我是li4下的li3</li>
+				</ul>
+			</li>
+			<li>我是li5</li>
+		</ul>
+		<script type="text/javascript">
+			var ul1= document.querySelector("#ul1");
+			var lis=document.querySelectorAll("#ul1 li");
+			
+			//先给document添加一个鼠标右键 事件
+			document.oncontextmenu=function(ev){
+				var evObj =ev||window.event;
+				//获取坐标
+				var x=evObj.clientX;
+				var y=evObj.clientY;
+			    //让ul1显示出来
+				ul1.style.display="block";
+				
+				//让ul1
+				ul1.style.left=x+"px";
+				ul1.style.top=y+"px";
+				
+				// 第一种 事件 阻止默认的动作
+				return false;
+				// 第二种 事件 阻止默认的动作
+//				evObj.preventDefault();
+			}
+			
+			document.onclick=function(){
+				ul1.style.display="none";
+			}
+			
+			//遍历一遍li数组
+			for(var i=0;i<lis.length;i++){
+				//创建ev事件对象:鼠标移动，按键盘，取消冒泡 用ev，加事件对象
+				lis[i].onclick=function(ev){
+				   var e=ev||window.event;
+				   e.stopPropagation();
+				}
+				
+				lis[i].onmouseover=function(){
+					var childrnEle=this.children;
+					//找到li中有ul的标签
+					if(childrnEle.length>0){
+						if(childrnEle[0].tagName=="UL"){
+							childrnEle[0].style.display="block";
+						}
+					}
+				}
+				
+				lis[i].onmouseout=function(){
+					var childrnEle=this.children;
+					if(childrnEle.length>0){
+						if(childrnEle[0].tagName=="UL"){
+							childrnEle[0].style.display="none";
+						}
+					}
+				}
+				
+				
+			}
+			
+		</script>
+	</body>
+</html>

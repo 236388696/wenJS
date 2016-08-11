@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    body {
+        font: 12px arial;
+        background: #fff;
+    }
+    
+    .top {
+        position: absolute;
+        top: 0px;
+        right: 60px;
+        overflow: hidden;
+    }
+    
+    .shezhi {
+        /*display: inline;*/
+    }
+    
+    .box a {
+        display: block;
+    }
+    
+    .box {
+        float: right;
+        width: 60px;
+        height: 80px;
+        border: 1px solid gray;
+        margin: 20px auto;
+    }
+    
+    .center {
+        width: 1800px;
+        margin: 0 auto;
+        margin-top: 150px;
+    }
+    
+    .center img {
+        width: 570px;
+        margin-left: 600px;
+    }
+    
+    .bu {
+        background-color: skyblue;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 导航 -->
+    <div class="all">
+        <div class="top">
+            <div class="left">
+                <a href="www.nuomi.com" style="color: black;">糯米</a>
+                <a href="www.xinwen.com" style="color: black;">新闻</a>
+                <a href="www.hao123.com" style="color: black;">hao123</a>
+                <a href="www.ditu" style="color: black;">地图</a>
+                <a href="www.shipin" style="color: black;">视频</a>
+                <a href="www.tieba" style="color: black;">贴吧</a>
+                <a href="www.denglu.com" style="color: black;">登录</a>
+                <div class="shezhi">
+                    <a id="a1" href="www.shezhi" style="color: black;">设置</a>
+                    <div class="box">
+                        <a href="" name="alink" class="c1">搜索设置</a>
+                        <a href="" name="alink" class="c1">高级搜索</a>
+                        <a href="" name="alink" class="c1">开启预测</a>
+                        <a href="" name="alink" class="c1">搜索历史</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <input style="background-color: blue;color:white;" type="submit" value="更多产品">
+            </div>
+        </div>
+        <!-- 中间 -->
+        <div class="center" ;>
+            <img src="百度副本.png" alt="网络错误">
+            <input style="width: 600px; height: 30px;" type="text">
+            <input style="width:100px; height: 35px; background-color:blue;   color: white;" type="submit" value="百度一下">
+        </div>
+    </div>
+    <script>
+    var aaa = document.getElementById("a1");
+    var bbb = document.getElementsByClassName("box");
+    aaa.onmouseover = function() {
+        bbb[0].style.display = "block";
+    }
+    aaa.onmouseout = function() {
+        bbb[0].style.display = "none";
+    }
+    var alink = document.getElementsByName("alink");
+    for (var a = 0; a < alink.length; a++) {
+        alink[a].onmouseover = function() {
+            this.className = "bu";
+        };
+        alink[a].onmouseout = function() {
+            this.className = "ss";
+        }
+    }
+    </script>
+</body>
+
+</html>

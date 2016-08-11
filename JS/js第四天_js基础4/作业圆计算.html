@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="shu" type="type" placeholder="请输入半径" />
+		<input id="jisuan" type="button" value="计算" />
+		
+	<script type="text/javascript">
+		var aaa=document.getElementById("shu");
+		var bbb=document.getElementById("jisuan");
+		    
+		var a=Math.PI;
+		bbb.onclick=function(){
+		var ccc=aaa.value;
+		document.write("圆周长"+2*a*ccc);
+	    document.write("圆面积"+a*ccc*ccc);
+	    document.write("球体积"+4/3*a*ccc*ccc*ccc);
+		}
+		
+	</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>位置属性</title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top:1000px;
+				background-color: red;
+			}
+			#div2{
+				width: 100px;
+				height: 100px;
+				background-color: gray;
+				/*fixed:IE6用不了，兼容不了*/
+				position: fixed;
+				bottom: 0;
+				right: 0;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">1</div>
+		<div id="div2">
+			向上
+		</div>
+		
+		<script type="text/javascript">
+		//获取的是文档里的body
+//			console.log(document.body);
+        //获取的是整个文档的根节点(html)
+            console.log(document.documentElement);
+            
+            //当前浏览器可见范围的高度
+            //受浏览器当前尺寸的影响
+//          alert(document.documentElement.clientHeight);
+//          alert(document.documentElement.clientWidth);
+            
+             
+            var div=document.getElementById("div1");
+            //offset的作用是获取当前标签的偏移量
+            //offsetTop是距顶部的偏移量
+            //offset受定位，padding等的影响
+//          alert(div1.offsetTop);
+
+
+
+
+//			clientWidth是对象看到的宽度（不含边线,即border）  
+//			scrollWidth是对象实际内容的宽度（若无padding，那就是边框之间距离，如有padding，就是左padding和右padding之间距离）。 
+//			offsetWidth是指对象自身的宽度，整型，单位像素（含边线，如滚动条的占用的宽，值会随着内容的输入而不断改变）。
+//			scrollHeight: 获取对象的滚动高度。 
+//			scrollLeft:设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离 
+//			scrollTop:设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离
+//			scrollWidth:获取对象的滚动宽度 
+//			offsetHeight:获取对象相对于版面或由父坐标 
+//			offsetParent 属性指定的父坐标的高度 
+//			offsetLeft:获取对象相对于版面或由 offsetParent 属性指定的父坐标的计算左侧位置
+//			offsetTop:获取对象相对于版面或由 offsetTop 属性指定的父坐标的计算顶端位置
+//			易混淆点：  clientX 设置或获取鼠标指针位置相对于当前窗口的 x 坐标，其中客户区域不包括窗口自身的控件和滚动条。
+//			           clientY 设置或获取鼠标指针位置相对于当前窗口的 y 坐标，其中客户区域不包括窗口自身
+			           
+           
+		</script>
+	</body>
+</html>

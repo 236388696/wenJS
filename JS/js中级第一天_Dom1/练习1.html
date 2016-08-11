@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习</title>
+		<style>
+			#wrap{
+			width: 180px;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<input type="text" id="nameText"  value="" placeholder="邮箱"/>
+			<input type="text" id="nicknameText"  value="" placeholder="密码"/>
+			<input type="text" id="password"  value="" placeholder="确认密码"/>
+			<input type="button" id=""  value="点击"  onclick="tap()" />
+		</div>
+		<script type="text/javascript">
+			var nameText=document.getElementById("nameText");
+			var nicknameText=document.getElementById("nicknameText");
+			var pass=document.getElementById("password");
+			  function tap(){
+			  	if(nameText.value.length==0){
+			  		var div=document.createElement("div");
+			        div.innerHTML="请输入邮箱";
+			        
+			        var cancel=document.createElement("div");
+			        cancel.innerHTML="X";
+			        cancel.onclick=function(){
+			        	  wrap.removeChild(div);
+			        }
+			        
+			        //先设置样式、内容，最后再添加位置
+			        div.appendChild(cancel);
+			        wrap.insertBefore(div, wrap.firstElementChild);
+
+
+ 
+//                   var div=document.createElement("div");
+//                   div.innerHTML="<div>测试一下</div><h1>标题</h1>";
+//          
+//          
+//                 wrap.insertBefore(div, wrap.firstElementChild);
+			  
+			  	}
+			  }
+			  
+			  function tap(){
+			  	if(nameText.value.length &&4 ==wrap.children.length){
+			  		var div=document.createElement("div");
+			        div.innerHTML="请输入邮箱";
+			        
+			        var cancel=document.createElement("div");
+			        cancel.innerHTML="X";
+			        cancel.onclick=function(){
+			        	  wrap.removeChild(div);
+			        }
+			        
+			        //先设置样式、内容，最后再添加位置
+			        div.appendChild(cancel);
+			        wrap.insertBefore(div, wrap.firstElementChild);
+
+
+ 
+//                   var div=document.createElement("div");
+//                   div.innerHTML="<div>测试一下</div><h1>标题</h1>";
+//          
+//          
+//                 wrap.insertBefore(div, wrap.firstElementChild);
+			  
+			  	}
+			  }
+			  
+			  
+
+           
+			  
+			  
+
+		</script>
+	</body>
+</html>

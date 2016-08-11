@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2选择器</title>
+		<style type="text/css">
+			#div1{
+				width: 500px;
+				height: 500px;
+				background-color: orangered;
+			}
+			#div2{
+				width: 400px;
+				height: 400px;
+				background-color: gold;
+			}
+			#div3{
+				width: 200px;
+				height: 200px;
+				background-color: gray;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				<a href="">测试</a>
+			</div>
+				
+			<span id="sp1">
+				<div id="div3">
+				
+				</div>
+				<div id="div4">
+					<div class="di1"></div>
+					<div class="di2"></div>
+					<div name="test"></div>
+				</div>
+			</span>
+			<div id="div5"></div>
+		</div>
+			<input type="text" />
+		
+		
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+//				var divs=$("div");
+//				$("div").on("click",function(){
+//					alert("点我啊");
+//				})
+
+            
+            //id 选择器
+//          $("#div1").on("mouseover",function(){
+//          	    alert("碰到人家了");
+//          })
+
+     
+            //class选择器
+            console.log($(".di1"));
+             
+             
+            console.log($(".di1,#div2,span"));
+//          console.log(document.getElementById("div1"));
+
+            
+            //带属性的选择器
+            console.log($("div[name='test]"));
+            
+            
+            // * 通配符，能匹配所有的标签
+            console.log($("*"));
+            
+            
+            //父级>子级，通过父级找到所有符合条件的子级元素
+            console.log($("#div4>div"));
+            
+            
+            // 当前标签 ~向下的兄弟标签（~只能找向下的同级标签）
+            console.log($("#sp1~#div5")[0]);
+            
+            
+            //找到所有符合要求的标签中的第一个元素
+            console.log($("#div4:first"));
+            
+			});
+
+          
+         
+          
+		</script>
+	</body>
+</html>

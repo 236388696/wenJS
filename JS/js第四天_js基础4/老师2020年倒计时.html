@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1"></div>
+	<script type="text/javascript">
+		var div1 = document.getElementById("div1");
+		function cutTime(){
+			var nowTime = new Date();
+			var fatureTime = new Date(2020,1,1);
+			var chaTime = fatureTime.getTime() - nowTime.getTime();
+			//把毫秒变成秒
+			chaTime = chaTime / 1000;
+			
+			//天数
+			var day = Math.floor(chaTime / (3600*24));
+			//把天数的时间去掉
+			chaTime = chaTime % (3600*24);
+			
+			//小时数
+			var hour = Math.floor(chaTime / 3600);
+			//把小时的时间去掉
+			chaTime = chaTime % 3600;
+			
+			//分钟数
+			var min = Math.floor(chaTime / 60);
+			
+			//秒数
+			var second = Math.floor(chaTime % 60);
+			
+			div1.innerHTML = "距离2020年还差"+day+"天"+hour+"时"+min+"分"+second+"秒";
+		
+		}
+		cutTime();
+		var timer = setInterval(function(){
+			cutTime();
+		},1000);
+	</script>
+</body>
+</html>

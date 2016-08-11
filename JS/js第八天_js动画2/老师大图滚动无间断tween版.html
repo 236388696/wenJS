@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>老师大图滚动</title>
+		<style type="text/css">
+		.wrap{
+			width: 500px;
+			height: 281px;
+			overflow: hidden;
+			margin: 0 auto;
+			position: relative;
+			background-color: #ccc;
+		}
+		.wrap img{
+			width: 500px;
+			position: absolute;
+		}
+		.leftBtn,.rightBtn{
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+			background-color: #ccc;
+			display: inline-block;
+			width: 25px;
+			height: 50px;
+			opacity: 0.5;
+			line-height: 50px;
+			text-align: center;
+		}
+		.leftBtn{
+			left: 50px;
+		}
+		.rightBtn{
+			right: 50px;
+		}
+		.btn{
+			width: 40px;
+			margin: 0 auto;
+		}
+		.btn span{
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: #ccc;
+			border-radius: 5px;
+		}
+		.middle{
+			/*width: 9999px;*/
+			height: 281px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="all">
+		<div class="wrap">
+			<div class="middle" style="background-color: ;">
+				<img style="left: 0;" src="img/0.jpg" alt="" />
+				<img style="left: 500px;" src="img/1.jpg" alt="" />
+				<img style="left: 1000px;" src="img/2.jpg" alt="" />
+			</div>
+			<span class="leftBtn">《</span>
+			<span class="rightBtn">》</span>
+		</div>
+		<div class="btn">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+		<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function qS(xzq){
+				return document.querySelector(xzq);
+			}
+			function qSs(xzq){
+				return document.querySelectorAll(xzq);
+			}
+			var nextBtn = qS(".rightBtn");
+			var lastBtn = qS(".leftBtn");
+			var wrapDiv = qS(".wrap");
+			var middleDiv = qS(".middle");
+			var divs = qSs(".btn>span");
+			var imgs = qSs(".middle>img");
+			
+			var ww = wrapDiv.offsetWidth;
+			middleDiv.style.width = ww * divs.length + "px";
+			
+			//向下滚动
+			function nextRoll(){
+				var t = 0;
+				var b = middleDiv.offsetLeft;
+				var c = -wrapDiv.offsetWidth;
+				var d = 100;
+				timer = setInterval(function(){
+					t++;
+					if(t>=d){
+						//变换位置（需要运动完再进行变换）
+						xunhuanRoll1();
+						clearInterval(timer);
+						//动画运行结束，继续启用next的按钮功能
+						if(isNext == true){
+							nextClick();
+							isNext = false;
+						}
+					}
+					middleDiv.style.left = Tween.Linear(t,b,c,d) + "px";
+					
+				},10)
+			}
+			//向上循环变化
+			function xunhuanRoll1(){
+				if(index == 3){
+					index = 0;
+				}
+				imgs[index].style.left = imgs[index].offsetLeft + 3 * imgs[index].offsetWidth + "px";
+				index ++;
+			}
+			//向下循环变化
+			function xunhuanRoll2(){
+				if(index == 0){
+					index = 3;
+				}
+				index--;
+				imgs[index].style.left = imgs[index].offsetLeft - 3 * imgs[index].offsetWidth + "px";
+				
+			}
+			var timer = null;
+			var timer2 = null;
+			var index = 0;
+			//自动滚动
+			function autoRoll(){
+				clearInterval(timer2);
+				timer2 = setInterval(function(){
+					nextRoll();
+				},2000)
+			}
+			autoRoll();
+			
+			
+			//点击next按钮（如果点击了就不能继续点击，直到到达目的地才可以继续点击）
+			nextClick();
+			//判断next按钮是否点击
+			var isNext = false;
+			function nextClick(){
+				nextBtn.onclick = function(){
+					//点击了next
+					isNext = true;
+					clearInterval(timer2);
+					nextRoll();
+					//暂时让next按钮失去作用，运行结束再让其生效
+					nextBtn.onclick = function(){
+						return false;
+					}
+				}
+			}
+			//鼠标离开next按钮，继续自动滚动
+			nextBtn.onmouseout = function(){
+				autoRoll();
+			}
+			//点击last按钮（如果点击了就不能继续点击，直到到达目的地才可以继续点击）
+			lastClick();
+			//判断是否点击了last按钮
+			var isLast = false;
+			function lastClick(){
+				lastBtn.onclick = function(){
+					//点击了last按钮
+					isLast = true;
+					clearInterval(timer2);
+					lastRoll();
+					//暂时让next按钮失去作用，运行结束再让其生效
+					lastBtn.onclick = function(){
+						return false;
+					}
+				}
+			}
+			//鼠标离开last按钮，继续自动滚动
+			lastBtn.onmouseout = function(){
+				autoRoll();
+			}
+			//向上滚动
+			function lastRoll(){
+				var t = 0;
+				var b = middleDiv.offsetLeft;
+				var c = wrapDiv.offsetWidth;;
+				var d = 100;
+				//向上滚动的变换位置（需要在没有滚动之前就要变换）
+				xunhuanRoll2();
+				clearInterval(timer2);
+				timer = setInterval(function(){
+					t++;
+					if(t >= d){
+						clearInterval(timer);
+						//动画运行结束，再次启用last按钮的点击功能
+						if(isLast == true){
+							lastClick();
+							isLast = false;
+						}
+					}
+					middleDiv.style.left = Tween.Linear(t,b,c,d) + "px";	
+					
+				},10)
+			}
+			
+			
+			//用来判断是否点击了数字按钮
+			var isNums = false;
+			
+			numsClick();
+			//点击数字按钮
+			function numsClick(){
+				for(var i = 0; i < divs.length; i++){
+					//保存数组下标，以便于使用点击到的下标进行操作
+					divs[i].index = i;
+					divs[i].onclick = function(){
+						//点击了任何一个按钮，让所有的数字按钮暂时失效
+						isNums = true;
+						for(var j = 0; j < divs.length; j++){
+							divs[j].onclick = function(){
+								return false;
+							}
+						}
+						//执行数字按钮的滚动事件
+						numRoll(this);
+					}
+					//鼠标离开数字按钮，继续自动滚动
+					divs[i].onmouseout = function(){
+						autoRoll();
+					}
+				}
+			}
+			
+			
+//			点击数字滚动
+			function numRoll(sei){
+				var t = 0;
+				var b = middleDiv.offsetLeft;
+				//使用点击到的下标进行设置 移动的位移
+				var c = -sei.index*500 - b;
+				var d = 100;
+				clearInterval(timer2);
+				timer = setInterval(function(){
+					t++;
+					if(t >= d){
+						clearInterval(timer);
+						//点击数字按钮也要执行图片变换位置
+						xunhuanRoll1();
+						//数字按钮事件执行完毕，继续启用数字按钮的功能
+						if(isNums == true){
+							numsClick();
+							isNums = false;
+						}
+					}
+					middleDiv.style.left = Tween.Linear(t,b,c,d) + "px";
+				},10)
+			}
+			
+		</script>
+	</body>
+</html>

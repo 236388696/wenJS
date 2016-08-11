@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标右键</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			document.oncontextmenu=function(){
+				  alert("右键");
+//          return true;
+//          return false;
+           var bb=document.createElement("input");
+           document.body.appendChild(bb);
+             return false;
+			}
+			
+			
+		</script>
+	</body>
+</html>

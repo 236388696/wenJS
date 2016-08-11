@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>老师计算器</title>
+	</head>
+	<body>
+		<input type="text" id="screen" />
+		<input type="button" id="clear" value="AC" />
+		<br />
+		<!--input.nums[type="button" value="$"]*10-->	
+		<input type="button" class="nums" value="1" />
+		<input type="button" class="nums" value="2" />
+		<input type="button" class="nums" value="3" />
+		<input type="button" class="nums" value="4" />
+		<input type="button" class="nums" value="5" />
+		<br />
+		<input type="button" class="nums" value="6" />
+		<input type="button" class="nums" value="7" />
+		<input type="button" class="nums" value="8" />
+		<input type="button" class="nums" value="9" />
+		<input type="button" class="nums" value="0" />
+		<br />
+	<!--	input.symbols[type="button" value="+"]*4-->
+	<input type="button" class="symbols" value="+" />
+	<input type="button" class="symbols" value="-" />
+	<input type="button" class="symbols" value="*" />
+	<input type="button" class="symbols" value="%" />
+	<!--input#myresult[type="button" value="="]-->
+	<input type="button" id="myresult" value="=" />
+		
+		<script type="text/javascript">
+			var myscreen=document.getElementById("screen");
+			var myclear=document.getElementById("clear");
+			var myresult=document.getElementById("myresult");
+			var nums=document.getElementsByClassName("nums");
+			//获取等于号
+			var symbols=document.getElementsByClassName("symbols");
+			//最开始的时候，显示器显示0
+			myscreen.value=0;
+			//用来判断是否点击了运算符
+			var issymbol=false;
+			//点击数字
+			for (var i=0;i<nums.length;i++) {
+				nums[i].onclick=function(){
+					//如果点击了运算符，再来点击数字，则先把显示器设置为空
+					if(issymbol==true){
+						myscreen.value=null;
+						issymbol=false;
+					}
+					//判断输入数字之前，显示器的值是否为0；如果为0，则忽略掉；如果不为0；则进行拼接
+					if(myscreen.value==0){
+						myscreen.value=this.value;
+					}else{
+				   myscreen.value=myscreen.value+this.value;
+				   // myscreen.value+=this.value
+				  }
+				}
+			}
+			
+			var nowsymbol=null;
+			//点击运算符
+			for(var i=0;i<symbols.length;i++){
+				symbols[i].onclick=function(){
+					issymbol=true;
+					//当点击运算符，把当前输入的值存到name属性里
+					myscreen.name=myscreen.value;
+					//当点击运算符，把该运算符储存起来，存到newsybol里了
+					nowsymbol=this.value;
+					
+				}
+			}
+			//当点击等于号
+			myresult.onclick=function(){
+				//让屏幕显示＝第一个值＋运算符＋第二个值：（返回的是字符串）；
+				//用eval来处理该字符串，让其正常运算和显示
+				myscreen.value=eval(myscreen.name+nowsymbol+myscreen.value);
+			}
+			//当点击清除按钮
+			myclear.onclick=function(){
+				//把所有的变量和用到的值都清除一下，就像重新刷新了一遍
+				issymbol=false;
+				myscreen.name="";
+				nowsymbol=null;
+				myscreen.value=0;
+			}
+		</script>
+	</body>
+</html>

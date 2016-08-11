@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>offsetleft</title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		　<div id="div1">点我一下</div>
+		<script type="text/javascript">
+			var div1=document.getElementById("div1");
+			div1.onclick=function(){
+			//获取元素左边距
+			var l=	div1.offsetLeft+10;
+			div1.style.left=l+"px";
+			
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小色块减少</title>
+<style>
+			.wrap{
+				width: 800px;
+				height: 500px;
+				border: 1px solid #CCCCCC;
+				margin: 0 auto;
+				position: relative;
+			}
+			.row{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				
+			}
+			.row>div{
+				width: 20px;
+				height: 20px;
+				border: 1px solid red;
+				background-color: gray;
+				float: left;
+				box-sizing: border-box;
+			}
+			.row>div.remove{
+			    transform: translate(0,100px) rotate(360deg);	
+			    transition: all 3s;
+			    opacity: 0;
+			}
+			
+			.score{
+				height: 100px;
+				width: 100px;
+				color: red;
+				margin: 0 auto;
+				line-height: 100px;
+				font-size: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="score">
+			0
+		</div>
+		<div class="wrap">
+			
+			
+		</div>
+		<script type="text/javascript">
+			var wrap=document.querySelector(".wrap");
+			var scoreDiv=document.querySelector(".score");
+			
+		    //设置一个用于变化的bottom
+		    var bottom=0;
+		    
+		    //把时间也设置成变量
+		    var timeNum=500;
+		    
+		    //定义一个游戏色块个数的变量
+		    var boxNum=20;
+		    var speed=20;
+		    
+		    function createRow(){
+		    	//创建行的div，并且设置它的class
+		    var row=document.createElement("div");
+//		    row.setAttribute("class","row");
+            row.className="row";
+            row.style.bottom=bottom+"px";
+            
+            //设置row的偏移量，如果之前有row，需要在row基础上添加显示
+            //判断前一个元素在不在
+            var preRow=wrap.lastElementChild;
+            if(preRow){
+            	   row.style.left=preRow.offsetLeft+"px";
+            }else{
+            	  row.style.left="0px";
+            }
+		    
+		      //for创建20个小div
+		      for(var i=0;i<boxNum ;i++){
+		      	var div=document.createElement("div");
+		      	row.appendChild(div);
+		      }
+		    wrap.appendChild(row);
+	
+		    
+		    row.timer=setInterval(function(){
+		    	    row.style.left=row.offsetLeft+speed+"px";
+		    	    
+		    	    //判断碰壁反弹
+                //由于游戏的小块越来越少，所以400不能写死，需要计算最大的偏移量
+		    	    var maxOffset=wrap.clientWidth-row.offsetWidth;
+		    	     if(row.offsetLeft>=maxOffset||row.offsetLeft<=0){
+		    	     	speed*=-1;
+		    	     }
+		    	    
+		    },timeNum);
+		         return row;
+		    }
+		    
+		    //上来先创建一行
+		   createRow();
+		   //先加bottom，后创建
+		   wrap.onclick=function(){
+		   	 bottom+=20;
+		   	 
+		   	 //点一下，速度变快
+		   	 timeNum-=50;
+		   	 if(timeNum<=50){
+		   	 	timeNum=50;
+		   	 }
+		   	 
+		   	 //色块的减少应该在第三行开始
+		   	 //stopRow:上面正在动的这一行
+		   	 var stopRow=wrap.lastElementChild;
+		   	 var shangyige=stopRow.previousElementSibling;
+		   	 var leftCha=0;
+		   	 //至少有两行才可以做减法
+		   	 if(shangyige){
+		   	 	leftCha=shangyige.offsetLeft-stopRow.offsetLeft;
+		   	 }
+		   	 //根据leftCha计算需要删减的色块
+		   	 var removeNum=Math.abs(leftCha/20);
+		   	 boxNum-=removeNum;
+		   	 if(boxNum<=0){
+		   	 	alert("game over");  
+		   	 	//把stop的定时器关闭
+		   	 	clearInterval(stopRow.timer);
+		   	 	
+		   	 	//当前全部函数都终结掉
+		   	 	return false;
+		   	 }
+		   	 
+		   	 //把多余的色块删除掉
+		   	 if(leftCha<0){
+		   	 	//leftCha<0代表要删除stopRow右边的小色块
+		   	 	
+		   	 	for (var k=0;k<removeNum;k++) {
+		   	 		var removeDiv=stopRow.children[stopRow.children.length-1-k];
+		   	 		removeDiv.className="remove";
+		   	 	}
+		   	 	setTimeout(function(){
+		   	 		for (var i=0;i<removeNum;i++) {
+		   	 		//删除stopRow右边小色块
+		   	 		stopRow.removeChild(stopRow.lastElementChild);
+		   	 	}
+		   	 	},1000);
+		   	 
+		   	 	
+		   	 }else{
+		   	 	
+		   	 	//删除stopRow左边小色块
+		   	 	stopRow.left=stopRow.offsetLeft+20*removeNum+"px";
+		   	 	for(var i=0;i<removeNum;i++){
+		   	 		stopRow.removeChild(stopRow.firstElementChild);
+		   	 	}
+		   	 }
+		   	 
+		   	 
+//		   	 var daoshu2=wrap.children[wrap.children.length-2];          
+		   	 var newDiv=createRow();
+		   	 //让newDiv前一个元素的定时器停止
+//		   	 clearInterval(daoshu2.timer);
+		   	 clearInterval(newDiv.previousElementSibling.timer);
+		   	 
+		   	 
+		   	 //-0是隐式类型转换
+		   	 scoreDiv.innerHTML=scoreDiv.innerHTML-0+1;
+		   	 
+		   }
+		   
+		   
+		</script>
+		
+	</body>
+</html>

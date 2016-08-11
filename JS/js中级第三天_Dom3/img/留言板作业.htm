@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- saved from url=(0128)http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title>留言板作业</title>
+		<style>
+			.all{
+				width: 920px;
+				height: 1000px;
+				border: 1px solid palevioletred;
+				margin: auto;
+				border-radius: 5px;
+			}
+			.top{
+				width: 900px;
+				height: 300px;
+				border: 1px solid pink;
+				margin: 20px auto;
+				overflow: hidden;
+				border-radius: 5px;
+				text-align: center;
+			}
+			#top_left{
+				float: left;
+				margin-left: 50px;
+				margin-top: 20px;
+			}
+			#top_right{
+				float: right;
+				margin-right: 50px;
+				margin-top: 20px;
+			}
+			#top_right a{
+				text-decoration: none;
+				color: orange;
+			}
+			textarea{
+				width: 800px;
+				height: 200px;
+				border: 1px solid gray;
+				border-radius: 5px;
+				resize: none;
+				margin-top: 10px;
+
+			}
+			a{
+				text-decoration: none;
+			}
+			#top_bottom{
+				overflow: hidden;
+				margin-top: 10px;
+				
+			}
+			#top_bot1{
+				float: left;
+				margin-left: 20px;
+			}
+			#top_bot1 img{
+				padding-left: 20px;
+			}
+			#top_bot2{
+				float: right;
+				margin-right: 50px;
+				width: 80px;
+				height: 28px;
+			    background-color: orange;
+                border: 1px solid yellow;	
+                color: white;		
+                text-align: center;	
+                line-height: 28px;
+			}
+			.big{
+				width: 800px;
+				height: 200px;
+				border: 1px solid gray;
+				border-radius: 5px;
+				resize: none;
+				margin-top: 10px;
+
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<div class="top">
+				<div id="top_left">
+					留言板
+				</div>
+				<div id="top_right">
+					<a href="http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html">置办年货省省省！红包在手年货无忧！点击领取红包</a>
+					<a href="http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html">热门微博</a>
+					<a href="http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html">心情说</a>
+				</div>
+				<div id="top_middle">
+					<textarea id="zi" name="" rows="" cols=""></textarea>
+				</div>
+				<div id="top_bottom">
+					<div id="top_bot1">
+						<img src="./留言板作业_files/wb1.png"><a href="http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html">表情</a>
+						<img src="./留言板作业_files/wb2.png" alt=""><a href="http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html">图片</a>
+						<img src="./留言板作业_files/wb3.png" alt=""><a href="http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html">视频</a>
+						<img src="./留言板作业_files/wb4.png" alt=""><a href="http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html">话题</a>
+						<img src="./留言板作业_files/wb5.png" alt=""><a href="http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html">文章</a>
+					</div>
+					<a href="http://127.0.0.1:8020/JS/js%E4%B8%AD%E7%BA%A7%E7%AC%AC%E4%B8%89%E5%A4%A9_Dom3/%E7%95%99%E8%A8%80%E6%9D%BF%E4%BD%9C%E4%B8%9A.html" id="top_bot2">发布</a>
+				</div>
+			</div>
+			<div id="bottom">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+		    var zi=document.getElementById("zi");
+			var tright=document.getElementById("top_right");
+		    var bot2=document.getElementById("top_bot2");
+			var bottom=document.getElementById("bottom");
+			
+			
+			function createDiv(txt,className){
+				var div=document.createComment("div");
+				div.innerHTML=txt;
+				div.setAttribute("class",className);
+				return div;
+			}
+			
+			bot2.onclick=function(){
+				if(!zi.value.length){
+					alert("请输入内容");
+				}else {
+					var bigDiv=createDiv("","big");
+					
+					
+					
+					bottom.appendChild(bigDiv);
+				}
+			}
+		</script>
+	
+
+</body></html>

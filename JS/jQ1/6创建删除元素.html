@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 500px;
+				height: 500px;
+				background-color: mistyrose;
+			}
+			.di{
+				width: 100px;
+				height: 100px;
+				background-color: darkgray;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		//JQ和原生千万别混的写
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			   $(document).on("click",function(){
+			   	//第一种方式:子标签加在父标签上
+			   	$("<div>测试</div>").appendTo("#div1");
+
+                //也是一种加div标签的方式：父级里面加div标签，父加子不用加to 
+//              $("#div1").append("<div>加字</div>");
+			   	
+			   	//第二种方式:创建的时候要加<div>
+			   	$("<div></div>",{
+			   		"id":"div2",
+			   		"name":"test",
+			   		"class":"di",
+			   		"html":"在这里加",
+			   		"click":function(){
+			   			alert("新创建的div");
+			   		}
+			   	}).appendTo("#div1");
+
+              
+              // 子级向父级加元素，需要加to
+//             $("<div>加加加</div>").appendTo("#div1");
+
+			   	
+			   })
+			})
+			
+//			ready方法简写: 
+//			$(function(){
+//				
+//			})
+
+
+
+            
+            $(function(){
+            	  //移除元素
+            	  $("#div1").remove();
+            })
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>循环定时器</title>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript">
+			//循环定时器
+			//参数：1.定时器调用的函数
+			//参数：2.定时器触发的时间间隔
+			
+//		var div1=document.getElementById("div1");
+//			 
+//			var index=0;
+//			var timer=setInterval(function(){
+//				
+//				if(index==10){
+//					//清除循环定时器
+//					clearInterval(timer);
+//				}else{
+//		     	document.write(index+"收废冰箱、旧彩电、洗衣机、电风扇、旧电脑");
+//             // innerHTML修改元素的内容
+//              div1.innerHTML=index+"磨剪子咧，锵菜刀";
+//				}
+//				index++;
+//			},1000);
+			
+			
+	
+	    //课堂练习	
+	    	var div1=document.getElementById("div1");
+		var ind=11;
+		var timer=setInterval(function(){
+			ind--;
+			if(ind==0){
+				clearInterval(timer);
+				div1.innerHTML="boom";
+			}else{
+				div1.innerHTML=ind;
+			}
+		},1000);
+		</script>
+	</body>
+</html>

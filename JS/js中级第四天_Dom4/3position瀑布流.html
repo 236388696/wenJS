@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定位瀑布流</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#flow{
+				list-style: none;
+				margin: 0 auto;
+				position: relative;
+			}
+			#flow li{
+				position: absolute;
+				font-size: 50px;
+				background-color: #ccc;
+				width: 200px;
+				border: 1px solid red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<ul id="flow"></ul>
+		
+		<script type="text/javascript">
+			var ul=document.getElementById("flow");
+			
+			//定义一个随机高度的函数
+			function randHeight(min,max){
+				return parseInt(Math.random()*(max-min+1)+min);
+			}
+			
+	
+                 //计算一下屏幕宽度下有多少行，向下取整
+           var colNum=parseInt(document.documentElement.clientWidth/200);
+           
+           
+           
+           //因为现在是一个ul，需要把每一列的高度放到一个数组里
+           var arrH =[];
+           for (var i=0;i<colNum;i++) {
+           	//对每一行的高度进行初始化
+           	//arr push=[0] ;  arr push=[37];往数组后面加
+           	 arrH[i]=0;
+           }
+            
+            for(var j=0;j<20;j++){
+            	 var li=document.createElement("li");
+            	 li.innerHTML=j;
+            	 li.style.height=randHeight(100,300)+"px";
+          
+            
+            //找当前最短的列，遍历arrH
+             //默认下标是0，跟里面做比较
+            var minIndex=0;
+            for (var k=1;k<arrH.length;k++) {
+            	   if(arrH[minIndex]>arrH[k]){
+            	   	  minIndex=k;
+            	   }
+            }
+           
+           //通过定位，给li确定位置
+           //minIndex最短的下标
+                 //如果需要加间隔，需要用 最短下标*10 
+                 // li.style.left=200*minIndex+10*minIndex+"px";
+			li.style.left=200*minIndex+"px";
+			li.style.top=arrH[minIndex]+"px";
+			ul.appendChild(li);
+			
+			//更新长度数组里的对应下标的值！！！
+			arrH[minIndex]=arrH[minIndex]+li.offsetHeight;
+
+			      //如果高度需要加间隔，需要给offsetHeight+20
+			      //arrH[minIndex]=arrH[minIndex]+li.offsetHeight+20;
+			
+			}
+            
+            
+            
+            		//浏览器的可见宽度
+//			alert(document.documentElement.clientWidth);
+//			
+//			//clientWidth 标签的宽度
+//			var div=document.getElementsByTagName("div")[0];
+//			
+//			
+//			//offset 偏移量
+//			alert(div.offsetTop);
+//			
+//			//scroll滚动， 滚动条距上面的高度
+//			console.log(document.body.scrolltop);
+//		
+
+
+		</script>
+	</body>
+</html>

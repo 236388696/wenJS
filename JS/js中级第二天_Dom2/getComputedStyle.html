@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>computedStyle</title>
+		<style>
+			a{
+				width: 100px;
+				height: 100px;
+				color: orange;
+			}
+			/*hover 伪类*/
+			a:hover{
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="###" id="aLink">随遍的一些内容</a>
+		<script type="text/javascript">
+			var aLink=document.getElementById("aLink");
+			
+			//参数1:查找样式的标签
+			//参数2:如果没有伪类，则填写null，如果有伪类，则写伪类
+			alert(window.getComputedStyle(aLink,":hover").color);
+			
+			
+			
+			//时间戳转换成时间
+			var myDate=new Date(1398250549490);
+			var year=myDate.getFullYear();
+			var month=myDate.getMonth()+1;
+			var day=myDate.getDate();
+			var hour=myDate.getHours();
+			var min=myDate.getMinutes();
+			var sec=myDate.getSeconds();
+			console.log(year+"年"+month+"月"+day+"日"+hour+"小时"+min+"分"+sec+"秒")
+			
+			
+		    var a=10;
+		    var b=10;
+		    var c=++a>b?a++:++b;
+		    console.log(a);
+		    console.log(b);
+		    console.log(c);
+			
+			</script>
+	</body>
+</html>

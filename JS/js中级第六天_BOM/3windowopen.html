@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button"  value="打开"  onclick="openWin()"/>
+		<input type="button"  value="打开空白页"  onclick="open_win()"/>
+		<input type="button"  value="关闭小窗口"  onclick="closeWin()"/>
+		
+		
+		<script type="text/javascript">
+			function openWin(){
+				window.open("http://www.runoob.com");
+			}
+			
+			var myWindow;
+			function open_win(){
+				myWindow =window.open("","","width=200,height=300");
+				myWindow.document.write("文字啊啊啊");
+			}
+			
+			function closeWin(){
+				//BOM提供了一个用于关闭小窗口的方法 close()
+				myWindow.close();
+			}
+		</script>
+	</body>
+</html>

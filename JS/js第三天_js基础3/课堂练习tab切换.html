@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.input{
+				background-color: red;
+			}
+			
+			div{
+				width: 300px;
+				height: 300px;
+				font-size:40px ;
+				color: wheat;
+				background-color: gray;
+				display: none;
+				text-align: center;
+			}
+			.div1{
+				width: 300px;
+				height: 300px;
+				font-size:40px ;
+				color: wheat;
+				background-color: gray;
+				display: block;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="a" />
+		<input type="button" value="b"/>
+		<input type="button" value="c"/>
+		<div class="div1">h</div>
+		<div >g</div>
+		<div >f</div>
+	</body>
+	
+	<script type="text/javascript">
+		var aaa=document.getElementsByTagName("input");
+		var bbb=document.getElementsByTagName("div");
+		for(i=0;i<aaa.length;i++){
+			aaa[i].den=i;
+			aaa[i].onclick=function(){
+				for (j=0;j<aaa.length;j++) {
+					aaa[j].className="";
+					bbb[j].className="";
+				}
+				this.className="input";
+				bbb[this.den].classname="div1";
+				
+			}
+			
+		}
+		
+	</script>
+</html>

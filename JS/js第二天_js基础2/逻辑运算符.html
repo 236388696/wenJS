@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>逻辑运算符</title>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 100px;
+                background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+       <div id="div1"></div>
+		
+		
+		
+		
+		<script type="text/javascript">
+//			逻辑运算符
+//          (1)与&&
+//          同真即真,一假即假
+            var a = 3;
+            var b = 5;
+            var c =10 ;
+            if(c>a&&c>b){
+            	    alert("c最大");
+            	 }   
+            	 
+            	 
+            	 
+//          (2)或||
+//          一真即真,同假为假
+      	if(a<c||c<b){
+      		alert("a不是最大的");
+      	}else{
+      		alert("a是最大的");
+      	}
+      	
+      
+//          (3)非! :取反
+      	var fly =true;
+      	var div1=document.getElementById("div1");
+      	div1.onclick=function(){
+      		fly=!fly;
+      		console.log(fly);
+      	}
+            	
+       
+            	
+            	    
+            
+		</script>
+	</body>
+</html>

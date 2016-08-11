@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>京东放大镜</title>
+		<style>
+			/*http://item.jd.com/11293862.html*/
+			/*#top{
+				width: 1200px;
+				height: 45px;
+				background-color: gainsboro;
+			}*/
+			body{
+				background-color: gainsboro;
+				width: 1500px;
+				margin: 0 auto;
+				position: relative;
+			}
+			/*.all{
+				width: 1400px;
+				margin: 0 auto;
+				position: relative;
+				background-color: white;
+			}*/
+			#middle {
+				width: 1200px;
+				height: 780px;
+				border: 1px solid gray;
+				overflow: hidden;
+				background-color: white;
+			}
+			#mleft_top {
+				border: 1px solid gray;
+				width: 350px;
+				height: 350px;
+			}
+			
+			#mleft_top img {
+				position: absolute;
+			}
+			
+			#zt2 {
+				display: none;
+			}
+			
+			#zt3 {
+				display: none;
+			}
+			
+			#slider {
+				width: 175px;
+				height: 175px;
+				position: relative;
+				left: 0;
+				top: 0;
+				display: none;
+				background-color: rgba(255, 255, 0, 0.3);
+			}
+			
+			#mleft_middle {
+				width: 365px;
+				height: 54px;
+				margin-top: 10px;
+				margin-left: 50px;
+			}
+			
+			#mleft_bottom {
+				margin-top: 10px;
+				font-size: 12px;
+				margin-left: 20px;
+			}
+			
+			#mleft_bottom img {
+				padding-left: 25px;
+			}
+			
+			#mright_dt {
+				border: 1px solid #ccc;
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				left: 370px;
+				overflow: hidden;
+				display: none;
+				left: 365px;
+				top: 8px;
+			}
+			
+			.mright img {
+				position: absolute;
+			}
+			
+			#dt2 {
+				display: none;
+			}
+			
+			#dt3 {
+				display: none;
+			}
+			
+			.right{
+				width: 580px;
+				height: 127px;
+				position: absolute;
+				top: 0;
+				left: 400px;
+				margin-left:20px ;
+			}
+			.right1 span{
+				font-size: 14px;
+				color: red;
+			}
+			.right1 div{
+				font-size: 12px;
+			}
+			.leiji{
+				position: absolute;
+				top: 125px;
+				left: 480px;
+				width: 50px;
+				height: 40px;
+				border-left:1px solid gray;
+				color: gray;
+				padding-left: 10px;
+				padding-top: 5px;
+				margin-bottom: 20px;
+			}
+			#s1{
+				padding-top: 10px;
+				color: blue;
+				font-size: 17px;
+			}
+			.right2{
+				width: 580px;
+				height: 130px;
+				background-color: #F7F7F7;
+			}
+			.right2_1 div{
+				display: inline-block;
+				margin-left: 10px;
+				margin-top: 20px;
+				font-size: 12px;
+			}
+			.right2_1 span{
+				color:red;
+				font-weight: 300px;
+			}
+		
+			.r2{
+				width: 30px;
+				height: 14px;
+				background-color: red;
+				color: white;
+				line-height: 14px;
+			}
+			.r3{
+				font-size:12px ;
+				color: red;
+			}
+			.right2_1 a{
+				font-size: 12px;
+				text-decoration: none;
+				color: black;
+			}
+			.r4{
+				width: 60px;
+				height: 18px;
+				background-color: orangered;
+				color: wheat;
+				line-height: 18px;
+				padding-left: 15px;
+			}
+			
+			.right3_1 div{
+				display: inline-block;
+				font-size: 13px;
+				padding: 10px;
+			}
+			.right3_1 span{
+				color: red;
+				font-size: 13px;
+				
+			}
+			.right3_2 div{
+				display: inline-block;
+				font-size: 13px;
+				padding: 10px;
+			}
+			.right3_2 span{
+				font-size: 13px;
+				border: 1px solid gray;
+				padding: 5px;
+			}
+			.right3_3{
+				font-size: 13px;
+				padding: 10px;
+			}
+			.br{
+				width: 580px;
+				border: 1px dotted darkgray;
+			}
+			.right4{
+				width: 580px;
+				font-size: 12px;
+				margin-top: 10px;
+				
+			}
+			.right4 div{
+				display: inline-block;
+				margin-left: 5px;
+				margin-top: 5px;
+			}
+			.right4_1{
+				width: 160px;
+				height: 28px;
+				border: 1px solid gray;
+			}
+			.right5_1{
+				padding-right: 3px;
+				border: 1px solid gray;
+			}
+			.right6_1{
+				padding: 4px;
+				border: 1px solid gray;
+				
+			}
+			.right7_1{
+				width: 60px;
+				height: 42px;
+				display: inline-block;
+				float: left;
+			}
+			#input1{
+				width: 30px;
+				height: 38px;
+				float: left;
+			}
+			#input2{
+				width: 22px;
+				height: 22px;
+				background-color: gainsboro;
+				
+			}
+			#input3{
+				width: 22px;
+				height: 22px;
+				background-color: gainsboro;
+				
+			}
+			.right7_2{
+				float: left;
+				margin-left: 10px;
+			}
+			.right7{
+				width: 300px;
+				height: 100px;
+				margin-top:10px ;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="middle">
+				<div class="mleft">
+					<div id="mleft_top">
+						<img id="zt1" src="周末作业img/zt1.jpg" alt="" />
+						<div id="slider"></div>
+					</div>
+					<div id="mleft_middle">
+						<img id="ml6" src="周末作业img/6.png" />
+						<img id="xt1" class="xt" width="50" height="50" src="周末作业img/xt1.jpg" alt="" />
+						<img id="xt2" class="xt" src="周末作业img/xt2.jpg" alt="" />
+						<img id="xt3" class="xt" src="周末作业img/xt3.jpg" alt="" />
+						<img id="ml7" src="周末作业img/7.png" />
+					</div>
+					<div id="mleft_bottom">
+						<span>商品编号：11293862 </span> <img src="周末作业img/fx.png" />分享 <img src="周末作业img/gzsp.png" />关注商品
+					</div>
+				</div>
+				<div class="right">
+					<div class="right1">
+						<h3>一个人的朝圣 [The Unlikely Pilgrimage of Harold Fry]</h3>
+						<span>2013欧洲超级畅销小说，抚慰36国，台湾读者深夜落泪捧读。这一年，我们都需要他安静而勇敢的陪伴</span>
+						<p>[英] 蕾秋·乔伊斯 著；冯倩 编；chapoo 绘；黄妙瑜 译</p>
+					</div>
+					<div class="right2">
+						<div class="right2_1">
+							<div>京东价：</div> <span>¥23.40</span><div>[7.2折]</div><div>[定价：￥32.80]</div> <div class="p2" >(降价通知)</div> <div class="leiji">累计评价   <span id="s1">57628</span></div> 
+						</div>    
+						<div class="right2_1">
+							<div>促销信息:</div> <div class="r2">满减</div> <span class="r3">满99.00元，可减30.00%</span> <a href="" >详情>>"</a>
+						</div>
+						<div class="right2_1">
+						 <div>领券：</div><div class="r4">105-6</div> <div class="r4">200-16</div>
+						</div>
+					</div>
+					<div class="right3">
+						<div class="right3_1">
+					    		<div>排　　名：自营 小说销量榜 第</div><span>7 </span> <div>位</div>
+					    </div>
+					    <div class="right3_2">
+					    		<div>配 送 至：</div><span id="s2">北京朝阳区三环内 </span><div>有货，支持99元免运费｜货到付款</div> 
+					    </div>
+					    <div class="right3_3">服　　务：由 京东 发货，并提供售后服务。15:00前完成下单,可预约今晚送达</div>
+					    <div class="br"></div>
+					</div>
+					<div class="right4"> 
+				        <div class="right4zi">选择系列：</div>
+				        <div class="right4_1"><img src="周末作业img/xx1.jpg" alt="" />一个人的朝圣1平装版</div>
+					    <div class="right4_1"><img src="周末作业img/xxt2.png" alt="" />一个人的朝圣2</div>
+					    <div class="right4_1"><img src="周末作业img/xxt3.png" alt="" />一个人的朝圣1精装版</div>
+					    <div class="right4_1"><img src="周末作业img/xxt4.png" alt="" />一个人的朝圣 京东版套装</div>
+						         
+					</div>
+					<div class="right4">
+					    增值保障：<div class="right5_1"><img src="周末作业img/hy.png" alt="" />护眼保障¥2</div><img src="周末作业img/wh.png" alt="" />
+					</div>
+					<div class="right4">
+						选择套装：<div class="right6_1">1件</div> <div class="right6_1">套装3件</div><div class="right6_1">套装3件</div><div class="right6_1">套装3件</div><div class="right6_1">套装2件</div><div class="right6_1">套装2件</div>
+						<div class="right6_1">套装4件</div><div class="right6_1">套装2件</div><div class="right6_1">套装4件</div>
+					</div>
+					<div class="right4">
+						白条分期：<div class="right6_1">30天免息</div> <div class="right6_1">¥7.92x3期</div><div class="right6_1">¥4.02x6期</div><div class="right6_1">¥2.07x12期</div><div class="right6_1">¥1.09x24期</div><img src="周末作业img/wh.png" alt="" />
+				    </div>
+				    <div class="right7">
+				    	        <div class="right7_1">
+						    	     <input id="input1" type="text" />
+						    	     <input id="input2" type="button" value="+" />
+						    	     <input id="input3" type="button" value="-" />
+						    </div>
+						    <div class="right7_2">
+					    		    <img src="周末作业img/gwc.png"/>
+				    		    </div>
+				    </div>
+					<div id="mright_dt">
+						<img id="dt1" src="周末作业img/t1.jpg" alt="" />
+					</div>
+				
+			    </div>
+			 </div>
+		  
+		<script type="text/javascript">
+			var mtop = document.getElementById("mleft_top");
+			var mmiddle = document.getElementById("mleft_middle");
+			var mdat = document.getElementById("mright_dt");
+			var zt1 = document.getElementById("zt1");
+			var zt2 = document.getElementById("zt2");
+			var zt3 = document.getElementById("zt3");
+			var slider = document.getElementById("slider");
+			var xt1 = document.getElementById("xt1");
+			var xt2 = document.getElementById("xt2");
+			var xt3 = document.getElementById("xt3");
+			var dt1 = document.getElementById("dt1");
+			var dt2 = document.getElementById("dt2");
+			var dt3 = document.getElementById("dt3");
+			var xt=document.getElementsByClassName("xt");
+			var dts = ["周末作业img/dt1.jpg","周末作业img/dt2.jpg","周末作业img/dt3.jpg"];
+			var zts = ["周末作业img/zt1.jpg","周末作业img/zt2.jpg","周末作业img/zt3.jpg"];
+
+			for(i = 0;i < xt.length; i++) {
+				xt[i].index = i;
+				xt[i].onmouseover = function() {
+
+					for(j = 0; j < xt.length; j++) {
+						xt[j].style.border = "1px solid white";
+					}
+					xt[this.index].style.border = "1px solid red";
+					zt1.src=zts[this.index];
+                    dt1.src=dts[this.index];
+				}
+			}
+			
+			mtop.onmousemove= function(ev){
+				slider.style.display="block";
+				mdat.style.display="block";
+				var evObj=ev||window.event;
+				var x = evObj.clientX - mtop.offsetLeft - slider.offsetWidth / 2;
+				var y = evObj.clientY - mtop.offsetTop - slider.offsetHeight / 2;
+				
+				var mdatWidth = mtop.offsetWidth - slider.offsetWidth / 2;
+				var mdatHeight = mtop.offsetHeight - slider.offsetHeight / 2;
+				
+				if(x < 0){
+					x = 0;
+				} else if(evObj.clientX >= mdatWidth){
+					x = mdatWidth - slider.offsetWidth / 2;
+				}
+				if(y < 0){
+					y = 0;
+				} else if(evObj.clientY >= mdatHeight){
+					y = mdatHeight - slider.offsetHeight / 2;
+				}
+				slider.style.left = x + "px";
+				slider.style.top = y + "px";	
+				
+				var scaleX=x/(mdatWidth - slider.offsetWidth / 2);
+				var scaleY=y/(mdatHeight - slider.offsetHeight / 2);
+				
+				mdat.scrollLeft=scaleX*(dt1.offsetWidth);
+				mdat.scrollTop=scaleY*(dt1.offsetHeight);
+			}
+			mtop.onmouseout=function(){
+				slider.style.display="none";
+				mdat.style.display="none";
+			}
+
+
+
+				
+
+		</script>
+	</body>
+
+</html>

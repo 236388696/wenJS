@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组对象</title>
+	</head>
+	<body>
+		<script>
+			    var arr=new Array(5,3,9);
+			
+			arr.push	(100);//在数组尾部添加新数组元素
+			arr.unshift(200);//在数组头部添加新数组元素
+//			arr.pop();//从数组尾部弹出元素
+//			arr.shift();//从数组头部弹出元素
+			arr.splice(0,1);//从某位置开始，删除某长度元素；参数：1.起始位置，2.需要删除的长度
+			arr.splice(0,0,20,30,40);//从头部元素插入元素；也可以用作数组元素替换，修改删除个数
+			arr.sort();//实现数组排序,按照ASCII表的顺序
+			
+			    var arr2=new Array("a","b","c");
+			arr=arr.concat(arr2);
+			arr=arr.concat("arr2");
+			arr=arr.concat("sdf","dgg");//实现数组的拼接，返回一个新的数组
+//			arr=arr.join(",");
+// 给数组元素之间添加分隔符，返回值为strings
+//			console.log(arr);
+			    for (var i=0;i<arr.length;i++) {
+					console.log(arr[i]);
+			   }
+			    
+//			声明一个二维数组    
+            var arr3=[[1,2,3],[2,3,4],[3,4,5]];                                                                                                                                                                                                                        
+            alert(arr3[1][0]);	
+       
+
+		</script>
+	</body>
+</html>

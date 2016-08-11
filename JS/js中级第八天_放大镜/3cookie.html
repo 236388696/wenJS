@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+         //	cookie的作用:用来存储数据的(存在浏览器里);
+         // cookie的容量:5kb;
+         // cookie存储的数据类型:数字和字符串;
+         // cookie能存储的条目数:50
+         // cookie只能在服务器环境下使用
+         
+         var date1= new Date();
+         var day=date1.getDate();
+          //alert(day);
+         var year=year1.getFullYear();
+         
+          
+          
+          //等号左边cookie文件名
+          //等号右边文件里的内容
+          //如果没做设置，cookie的有效期就到浏览器关闭(com+Q)为止
+          document.cookie ="test=zhangsan";
+          // alert(document.cookie);
+          
+          //设置cookie的有效时间
+//        date1.setDate(day+3);
+//          alert(date1);
+          
+          //获取时间getFullYear()
+//        date1.setYear(date1.getFullYear()+20);
+            
+          
+          //设置cookie的有效时间
+//        document.cookie="userName=12345;expires="+date1;
+          
+          //想让cookie失效可以让事件设置成当前时间之前即可
+//        date1.setDate(day-1);
+          
+          document.cookie="user-zhangsan";
+          document.cookie="pass=123456";
+          //alert(document.cookie);
+          
+          var result=document.cookie;
+          var arr=result.split(";");
+          console.log(document.cookie);
+          
+          
+          
+          
+        //  cookie里有个 _ga:谷歌数据分析
+          
+			
+			
+			
+		</script>
+	</body>
+</html>

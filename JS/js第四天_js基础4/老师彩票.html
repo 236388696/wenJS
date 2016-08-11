@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input id="input1" type="button" value="再来一注" />
+	<div id="div1"></div>
+	<script type="text/javascript">
+		var input1 = document.getElementById("input1");
+		var div1 = document.getElementById("div1");
+		function rand(min,max){
+			return Math.floor(Math.random()*(max-min)+min);
+		}
+		//随机选数
+		function suiji(){
+			var arr = new Array();
+			while(arr.length < 7){
+				var a = rand(1,31);
+				if(arr.indexOf(a) == -1){
+					arr.push(a);
+				}
+			}
+			return arr;
+		}
+		//摇奖动画
+		function ani(){
+			var index = 0;
+			var timer = setInterval(function(){
+				if(index > 10){
+					clearInterval(timer);
+				}else{
+					div1.innerHTML = suiji();
+					index++;
+				}
+			},100);
+		}
+//		点击重新摇
+		input1.onclick = function(){
+			ani();
+		}
+		ani();
+	</script>
+</body>
+</html>

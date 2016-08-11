@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div class="div1">
+			<div class="div2">
+				你好
+			</div>
+		</div>
+		<input type="button" id="btn" value="提交"/>
+		<div id="test1">
+			不好
+		</div>
+		<div id="test2">
+			你猜呢
+		</div>
+		<script type="text/javascript">
+			/*
+			 
+			1.什么是DOM(Document Object Modal)
+			 当网页加载的时候，浏览器会生成一个DOM对象，而DOM对象会被构造成属性结构，也就是DOM树
+			2.DOM是针对html和xml的操作工具，JS可以通过DOM实现对页面的操作，比如增加、删除修改页面元素
+			3.文档里的所有内容都是节点
+			*/
+			
+			
+			//通过唯一标识id获取标签
+			var div1=document.getElementById("test1");
+			console.log(div1);
+			div1.innerHTML="不行";
+			
+			//获取标签名对应的所有div
+			//只要有相应的内容，都会以数组形式返回
+//			var divs=document.getElementsByTagName("input");
+//			console.log(divs);
+
+            //NS是name space命名空间，这个方法用在xml上
+//          var divs=document.getElementsByTagNameNS("*","div");
+            
+            //根据className找标签，返回一个数组
+            //注意：这个方法不兼容IE10以下的版本，如果想看兼容性问题，可以访问
+            //www.coniuse.com查看
+            //getElementById.getElementsByTagName
+//          var divs=document.getElementsByClassName("div1");
+//          console.log(divs);
+            
+            
+            var divs=document.getElementsByName();
+            //只有id方法是返回单个元素，其他都是返回数组
+             
+             
+		</script>
+	</body>
+</html>

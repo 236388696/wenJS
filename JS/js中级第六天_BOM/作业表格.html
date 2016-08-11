@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格</title>
+		<style type="text/css">
+			table{
+				width: 300px;
+				height: 100px;
+				font-size: 25px;
+				text-align: center;
+				
+			}
+			#a1{
+				color: orange;
+			}
+			
+			#newdiv{
+				width: 300px;
+				height: 100px;
+				border: 1px solid gray;
+				margin-top:10px ;
+				color: red;
+				line-height: 100px;
+				text-align: center;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<table border="1" cellspacing="0" cellpadding="">
+			<tr id="a1">
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>学历</th>
+				<th>事件</th>
+				
+				
+			</tr>
+			<tr id="a2">
+				<td>张亮</td>
+				<td>26</td>
+				<td>本科</td>
+				<td id="a3">X</td>
+				
+			</tr>
+		   
+			
+		</table>
+		<div id="newdiv">
+				创建一个新的表格
+		</div>
+		
+		<script type="text/javascript">
+			var  a1=document.getElementById("a1");
+			var  a2=document.getElementById("a2");
+			var newdiv=document.getElementById("newdiv");
+			var table=document.getElementsByTagName("table")[0];
+			var a3=document.getElementById("a3");
+			console.log(a1);
+			
+			newdiv.onclick=function(){
+				var tr1=document.createElement("tr");
+				
+				
+				var td1=document.createElement("td");
+				var td2=document.createElement("td");
+				var td3=document.createElement("td");
+				var td4=document.createElement("td");
+				td1.innerHTML="刘心";
+				td2.innerHTML="25";
+				td3.innerHTML="研究生";
+				td4.innerHTML="x";
+				tr1.appendChild(td1);
+				tr1.appendChild(td2);
+				tr1.appendChild(td3);
+				tr1.appendChild(td4);
+				
+				table.appendChild(tr1);
+				
+				td4.onclick=function(){
+                tr1.remove();
+              }
+				
+			}
+			
+			a3.onclick=function(){
+				a2.remove();
+			}
+              
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

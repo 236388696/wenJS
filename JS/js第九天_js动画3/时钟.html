@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>时钟</title>
+	<style type="text/css">
+			.clock {
+				width: 300px;
+				height: 300px;
+				/*background-color: #CCCCCC;*/
+				/*border-radius: 50%;*/
+				border-radius: 150px;
+				/*border-radius: 30%;*/
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -150px;
+				margin-top: -150px;
+				box-shadow: inset 0px 5px 10px #a3a9ad;
+			}
+			
+			.pad {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			
+			.pad div {
+				width: 280px;
+				height: 30px;
+				/*background-color: yellow;*/
+				line-height: 30px;
+				text-align: center;
+				position: absolute;
+				left: 10px;
+				top: 135px;
+			}
+			
+			.pad span {
+				display: block;
+				width: 30px;
+				height: 30px;
+			}
+			
+			#hour {
+				width: 6px;
+				height: 70px;
+				background-color: black;
+				opacity: 0.6;
+			}
+			
+			#minute {
+				width: 4px;
+				height: 100px;
+				background: purple;
+				opacity: 0.6;
+				bottom: 150px;
+			}
+			
+			#second {
+				width: 2px;
+				height: 100px;
+				background: red;
+				opacity: 0.6;
+				bottom: 150px;
+			}
+			
+			.point {
+				position: absolute;
+				transform-origin: 50% bottom;
+				bottom: 150px;
+				left: 150px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="clock">
+			<div class="pad">
+				<div id="div1"><span>9</span></div>
+				<div id="div2"><span>10</span></div>
+				<div id="div3"><span>11</span></div>
+				<div id="div4"><span>12</span></div>
+				<div id="div5"><span>1</span></div>
+				<div id="div6"><span>2</span></div>
+				<div id="div7"><span>3</span></div>
+				<div id="div8"><span>4</span></div>
+				<div id="div9"><span>5</span></div>
+				<div id="div10"><span>6</span></div>
+				<div id="div11"><span>7</span></div>
+				<div id="div12"><span>8</span></div>
+			</div>
+			<!--三个针-->
+			<div class="point" id="hour"></div>
+			<div class="point" id="minute"></div>
+			<div class="point" id="second"></div>
+		</div>
+		<script type="text/javascript">
+		    //用>来获取所有直系子集，而空格是获取div下的所有子集
+			var numsFa=document.querySelectorAll(".pad>div");
+			var nums=document.querySelectorAll(".pad span");
+			
+			//布局
+			 for(var i=0;i<numsFa.length;i++){
+			 	numsFa[i].style.transform="rotate("+i*30+"deg)";
+			 	nums[i].style.transform="rotate("+i*(-30)+"deg)";
+			 }
+			 var miao=document.getElementById("second");
+			 var fen=document.getElementById("minute");
+			 var shi=document.getElementById("hour");
+
+			 // 定时器
+			 setInterval(function(){
+			 	var nowDate=new Date();
+			 	var ms=nowDate.getSeconds();
+			    miao.style.transform="rotate("+ms*6+"deg)";
+			    var min=nowDate.getMinutes();
+			 	fen.style.transform="rotate("+min*6+"deg)";
+			 	var hour=nowDate.getHours();
+			 	shi.style.transform="rotate("+(hour*30+min*30/60)+"deg)";
+			 },1000);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input id="input1" type="button" value="close" />
+		<script type="text/javascript">
+//		
+//		 function getID(id){
+//		 	return document.getElementById(id);
+//		 }
+//		 var input1=getID("inpput1");
+
+
+
+		   //单次定时器
+		   //参数：1.定时器调用的函数  2.定时器触发的时间(毫秒：1秒＝1000毫秒)
+			var timer=setTimeout(function(){
+				alert("该写代码了");
+			},3000);
+			
+			input.onclick=function(){
+				//清除单次定时器
+				clearTimeout(timer);
+			}
+			
+		
+		</script>
+	</body>
+</html>

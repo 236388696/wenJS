@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: slateblue;
+				position: absolute;
+				
+			}
+			
+			/*#target{
+				position: absolute;
+				top: 100px;
+				left: 200px;
+			}*/
+			
+		</style>
+	</head>
+
+	<body>
+		<div></div>
+		<div id="target"><img src="../js中级第八天_放大镜/images/2.png"/></div>
+	
+		<script src="touch.js/touch-0.2.14.min.js"></script>
+		<script type="text/javascript">
+			var div = document.querySelector("div");
+
+			div.addEventListener("touchstart",function(){
+				var evObj = event;
+				var disx = evObj.touches[0].clientX - div.offsetLeft;
+				var disy = evObj.touches[0].clientY - div.offsetTop;
+				div.addEventListener("touchmove",function(){
+					var en = event;
+					var dix = en.touches[0].clientX - disx;
+					var diy = en.touches[0].clientY - disy;
+					div.style.left = dix + "px";
+					div.style.top = diy + "px";
+				},false);
+				event.preventDefault();
+			}, false);
+
+
+        //根据 touch.js网站， 点击 view source on gihub,打开是下面这个网站，然后下载到本地上，创建js文件夹，html文档引用上js文档
+        //根据 https://github.com/Clouda-team/touch.code.baidu.com
+//		var angle = 0;
+//		touch.on('#target', 'touchstart', function(ev){
+//		    ev.startRotate();
+//		    ev.preventDefault();
+//		});
+//		
+//		touch.on('#target', 'rotate', function(ev){
+//		    var totalAngle = angle + ev.rotation;
+//		    if(ev.fingerStatus === 'end'){
+//		        angle = angle + ev.rotation;
+//		    }
+//		    this.style.webkitTransform = 'rotate(' + totalAngle + 'deg)';
+//		});
+
+
+
+         
+		</script>
+	</body>
+
+</html>

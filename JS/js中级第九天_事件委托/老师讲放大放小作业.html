@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				position: absolute;
+				left: 200px;
+				top:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="../js中级第八天_放大镜/周末作业img/zt2.jpg"/>
+		<script src="MouseWheel.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var img1=document.querySelector("img");
+			mouseWheel(img1,function(down,ev){
+				var evObj=ev||window.event;
+				var x=evObj.clientX;
+				var y=evObj.clientY;
+				
+				var oldWidth=img1.offsetWidth;
+				var oldHeight=img1.offsetHeight;
+				var oldLeft=img1.offsetLeft;
+				var oldTop=img1.offsetTop;
+				
+				//计算鼠标的点距离左和上的比例
+				var scaleX=(x-oldLeft)/oldWidth;
+				var scaleY=(y-oldTop)/oldHeight;
+				if(down){
+					if(img1.offsetWidth<500){
+						img1.style.width=img1.offsetWidth+10+"px";
+						}
+				}else {
+					if(img1.offsetWidth>100){
+							img1.style.width=img1.offsetWidth-10+"px";
+						}
+				}
+				
+				//鼠标坐标点在动，所以要根据比例设置图片新的定位
+				//找图片放大或者缩小之后尺寸的变化量
+				var changrW=img1.offsetWidth-oldWidth;
+				var changeH=img1.offsetHeight-oldHeight;
+				
+				//计算偏移量移动的距离
+				var l=oldLeft-(scaleX-changrW);
+				var t=oldTop-(scaleY-changeH);
+				img.style.left=l+"px";
+				img.style.top=t+"px";
+			});
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>留言板作业</title>
+		<style>
+			.all{
+				width: 920px;
+				height: 1000px;
+				border: 1px solid palevioletred;
+				margin: auto;
+				border-radius: 5px;
+				
+			}
+			.top{
+				width: 900px;
+				height: 300px;
+				border: 1px solid pink;
+				margin: 20px auto;
+				/*overflow: hidden;*/
+				border-radius: 5px;
+				text-align: center;
+			}
+			#top_left{
+				float: left;
+				margin-left: 50px;
+				margin-top: 20px;
+			}
+			#top_right{
+				float: right;
+				margin-right: 50px;
+				margin-top: 20px;
+			}
+			#top_right a{
+				text-decoration: none;
+				color: orange;
+			}
+			textarea{
+				width: 800px;
+				height: 200px;
+				border: 1px solid gray;
+				border-radius: 5px;
+				resize: none;
+				margin-top: 10px;
+
+			}
+			a{
+				text-decoration: none;
+			}
+			#top_bottom{
+				overflow: hidden;
+				margin-top: 10px;
+				
+			}
+			#top_bot1{
+				float: left;
+				margin-left: 20px;
+			}
+			#top_bot1 img{
+				padding-left: 20px;
+			}
+			#top_bot2{
+				float: right;
+				margin-right: 50px;
+				width: 80px;
+				height: 28px;
+			    background-color: orange;
+                border: 1px solid yellow;	
+                color: white;		
+                text-align: center;	
+                line-height: 28px;
+			}
+			.big{
+				width: 800px;
+				height: 200px;
+				border: 1px solid gray;
+				border-radius: 5px;
+				margin-left: 53px;
+				margin-top: 10px;
+				position: relative;
+
+			}
+			.name{
+				width: 200px;
+				height: 30px;
+				line-height: 30px;
+				padding-left: 10px;
+				font-weight: bolder;
+			}
+			.content{
+				width: 700px;
+				height: 80px;
+				line-height: 30px;
+				padding-left: 10px;
+				font-weight: bolder;
+			}
+			.close{
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				top:20px;
+				right:-20px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<div class="top">
+				<div id="top_left">
+					留言板
+				</div>
+				<div id="top_right">
+					<a href="" >置办年货省省省！红包在手年货无忧！点击领取红包</a>
+					<a href="" >热门微博</a>
+					<a href="" >心情说</a>
+				</div>
+				<div id="top_middle">
+					<textarea id="zi" name="" rows="" cols=""></textarea>
+				</div>
+				<div id="top_bottom">
+					<div id="top_bot1">
+						<img src="img/wb1.png"/><a href="" >表情</a>
+						<img src="img/wb2.png" alt="" /><a href="" >图片</a>
+						<img src="img/wb3.png" alt="" /><a href="" >视频</a>
+						<img src="img/wb4.png" alt="" /><a href="" >话题</a>
+						<img src="img/wb5.png" alt="" /><a href="" >文章</a>
+					</div>
+					<a href="###" id="top_bot2">发布</a>
+				</div>
+			</div>
+			<div id="bottom">
+				
+			</div>
+		</div>
+		<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		
+		var timer1=null;
+		
+		    var zi=document.getElementById("zi");
+			var tright=document.getElementById("top_right");
+		    var bot2=document.getElementById("top_bot2");
+			var bottom=document.getElementById("bottom");
+			
+			
+			function createDiv(txt,className){
+				var div=document.createElement("div");
+				div.innerHTML=txt;
+				div.setAttribute("class",className);
+				return div;
+			}
+			
+			function catDate(){
+				var myDate=new Date;
+				var mouth=myDate.getMonth()+1;
+				var Day=myDate.getDay();
+				var hours=myDate.getHours();
+				var minutes=myDate.getMinutes();
+				return mouth+"月"+Day+"日"+hours+"时"+minutes+"分";
+			}
+			
+			bot2.onclick=function(){
+				if(!zi.value.length){
+					alert("请输入内容");
+				}else {
+					var bigDiv=createDiv("","big");
+					var nameDiv=createDiv("小灰灰","name")
+					bigDiv.insertBefore(nameDiv,bigDiv.firstChild);
+					
+					var contentDiv=createDiv(zi.value,"content");
+					bigDiv.appendChild(contentDiv);
+					
+					var dateDiv=createDiv(catDate(),"content");
+					bigDiv.appendChild(dateDiv);
+					
+				   var closeDiv=createDiv("X","close");
+				    bigDiv.appendChild(closeDiv);
+				    
+					    closeDiv.onclick=function(){
+					    	bigDiv.remove(bigDiv);
+					    }
+					    
+				    
+					bottom.appendChild(bigDiv);
+					zi.value=null;
+					
+						
+			var t=0;
+			var b=-200;
+			var c=200;
+			var d=10;
+			
+			clearInterval(timer1);
+			timer1=setInterval(function(){
+				t++;
+				if(t>=d){
+					clearInterval(timer1);
+				}
+				bigDiv.style.left=Tween.Back.easeInOut(t,b,c,d)+"px";
+			},30);
+				}
+			}
+			
+			var textLimit=20;
+			zi.onkeyup=function(){
+				textLimit=20-zi.value.length;
+				tright.innerHTML="你还可以输入"+textLimit+"字";
+				if(textLimit<0){
+					tright.innerHTML="超过"+(zi.value.length-20)+"字";
+				}
+			}
+			
+			//失去焦点
+			zi.onblur=function(){
+				tright.innerHTML="置办年货省省省！红包在手年货无忧！点击领取红包";
+					
+				tright.style.color="orange";
+			}
+			
+			//获取焦点
+			zi.onfocus=function(){
+				textLimit=20-zi.value.length;
+				tright.innerHTML="你还可以输入"+textLimit+"字";
+				tright.style.color="gray";
+				if(textLimit<0){
+				tright.innerHTML="超过"+(zi.value.length-20)+"字";
+				
+				}
+				
+			}
+		
+			
+		</script>
+	</body>
+</html>

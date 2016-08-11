@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换</title>
+    <style>
+    button {
+        margin: 30px;
+    }
+    
+    .all {
+        margin-left: 50px;
+    }
+    
+    .div1 {
+        width: 200px;
+        height: 200px;
+        background-color: orange;
+        position: relative;
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <button class="btn" value="0">tab1</button>
+    <button class="btn" value="1">tab2</button>
+    <button class="btn" value="2">tab3</button>
+    <div class="all">
+        <div class="div1">a</div>
+        <div class="div1">b</div>
+        <div class="div1">c</div>
+    </div>
+    <script>
+    window.onload = function() {
+            var div = document.getElementsByClassName("div1");
+            div[0].style.display = "block";
+
+            // var btn = document.getElementsByClassName("btn");
+            // for (var i = 0; i < btn.length; i++) {
+            //     btn[i].onclick = function() {
+            //         var div = document.getElementsByClassName("div1");
+            //         for (var i = 0; i < div.length; i++) {
+
+            //             if (this.value == i) {
+            //                 div[i].style.display = "block";
+            //             } else {
+            //                 div[i].style.display = "none";
+
+            //             }
+            //         }
+            //         //  div[0].style.display= "block";
+
+            //         // div[1].style.display= "none";
+            //         // div[2].style.display= "none";
+            //     }
+            // }
+
+        }
+    
+       var eee=document.getElementsByClassName("div1");
+       var aaa=document.getElementsByClassName("btn");
+       aaa[0].onclick=function(){ 
+       	eee[0].style.display="block";
+       	eee[1].style.display="none";
+       	eee[2].style.display="none";
+       }
+       aaa[1].onclick=function(){
+       	eee[1].style.display="block";
+       	eee[0].style.display="none";
+       	eee[2].style.display="none";
+       }
+       aaa[2].onclick=function(){
+       	eee[2].style.display="block";
+       	eee[0].style.display="none";
+       	eee[1].style.display="none";
+       }
+    </script>
+</body>
+
+</html>

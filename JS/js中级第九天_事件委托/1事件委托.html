@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件委托</title>
+	</head>
+	<body>
+		<input type="button" name=""  id="" value="添加"/>
+		<ul>
+			<li>aaaaaa</li>
+			<li>bbbbbb</li>
+			<li>ccccccc</li>
+		</ul>
+		<script type="text/javascript">
+			var uls=document.querySelector("ul");
+			var btn=document.querySelector("input");
+			var lis=document.getElementsByTagName("li");
+			
+//			for (var i=0;i<lis.length;i++) {
+				
+				//越界了，因为这个函数进去直接i++；已经到了第4位了，越界了,所以undefind
+//				lis[i].onmouseover=function(){
+//					lis[i].style.backgroundColor="red";
+//				lis[i].onmouseout=function(){
+//					lis[i].style.backgroundColor="white";
+//				}
+//				}
+				
+				
+				
+
+         
+//          for (var i=0;i<lis.length;i++) {
+//				lis[i].onmouseover=function(){
+//					this.style.backgroundColor="red";
+//				}
+//				lis[i].onmouseout=function(){
+//					this.style.backgroundColor="white";
+//				}
+				
+
+             
+
+				
+				
+//				lis[i].index=i;
+//				lis[i].onmouseover=function(){
+//					this.style.backgroundColor="red";
+//				lis[this.index].onmouseout=function(){
+//					this.style.backgroundColor="white";
+//				}
+//				}
+//			}
+			
+			
+			
+			
+			
+			//闭包，用下标 
+//			for (var i=0;i<lis.length;i++) {
+//				(function(index){
+//					lis[index].onmouseover=function(){
+//					lis[index].style.backgroundColor="red";
+//					}
+//					lis[index].onmouseout=function(){
+//					lis[index].style.backgroundColor="white";
+//				}
+//				})(i);
+//			}
+			
+			
+			
+			
+			//事件委托：事件原本加在某个元素上，然而却把事件加到别的标签来完成，一般是加在父级上
+			//事件委托的原理：采用事件冒泡完成事件
+			uls.onmouseover=function(ev){
+				var evObj=ev||window.event;
+				var target=ev.target||evObj.srcElement;
+				alert(target.innerHTML);
+            if(target.tagName=="LI"){
+            	    target.style.backgroundColor="red";
+            }
+			}
+			uls.onmouseout=function(ev){
+				var evObj=ev||window.event;
+				var target=ev.target||evObj.srcElement;
+				//alert(target.innerHTML);
+            if(target.tagName=="LI"){
+            	    target.style.backgroundColor="white";
+            }
+			}
+			
+			btn.onclick=function(){
+				var aaa=document.createElement("li");
+				aaa.innerHTML="dddd";
+				uls.insertBefore(aaa,uls.firstElementChild);
+			}
+			
+			
+		</script>
+	</body>
+</html>

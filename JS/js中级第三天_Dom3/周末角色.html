@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>角色</title>
+		<style>
+			.all {
+				background-color: yellow;
+			}
+			
+			.div2 {
+				width: 80px;
+				height: 10px;
+				background-color: gray;
+			}
+			
+			.parent {
+				width: 80px;
+				height: 20px;
+				background-color: red;
+			}
+			
+			.son {
+				display: none;
+			}
+			
+			.show {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="all">
+			<div class="parent1"> ＋角色</div>
+			<div id="div1">
+
+			</div>
+			<div class="parent2"> ＋召唤兽</div>
+			<div id="div2">
+
+			</div>
+		</div>
+		<script>
+			var parent1 = document.getElementsByClassName("parent1")[0];
+			var parent2 = document.getElementsByClassName("parent2")[0];
+			var div1 = document.getElementById("div1");
+			var div2 = document.getElementById("div2");
+
+			var divs = ["大堂官府", "化生寺", "女儿村", "方寸山", "天宫", "普陀山", "龙宫", "五庄观", "狮驼岭", "魔王寨", "阴曹地府", "盘丝洞", "神木林", "凌波城", "华山寺", "无底洞"];
+
+			//  parent[0].onclick = function() {
+			//     div1.style.display =   div1.style.display == "none"|| div1.style.display=="" ? "block" : "none";
+			//      
+			//  }
+			//  parent[1].onclick = function() {
+			//    div2.style.display =  div2.style.display == "none" || div2.style.display==""? "block" : "none";
+			//
+			//  }
+
+
+
+			parent1.onclick = function() {
+				if(!div1.children.length) {
+					for(i = 0; i < divs.length; i++) {
+
+						var div3 = document.createElement("div");
+						div3.innerHTML = divs[i];
+						div1.appendChild(div3);
+						
+					}
+					parent1.innerHTML="- 角色";
+				} else {
+					for(var j = 0; j < divs.length; j++) {
+						
+						div1.removeChild(div1.lastElementChild);
+						
+					}
+					parent1.innerHTML="+ 角色";
+				}
+				console.log(div1.children);
+
+			}
+			
+			parent2.onclick=function(){
+				if(!div2.children.lenght){
+					for(i= 0; i< divs.length; i++){
+					var div4=document.createElement("div");
+					div4.innerHTML=divs[i];
+					div2.appendChild(div4);
+				}
+					parent2.innerHTML="-召唤兽";
+			}else{
+				for(var j=0;j<divs.length;j++){
+					div2.removeChild(div2.lastElementChild);
+				}
+				parent2.innerHTML="+ 召唤兽";
+			}
+				 console.log(div2.children);
+			}
+		</script>
+	</body>
+
+</html>

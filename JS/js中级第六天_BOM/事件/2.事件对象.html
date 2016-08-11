@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			document.onclick=function(e){
+//				console.log(e);
+			//window.event为了能在IE上使用
+             var evObj=e||window.event;
+             alert(evObj.clientX);
+              alert(evObj.clientY);
+			}
+		</script>
+	</body>
+</html>

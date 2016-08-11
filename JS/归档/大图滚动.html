@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	input.active{
+		background: yellow;
+	}
+	#wrap{
+		width: 750px;
+		height: 500px;
+		position: relative;
+		overflow: hidden;
+	}
+	#middle{
+		width: 9999999px;
+		position: absolute;
+		height: 500px;
+		left: 0;
+	}
+	#middle div{
+		float: left;
+	}
+	#middle div img{
+		float: left;
+	}
+	</style>
+</head>
+<body>
+	<input type="button" value="上一步" id="last">
+	<input type="button" value="下一步" id="next"><br>
+	<div id="btnWrap">
+		<input class="active" type="button" value="按钮1">
+		<input type="button" value="按钮2">
+		<input type="button" value="按钮3">
+		<input type="button" value="按钮4">
+	</div>
+	<div id="wrap">
+		<div id="middle">
+			<div><img src="img/1.jpg" alt=""></div>
+			<div><img src="img/2.jpg" alt=""></div>
+			<div><img src="img/3.jpg" alt=""></div>
+			<div><img src="img/4.jpg" alt=""></div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="tween.js"></script>
+<script type="text/javascript">
+	var inputs = document.querySelectorAll("#btnWrap input");
+	var middle = document.querySelector("#middle");
+	var imgObj = document.querySelector("#middle img");
+	var last = document.querySelector("#last");
+	var next = document.querySelector("#next");
+
+	var timer = null;
+
+	var index = 0;//当前的图片的下标
+
+	function move(){
+		for (var i=0; i<inputs.length; i++){	
+			inputs[i].className="";
+		}
+		inputs[index].className="active";
+        //开始位置
+		var end = -imgObj.offsetWidth*index;
+		
+		//起始位置
+		var start = middle.offsetLeft;
+		
+        //变化量
+		var change = end-start;
+	        console.log(end);
+	        console.log(start);
+	        console.log(change);
+        
+        
+		var t = 0;
+		var endT = 30;
+
+		clearInterval(timer);
+		timer = setInterval(function (){
+
+			t++;
+			if (t>=endT){
+				clearInterval(timer);
+			}
+			middle.style.left = Tween.Bounce.easeOut(t,start,change,endT)+"px";
+		},30);
+	}
+	function fnNext(){
+		index++;
+		if (index>inputs.length-1){
+			index=0;
+		}
+		move();
+	}
+	
+	//重新设置事件
+	function resetTimer(){
+
+		clearInterval(autoTimer);
+		autoTimer = setInterval(function (){
+
+			fnNext();
+		}, 3000);
+	}
+
+    
+	for (var i=0; i<inputs.length; i++){
+
+		inputs[i].index = i;
+		inputs[i].onclick = function (){
+
+			index = this.index;
+			move();
+			resetTimer();
+		}
+	}
+
+	next.onclick = function (){
+		fnNext();
+		resetTimer();
+	}
+	
+	last.onclick = function (){
+		index--;
+		if (index<0){
+			index=inputs.length-1;
+		}
+		move();
+		resetTimer();
+	}
+
+	var autoTimer = null;
+	//给你点时间让你看清第一张图片
+	setTimeout(function (){
+
+		autoTimer = setInterval(function (){
+			fnNext();
+		},3000);
+		index=1;
+		move();
+	},1100);
+</script>
+</html>

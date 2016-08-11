@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>onfocus</title>
+	</head>
+	<body>
+		<input type="text"  placeholder="的身份"/>
+	</body>
+	<script type="text/javascript">
+		var pla=document.getElementsByName("placeholder");
+		var inp=document.getElementsByTagName("input")[0];
+		//onfocus:获取焦点,就是有蓝色的条条
+		inp.onfocus=function(){
+			
+			int.value="没有";
+		}
+		
+		//onblur 失去焦点
+		inp.onblur=function(){
+			inp.value="用户名";
+		}
+	</script>
+</html>

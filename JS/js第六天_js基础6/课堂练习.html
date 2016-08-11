@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习电子表</title>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript">
+	      var div1=document.getElementById("div1");
+	      
+	      
+       var timer=setInterval(function(){
+			var myDate=new Date();
+//	      年
+	      var year=myDate.getFullYear();
+//	      月
+          var month=myDate.getMonth()+1;
+//	      日
+          var day=myDate.getDay();
+//	      星期
+          var week=myDate.getDay();
+//	      小时
+	      var hour=myDate.getHours();
+//	      分钟
+          var min=myDate.getMinutes(); 
+ //       秒数
+		  var miao=myDate.getSeconds();
+			
+//        毫秒
+		 var haomiao=myDate.getMilliseconds();
+          
+          var clock=year+"年" +month+"月" +day+"日" +week+"星期"+hour+"小时"+min+"分钟"+miao+"秒数"+haomiao+"毫秒";
+          
+          div1.innerHTML=clock;
+		},1);
+	      </script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+	</head>
+	<body>
+		<form id="form1"  method="post">
+			用户名：<input type="text" name="user" id="user"/>
+			密码: <input type="text" name="pass" id="pass"/>
+			记住账号: <input type="checkbox" id="ch1"/>
+			记住密码: <input type="checkbox" id="ch2"/>
+			<input type="submit"  value="提交" />
+		</form>
+		<script src="cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		    var form1=document.querySelector("#form1");
+			var user=document.querySelector("#user");
+			var pass=document.querySelector("#pass");
+			var ch1=document.querySelector("#ch1");
+			var ch2=document.querySelector("#ch2");
+			
+			//看cookie是否有值
+			if(getCookie("userName")){
+				ch1.checked=true;
+				user.value=getCookie("userName");
+			}
+			
+			if(getCookie("password")){
+				ch2.checked=true;
+				pass.value=getCookie("password");
+			}
+			
+			//onsubmit 表单提交时间
+			form1.onsubmit=function(){
+				if(ch1.checked){
+					//调用写入cookie的方法
+					saveCookie("userName",user.value,3);
+				}else{
+					//调用从cookie移除的方法
+					removeCookie("userName");
+				}
+				
+				 return false;
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

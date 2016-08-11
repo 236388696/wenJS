@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多个物体变宽变窄</title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script>
+			var divs =document.getElementsByTagName("div");
+			
+			for(var i=0;i<divs.length;i++){
+				divs[i].timer=null;
+				divs[i].onmouseover =function(){
+					moveIn(this,1000);
+				}
+				divs[i].onmouseout=function(){
+					moveOut(this,100);
+				}
+			}
+
+			var speed=100;
+			//让谁移动，移动最大宽度
+			function moveIn(sei,maxWidth){
+				var w=0;
+				clearInterval(sei.timer);
+			    sei.timer=setInterval(function(){
+					if(sei.offsetWidth>=maxWidth){
+						clearInterval(sei.timer);
+						w=maxWidth;
+					}else{
+						w=sei.offsetWidth+speed;
+					}
+					sei.style.width=w+"px";
+					
+				},100);
+			}
+			
+			function moveOut(sei,minWidth){
+				var w=0;
+				clearInterval(sei.timer);
+			    sei.timer=setInterval(function(){
+					if(sei.offsetWidth<=minWidth){
+						clearInterval(sei.timer);
+						w=minWidth;
+					}else{
+						w=sei.offsetWidth-speed;
+					}
+					sei.style.width=w+"px";
+					
+					
+				},100);
+			}
+		</script>
+	</body>
+</html>

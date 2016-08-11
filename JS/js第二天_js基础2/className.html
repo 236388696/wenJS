@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				color: green;
+				opacity: 0.5;
+				
+			}
+			.active{
+				width: 200px;
+				height: 200px;
+				background-color: black;
+				color: white;
+				opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1" id="div1">div1</div>
+		
+		
+		
+		<script type="text/javascript">
+		 var div1= document.getElementById("div1");
+//		    div1:onclick =function(){
+//		   	div1.style.backgroundColor="black";
+//		   	div1.style.color="green";
+//		   	div1.style.opacity="1";
+//          div1.className = "active";
+//        }   
+
+           var a =true;
+           div1.onclick =function(){
+           	     if(a){
+           	     	div1.className="active";
+           	     	a=false;
+           	     }else{
+           	      div1.className="div1";
+           	       a= true;
+           	      }
+            }
+             
+		   
+		</script>
+	</body>
+</html>

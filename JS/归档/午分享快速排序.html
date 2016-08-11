@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>午分享快速排序</title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+		var a=[13,56,25,33,42,79,56,21]
+			function quickSort(arr,left,right){
+				var i=left;
+				var j=right;
+				var temp=arr[0];
+				while(i<j){
+					while((i<j)&& arr[j]>temp){
+						j--;
+					}
+					arr[i]=arr[j];
+					while((i<j)&& arr[j]<temp){
+						i++;
+					}
+					arr[j]=arr[i];
+				}
+				arr[i]=temp;
+				if(left<i-1){
+					quickSort(arr,left,i-1);
+				quickSort(arr,i-1,right);
+				}
+				if(j+1<right){
+					quickSort(arr,i+1,left);
+				}
+				
+			}
+			quickSort(a,0,6);
+			console.log(a);
+		</script>
+	</body>
+</html>

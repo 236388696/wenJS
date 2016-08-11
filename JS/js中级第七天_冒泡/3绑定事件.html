@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绑定事件</title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 300px;
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		
+		<script type="text/javascript">
+			var div=document.querySelector("div");
+			
+//			div.onclick=function(){
+//				alert("1111");
+//			}
+//			div.onclick=function(){
+//				alert("2222");
+//			}
+     
+       //add添加  event事件  Listener监听者 
+       // 添加事件监听
+       //参数1:事件名，注意没有on
+       //参数2:绑定事件触发的函数
+       //参数3:布尔值 false事件冒泡(大部分时候是false)  /  true事件捕获
+       div.addEventListener("click",function(){
+       	    alert("点击了");
+       },false);
+       
+        div.addEventListener("click",function(){
+       	    alert("测试");
+       },false);
+       
+        div.addEventListener("click",function(){
+       	    alert("继续测试");
+       },false);
+       
+        div.addEventListener("mouseover",function(){
+       	    alert("mouseover");
+       },false);
+       
+       
+       //这种绑定事件方式主要有两个特点
+       //1.能同时绑定两个或者两个以上相同的事件，不会覆盖
+       //2.能用这个方法，绑定多个事件
+       
+       //这个方法虽然特别棒，但是不兼容 IE678
+       
+       
+       
+       function test(){
+       	  alert("测试");
+       }
+        //就判断这个函数在不在(test)，而不是调用 (test()) 
+		if(div.addEventListener){
+			div.addEventListener("click",test,false);
+		}else{
+			// IE678的绑定方式：div.attachEvent()
+			//参数1:事件名,需要加on
+			div.attachEvent("onclick",test);
+		}
+		
+		//1.事件   2.事件函数   3.布尔值
+		div.removeEventListener("click",test,false);
+			
+		
+		</script>
+	</body>
+</html>

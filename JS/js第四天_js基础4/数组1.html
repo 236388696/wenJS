@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组</title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+//		  数组:是一种保存数据的有序列表(可以保存任意数据类型的数据);
+//		  1.创建一个数组
+//          (1)使用Array构造函数
+	          var arr1= new Array();//创建一个空数组
+	          var arr2= new Array(3);//长度为3的数组
+	          var arr3= new Array(3,7,5);//数组元素为3，7，5的数组
+	          var arr3= Array();//new可以省略
+	          
+//	        (2)使用数组字面量表示法
+	        var arr5=[];//空数据
+	        var arr6=[1,2,3];//数组元素为1,2,3的数组，(下标数组元素是什么)； 只写一个值与array不同
+//        遍历  
+          for(var i=0;i<arr3.length;i++){
+          	console.log(arr3[i]);
+          }
+          
+//       2.数组取值和赋值的方式
+//       访问数组元素的方式:数组名[元素下标],数组元素的对应下标是从0开始的
+         //取值
+         var a =arr6[1];
+             alert(a);
+             
+         //赋值
+         arr6[0]=100;
+         arr6[3]=200;
+         for (var i=0;i<arr6.length;i++) {
+         	console.log(arr6[i]);
+         	
+         	
+         }
+		</script>
+	</body>
+</html>

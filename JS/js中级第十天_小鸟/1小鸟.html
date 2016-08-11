@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>1小鸟</title>
+		<style type="text/css">
+			@-webkit-keyframes fly {
+				0% {
+					background: url("img/bird0.png");
+				}
+				100% {
+					background: url("img/bird1.png");
+				}
+			}
+			
+			@keyframes fly {
+				0% {
+					background: url("img/bird0.png");
+				}
+				100% {
+					background: url("img/bird1.png");
+				}
+			}
+			
+			@-webkit-keyframes headmove {
+				0% {
+					-webkit-transform: translate3d(0, 0, 0);
+					-ms-transform: translate3d(0, 0, 0);
+					-o-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+				}
+				100% {
+					-webkit-transform: translate3d(0, 30px, 0);
+					-ms-transform: translate3d(0, 30px, 0);
+					-o-transform: translate3d(0, 30px, 0);
+					transform: translate3d(0, 30px, 0);
+				}
+			}
+			
+			@keyframes headmove {
+				0% {
+					-webkit-transform: translate3d(0, 0, 0);
+					-ms-transform: translate3d(0, 0, 0);
+					-o-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+				}
+				100% {
+					-webkit-transform: translate3d(0, 30px, 0);
+					-ms-transform: translate3d(0, 30px, 0);
+					-o-transform: translate3d(0, 30px, 0);
+					transform: translate3d(0, 30px, 0);
+				}
+			}
+			
+			@-webkit-keyframes slidermove {
+				0% {
+					-webkit-transform: translate3d(0, 0, 0);
+					-ms-transform: translate3d(0, 0, 0);
+					-o-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+				}
+				100% {
+					-webkit-transform: translate3d(-350px, 0, 0);
+					-ms-transform: translate3d(-350px, 0, 0);
+					-o-transform: translate3d(-350px, 0, 0);
+					transform: translate3d(-350px, 0, 0);
+				}
+			}
+			
+			@keyframes slidermove {
+				0% {
+					-webkit-transform: translate3d(0, 0, 0);
+					-ms-transform: translate3d(0, 0, 0);
+					-o-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+				}
+				100% {
+					-webkit-transform: translate3d(-350px, 0, 0);
+					-ms-transform: translate3d(-350px, 0, 0);
+					-o-transform: translate3d(-350px, 0, 0);
+					transform: translate3d(-350px, 0, 0);
+				}
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body,html {
+				height: 100%;
+			}
+			
+			#wrap {
+				width: 100%;
+				height: 100%;
+				/*border: 1px solid red;*/
+				background: url("img/bg.jpg");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+				position: relative;
+				overflow: hidden;
+				margin: 0 auto;
+			}
+			
+			#head {
+				position: absolute;
+				left: 50px;
+				top: 90px;
+				-webkit-animation: "headmove" 1s infinite alternate;
+				-o-animation: "headmove" 1s infinite alternate;
+				animation: "headmove" 1s infinite alternate;
+			}
+			
+			#head span {
+				background: url("img/bird0.png");
+				position: absolute;
+				right: 0;
+				top: 20px;
+				width: 40px;
+				height: 26px;
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+				-webkit-animation: "fly" 0.5s infinite;
+				-o-animation: "fly" 0.5s infinite;
+				animation: "fly" 0.5s infinite;
+				-webkit-animation-direction: alternate;
+				-o-animation-direction: alternate;
+				animation-direction: alternate;
+			}
+			
+			#scoring {
+				position: absolute;
+				left: 48%;
+				top: 40px;
+			}
+			
+			#menu {
+				position: absolute;
+				left: 40%;
+				top: 60%;
+			}
+			
+			#sliderWrap {
+				width: 9999px;
+				bottom: 9.2%;
+				position: absolute;
+				-webkit-animation: "slidermove" linear 4s infinite;
+				-o-animation: "slidermove" linear 4s infinite;
+				animation: "slidermove" linear 4s infinite;
+			}
+			
+			#bird {
+				position: absolute;
+				left: 30px;
+				top: 25%;
+				display: none;
+			}
+			
+			#ductWrap li {
+				position: absolute;
+				top: 0;
+				width: 62px;
+				border: 1px solid red;
+				height: 100%;
+				list-style: none;
+			}
+			
+			.duct_up {
+				background: url("img/up_mod.png") repeat-y;
+				height: 10%;
+				position: relative;
+			}
+			
+			.duct_up img {
+				position: absolute;
+				bottom: 0;
+			}
+			
+			.duct_down {
+				background: url("img/down_mod.png") repeat-y;
+				height: 65%;
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+			}
+		
+			.duct_down img {
+				position: absolute;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="head">
+				<img src="img/head.jpg" alt="">
+				<span></span>
+			</div>
+			<!--数字0-->
+			<div id="scoring">
+				<img src="img/0.jpg" alt="">
+			</div>
+			<!--开始按钮-->
+			<div id="menu">
+				<img id="start" src="img/start.jpg" alt="">
+			</div>
+			<!--绿条条-->
+			<div id="sliderWrap">
+				<img src="img/banner.jpg" alt=""><img src="img/banner.jpg" alt="">
+			</div>
+			<div id="bird">
+				<img src="img/down_bird0.png" alt="">
+			</div>
+			<ul id="ductWrap">
+				<!--li是要加水管的样式-->
+				<!--<li style="left:100px">
+				<div class="duct_up">
+					<img src="img/up_pipe.png" alt="">
+				</div>
+				<div class="duct_down">
+					<img src="img/down_pipe.png" alt="">
+				</div>
+			</li> -->
+			</ul>
+		</div>
+		<script type="text/javascript">
+		    var head= document.getElementById("head");
+		    var scoring=document.getElementById("scoring");
+			var start=document.getElementById("start");
+			var bird=document.getElementById("bird");
+			var menu=document.querySelector("#menu");
+			
+			//找到bird里的img，放到bird div里
+			bird.imgObj=bird.querySelector("img");
+			
+			start.onclick=function(ev){
+				var evObj=ev||window.event;
+				menu.style.display="none";
+				head.style.display="none";
+				bird.style.display="block";
+				
+				//给bird加一个初始速度
+				 bird.speed=0;
+				 bird.move=setInterval(function(){
+				 	bird.speed+=0.5;
+				 	if(bird.speed>0){
+				 		bird.imgObj.src="img/down_bird0.png";
+				 	}else{
+				 		bird.imgObj.src="img/up_bird0.png";
+				 	}
+				 	if(bird.speed>=10){
+				 		bird.speed=10;
+				 	}
+				 	bird.style.top=bird.offsetTop+bird.speed+"px";
+				 },30);
+				 //手机端游戏的时候，不能用onclick,因为onclick有30秒延时，所以要用onmousedown
+				 document.onmousedown=function(ev){
+				 	 bird.speed=-7;
+				 	 //把默认事件取消
+				 	 var e=ev||window.event;
+				 	 e.preventDefault();
+				 	 
+				 }
+				 //取消冒泡
+				 evObj.cancelBubble=true;
+				 
+			}
+			
+		</script>
+	</body>
+</html>

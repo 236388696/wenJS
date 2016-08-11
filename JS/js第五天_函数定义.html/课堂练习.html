@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		     function addmum(r){
+            	  if(isNaN(r)){
+            	  	return"输入有误";
+            	  }
+            	  	return 2*Math.PI*r;
+            	  
+            }
+  
+         function ad(c){
+         	if(isNaN(c)){
+         		return"输入有误";
+         	}
+         	return Math.PI*c*c;
+         }
+         function dd(tj){
+         	if(isNaN(tj)){
+         		return"输入有误";
+         	}
+         	return 4/3*Math.PI*tj*tj*tj;
+         }
+             
+             var rw=prompt("请输入半径");
+              
+              var zc=0;
+              zc=addmum(rw);
+               alert("周长"+zc);
+               
+               var mianji=0;
+               mianji=ad(rw);
+                alert("面积"+mianji);
+                
+                var tiji=0;
+                tiji=dd(rw);
+                alert("体积"+tiji);
+                
+	    
+		</script>
+	</body>
+</html>

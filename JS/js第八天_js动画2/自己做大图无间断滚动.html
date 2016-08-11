@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自己做无间断</title>
+		<style type="text/css">
+			#wrap{
+				width: 400px;
+				height: 113px;
+				margin: 100px auto;
+				border: 1px solid greenyellow;
+				
+				position: relative;
+				overflow: hidden;
+			}
+			#middle{
+				height: 113px;
+			}
+			#middle img{
+				float: left;
+				width: 200px;
+				height: 100%;
+				position: absolute;
+			
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="middle">
+				<img style="left: 0px" src="img/0.jpg" alt="" />
+				<img style="left: 200px" src="img/1.jpg" alt="" />
+				<img style="left: 400px" src="img/2.jpg" alt="" />
+			</div>
+		</div>
+		<script type="text/javascript">
+			var wrapDiv=document.getElementById("wrap");
+			var middleDiv=document.getElementById("middle");
+			var imgs=document.getElementsByTagName("img");
+			
+			middleDiv.style.width=imgs.length*imgs[1].offsetWidth+"px";
+			var w=0;
+			var speed=1;
+			
+			var timers=setInterval(function(){
+				for(var i=0;i<imgs.length;i++){
+					if(imgs[i].offsetLeft<=-imgs[i].offsetWidth){
+						imgs[i].style.left=(imgs.length-1)*imgs[i].offsetWidth+"px";
+					}
+					 w=imgs[i].offsetLeft-speed;
+			         imgs[i].style.Left=w+"px";
+				}
+			},10);
+			
+		
+			
+		</script>
+	</body>
+</html>

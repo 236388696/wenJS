@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			div {
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				border-radius: 100px;
+				font-size: 50px;
+				text-align: center;
+				line-height: 200px;
+			}
+			
+			#div1 {
+				background-color: coral;
+			}
+			
+			#div2 {
+				background-color: aqua;
+				left: 300px;
+				top: 400px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1">
+			div1
+		</div>
+		<div id="div2">
+			div2
+		</div>
+		<script type="text/javascript">
+			var div1 = document.getElementById("div1");
+			var div2 = document.getElementById("div2");
+			div1.onmousedown = function(ev) {
+				var evObj = ev || window.event;
+				var divx = evObj.clientX - div1.offsetLeft;
+				var divy = evObj.clientY - div1.offsetTop;
+				document.onmousemove = function(ev) {
+					var e = ev || window.event
+					var x = e.clientX - divx;
+					var y = e.clientY - divy;
+					div1.style.left = x + "px";
+					div1.style.top = y + "px";
+
+					var rt1 = div1.offsetTop+div1.offsetHeight / 2;
+					var rl1 = div1.offsetLeft+div1.offsetWidth / 2;
+					var rt2 = div2.offsetTop+div2.offsetHeight / 2;
+					var rl2 = div2.offsetLeft+div2.offsetWidth / 2;
+					var a=(rt2-rt1)*(rt2-rt1)+(rl2-rl1)*(rl2-rl1);
+					var b=Math.sqrt(a);
+					if(b<=div1.offsetWidth) {
+						div2.style.backgroundColor="red";
+						console.log("撞");
+					}else{
+						div2.style.backgroundColor="aqua";
+						console.log("没撞");
+					}
+				}
+				document.onmouseup = function() {
+					document.onmousemove = "";
+				}
+			}
+		</script>
+	</body>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			var div=document.querySelector("div");
+			
+			//返回的都是当前定时器的id，id是从1开始,2,3,4,5....
+			var timer1=setInterval(function(){
+				console.log(timer1);
+			},30);
+			
+			var timer2=setInterval(function(){
+				console.log(timer2);
+			},100);
+			
+			var timer3=setInterval(function(){
+				console.log(timer3);
+			},100);
+			
+			var timer4=setInterval(function(){
+				console.log(timer4);
+			},100);
+			
+//			alert(timer1);
+//			alert(timer2);
+			
+			
+			div.onclick=function(){
+				//temp 就是当前定时器的id，temp的id:5;
+				var temp=setTimeout(function(){},1);
+//					alert(temp);
+             for(var i=1;i<temp;i++){
+               // clearInterval(i);
+               clearTimeout(i);
+             	
+             }
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>小鸟</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body,html{
+				height: 100%;
+				
+				
+			}
+			#wrap{
+				height: 100%;
+				background-image:url(img/bg.jpg);
+				background-size: 100% 100%;
+				position: relative;
+			}
+			#head img{
+				margin-top: 25%;
+				margin-left: 10%;
+				
+				-webkit-animation: move  1s infinite alternate ;
+      	       -o-animation: move  1s infinite alternate ;
+             	animation: move  1s infinite alternate ;
+             	
+      }
+				
+			 @-webkit-keyframes move{
+				 	
+      	from{
+             -webkit-transform: translate(0,0);
+             -ms-transform: translate(0,0);
+             -o-transform: translate(0,0);
+             transform: translate(0,0);
+            
+      	}
+      	to{
+        -webkit-transform: translate(0px, 30px);
+        -ms-transform: translate(0px, 30px);
+        -o-transform: translate(0px, 30px);
+        transform: translate(0px, 30px);
+       
+      	}
+      }
+			
+			#scoring{
+				position: absolute;
+				top: 40px;
+				left: 200px;
+			}
+			#head>span{
+				width: 46px;
+				height: 28px;
+				background-size: 100% 100%;
+			}
+			span{
+			    position: absolute;
+			    top:100px;
+			    left: 200px;
+			    /*background-image: url(img/bird0.png);*/
+			    
+			    -webkit-animation: move2  1s infinite alternate ;
+      	       -o-animation: move2  1s infinite alternate ;
+             	animation: move2  1s infinite alternate ;
+				
+			}
+			 @-webkit-keyframes move2{
+				 	
+      	from{
+             -webkit-transform: translate(0,0);
+             -ms-transform: translate(0,0);
+             -o-transform: translate(0,0);
+             transform: translate(0,0);
+            background-image: url(img/bird0.png);
+      	}
+      	to{
+        -webkit-transform: translate(0px, 30px);
+        -ms-transform: translate(0px, 30px);
+        -o-transform: translate(0px, 30px);
+        transform: translate(0px, 30px);
+         background-image: url(img/bird1.png);
+       
+      	}
+      }
+			
+			#menu{
+				position: absolute;
+                top:200px;
+            }
+			#menu img{
+				position: absolute;
+				top:200px;
+				left: 180px;
+			}
+			#sliderWrap{
+				position: absolute;
+				top: 650px;
+			}
+			#sliderWrap img{
+				height: 20px;
+				position: absolute;
+				top:0px;
+				
+				-webkit-animation: move1  1s infinite alternate ;
+      	       -o-animation: move1  1s infinite alternate ;
+             	animation: move1  1s infinite alternate ;
+				
+			}
+			 @-webkit-keyframes move1{
+				 	
+      	from{
+             -webkit-transform: translate(0,0);
+             -ms-transform: translate(0,0);
+             -o-transform: translate(0,0);
+             transform: translate(0,0);
+            
+      	}
+      	to{
+        -webkit-transform: translate(-20px, 0px);
+        -ms-transform: translate(-20px, 0px);
+        -o-transform: translate(-20px, 0px);
+        transform: translate(-20px, 0px);
+       
+      	}
+      }
+					
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="wrap" >
+			
+			<div id="scoring">
+				<img src="img/0.jpg"/>
+				
+			</div>
+			<div id="head">
+				<img src="img/head.jpg"/>
+				<span></span>
+				
+			</div>
+			<!--开始的按钮-->
+			<div id="menu">
+				<img src="img/start.jpg" alt="" />
+			</div>
+			<!--绿色的条-->
+			<div id="sliderWrap">
+				<img src="img/banner.jpg"/><img src="img/banner.jpg"/>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var head=document.getElementById("head");
+		</script>
+	</body>
+</html>

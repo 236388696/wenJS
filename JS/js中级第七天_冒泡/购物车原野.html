@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			table{
+				/*width: 1000px;*/
+				margin: 0 auto;
+				text-align: center;
+				border-color: #00BFFF;
+				margin-bottom: 20px;
+			}
+			th{
+				height: 40px;
+				background-color: deepskyblue;
+				color:white;
+			}
+			td{
+				height: 90px;
+				padding:0 20px;
+				line-height: 90px;
+				
+			}
+			td input {
+				text-align: center;
+			}
+			.item{
+				width: 230px;
+			}
+			.num{
+				width: 150px;
+			}
+			img{
+				height: 80px;
+				float: left;
+				width: 110px;
+			}
+			.num input[type="text"]{
+				width: 60px;
+				margin: 0 5px;
+			}
+			.bottom{
+				
+				width: 764px;
+				background-color: #CCCCCC;
+				margin: 0 auto;
+				border: 1px solid darkgray;
+				height: 60px;
+				line-height: 60px;
+				overflow: hidden;
+			}
+			
+			.bottom input,.bottom a,.bottom>#selAll{
+				float: left;
+				display: inline-block;
+				height: 60px;
+				line-height: 60px;
+			}
+			.bottom input,.bottom a{
+				margin-left: 50px;
+			}
+
+			
+			.bottom div{
+				float: right;
+				line-height: 60px;
+				margin-right: 50px;
+			}
+			.itemPrice{
+				width: 50px;
+			}
+		
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var trs = document.getElementsByTagName("tr");
+				var checkTh = document.getElementById("checkTh");//第一个checkbox
+				var checkboxs = document.querySelectorAll("input[type='checkbox']");
+				var minuses = document.querySelectorAll(".minus");
+				var pluses = document.querySelectorAll(".plus");
+				var price = document.querySelectorAll(".price");
+				var itemPrice = document.querySelectorAll(".itemPrice");
+				var totalItemNum = document.getElementById("totalItemNum");
+				var totalPrice = document.getElementById("totalPrice");
+				var dels = document.getElementsByTagName("a");
+				var selAll = document.getElementById("selAll");
+				console.log(itemPrice);
+
+				for(var i = 0;i<pluses.length;i++){
+					pluses[i].index = i;
+					//增加数量
+					pluses[i].onclick=function(){
+						var newValue = parseInt(this.previousElementSibling.value)+1;
+						this.previousElementSibling.value=newValue;
+						itemPrice[this.index].innerHTML = newValue*price[this.index].innerHTML;
+						totalPrice.innerHTML = parseInt(totalPrice.innerHTML)+parseInt(price[this.index].innerHTML);
+						totalItemNum.innerHTML = parseInt(totalItemNum.innerHTML)+1;
+					}
+					//减少数量
+					minuses[i].index = i;
+					minuses[i].onclick=function(){
+						var newValue = parseInt(this.nextElementSibling.value)-1;
+						if(newValue<=0){
+							newValue=0;
+						}
+						this.nextElementSibling.value = newValue;
+						itemPrice[this.index].innerHTML = newValue*price[this.index].innerHTML;
+						if(parseInt(this.nextElementSibling.value)>0){
+							totalPrice.innerHTML = parseInt(totalPrice.innerHTML)-parseInt(price[this.index].innerHTML);
+							totalItemNum.innerHTML = parseInt(totalItemNum.innerHTML)-1;
+						}
+					}
+				}
+				
+				function del(obj){
+					obj.parentElement.parentElement.remove();
+						totalPrice.innerHTML = parseInt(totalPrice.innerHTML)-parseInt(obj.parentElement.previousElementSibling.innerHTML);
+						totalItemNum.innerHTML = parseInt(totalItemNum.innerHTML)-parseInt(minuses[obj.index].nextSibling.value);
+				}
+				//删除
+				for(var i = 0;i<dels.length-1;i++){
+					dels[i].index = i;
+					dels[i].onclick=function(){
+//						this.parentElement.parentElement.remove();
+//						totalPrice.innerHTML = parseInt(totalPrice.innerHTML)-parseInt(this.parentElement.previousElementSibling.innerHTML);
+//						totalItemNum.innerHTML = parseInt(totalItemNum.innerHTML)-parseInt(minuses[this.index].nextSibling.value);
+						del(this);
+					}
+				}
+					function selectAll(){
+					for(var i=0;i<checkboxs.length;i++){
+						checkboxs[i].checked="checked";
+					}
+				}
+					function unselectAll(){
+						for(var i=0;i<checkboxs.length;i++){
+						checkboxs[i].checked="";
+					}
+					}
+				
+				selAll.onclick=function(){
+					if(checkboxs[checkboxs.length-1].checked==""){
+						selectAll();
+					}else{
+						unselectAll()
+					}
+				}
+				
+				dels[dels.length-1].onclick=function(){
+					for(var i=1;i<trs.length;i++){
+						if(checkboxs[i].checked==true){
+							totalItemNum.innerHTML = parseInt(totalItemNum.innerHTML)-parseInt(minuses[i-1].nextElementSibling.value);
+							totalPrice.innerHTML = parseInt(totalPrice.innerHTML)-parseInt(itemPrice[i-1].innerHTML);
+							trs[i].innerHTML="";
+							
+						}
+					}
+				}
+				for(var i=1;i<trs.length;i++){
+						trs[i].onmouseover=function(){
+							this.style.background="cornsilk";
+						}
+						trs[i].onmouseout=function(){
+							this.style.background="white";
+						}
+				}
+		
+			}
+		</script>
+	</head>
+	<body>
+		<table cellspacing="0" border="1">
+			<tr>
+				<th><input type="checkbox" name="" id="checkTh" value="" /></th>
+				<th>商品</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="" value="" /></td>
+				<td class="item"><img src="../js第九天_js动画3/img/5.jpg" alt="" /><span>PlayStation4</span></td>
+				<td class="price">3030</td>
+				<td class="num"><input type="button" value="-" class="minus"/><input type="text" value="0" /><input type="button" value="+" class="plus"/></td>
+				<td class="itemPrice">0</td>
+				<td><a href="###">删除</a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="checkItem" id="" value="" /></td>
+				<td class="item"><img src="../js第九天_js动画3/img/5.jpg"  alt="" /><span>x-box one</span></td>
+				<td class="price">3010</td>
+				<td class="num"><input type="button" value="-" class="minus"/><input type="text" value="0" /><input type="button" value="+" class="plus"/></td>
+				<td class="itemPrice">0</td>
+				<td><a href="###">删除</a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="checkItem" id="" value="" /></td>
+				<td class="item"><img src="../js第九天_js动画3/img/5.jpg" alt="" /><span>XXX</span></td>
+				<td class="price">1050</td>
+				<td class="num"><input type="button" value="-" class="minus"/><input type="text" value="0" /><input type="button" value="+" class="plus"/></td>
+				<td class="itemPrice">0</td>
+				<td><a href="###">删除</a></td>
+			</tr>
+			<tr>
+			<td><input type="checkbox" name="checkItem" id="" value="" /></td>
+				<td class="item"><img src="../js第九天_js动画3/img/5.jpg" alt="" /><span>XXX</span></td>
+				<td class="price">1100</td>
+				<td class="num"><input type="button" value="-" class="minus"/><input type="text" value="0" /><input type="button" value="+" class="plus"/></td>
+				<td class="itemPrice">0</td>
+				<td><a href="###">删除</a></td>
+			</tr>
+		</table>
+		<div class="bottom">
+			<div id="selAll"><input type="checkbox" id="selectAll"/><label for="selectAll">全选</label></div>
+			<a href="###">删除</a>
+			<div>合计:<span id="totalPrice">0.00</span></div>
+			<div>所选商品<span id="totalItemNum">0</span>件</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			input.active {
+				background: yellow;
+			}
+			
+			#wrap {
+				width: 750px;
+				height: 500px;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#middle {
+				width: 9999999px;
+				position: absolute;
+				height: 500px;
+				left: 0;
+			}
+			
+			#middle div {
+				float: left;
+			}
+			
+			#middle div img {
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="button" value="上一张" id="last">
+		<input type="button" value="下一张" id="next"><br>
+		<div id="btnWrap">
+			<input class="active" type="button" value="按钮1">
+			<input type="button" value="按钮2">
+			<input type="button" value="按钮3">
+			<input type="button" value="按钮4">
+		</div>
+		<div id="wrap">
+			<div id="middle">
+				<div><img src="img/1.jpg" alt=""></div>
+				<div><img src="img/2.jpg" alt=""></div>
+				<div><img src="img/3.jpg" alt=""></div>
+				<div><img src="img/4.jpg" alt=""></div>
+			</div>
+		</div>
+		<script src="tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		    var lastBtn=document.getElementById("last");
+			var nextBtn=document.getElementById("next");
+			var inputs=document.querySelectorAll("#btnWrap input");
+			var middleDiv=document.getElementById("middle");
+			var imgObj=document.querySelector("#middle img");
+			
+			var timer=null;
+			var index=0;//判断图片下标
+			var autoTimer=null;
+			//单次滚动
+			function roll(){
+				for(var i=0;i<inputs.length;i++){
+					inputs[i].className="";
+				}
+				inputs[index].className="active";
+				var t=0;
+				var d=30;
+				var b=middleDiv.offsetLeft;
+				var end=-imgObj.offsetWidth*index;
+				var c=end-b;
+				clearInterval(timer);
+				timer=setInterval(function(){
+					t++;
+					if(t>=d){
+						clearInterval(timer);
+					}
+					middleDiv.style.left=Tween.Bounce.easeOut(t,b,c,d)+"px";
+				},30);
+			}
+			//向下一张图滚动
+			function fnNext(){
+				index++;
+				if(index>inputs.length-1){
+					index=0;
+				}
+				roll();
+			}
+			//自动滚动
+			function autoRoll(){
+				clearInterval(autoTimer);
+				autoTimer=setInterval(function(){
+					fnNext();
+				},3000);
+			}
+			autoRoll();
+			//点击按钮
+			for(var i=0;i<inputs.length;i++){
+				inputs[i].index=i;
+				inputs[i].onclick=function(){
+					index=this.index;
+					//跳到所点击按钮对应的图片位置
+					roll();
+					//清除之前的自动滚动,index+1,并重新让其自动滚动
+					autoRoll();
+				}
+			}
+			//点击下一张图片按钮
+			nextBtn.onclick=function(){
+				//调用向下一张图片滚动的方法
+				fnNext();
+				//清除之前的自动滚动,并让其在当前图片位置重新滚动
+				autoRoll();
+			}
+			//点击上一张图片按钮
+			lastBtn.onclick=function(){
+				index--;
+				if(index<0){
+					index=inputs.length-1;
+				}
+				roll();
+				autoRoll();
+			}
+		</script>
+	</body>
+
+</html>

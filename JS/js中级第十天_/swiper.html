@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+    	    .swiper-container {
+    width: 800px;
+    height: 400px;
+}
+    </style>
+    <link rel="stylesheet" href="Swiper.js/swiper.min.css">
+    <script src="Swiper.js/swiper.min.js"></script>
+ 
+</head>
+<body>
+    <div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="img/0.jpg"/></div>
+        <div class="swiper-slide"><img src="img/1.jpg"/></div>
+        <div class="swiper-slide"><img src="img/0.jpg"/></div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+    
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    
+    <!-- 如果需要滚动条 -->
+    <div class="swiper-scrollbar"></div>
+</div>
+    
+    <script>        
+	
+
+var mySwiper = new Swiper('.swiper-container',{
+effect : 'flip',
+flip: {
+            slideShadows : true,
+            limitRotation : true,
+        }
+
+})
+</script>
+    
+  </script>
+</body>
+</html>

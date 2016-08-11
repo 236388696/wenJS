@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/snowflake.js"></script>	
+		<style type="text/css">
+		*{margin:0;padding:0;list-style:none;}
+	html,body{height:100%;}
+	body{background: black no-repeat center center;background-size:cover;overflow: hidden;}
+	/* 以下是CSS3样式，适合高版本浏览器 */
+	.Snowflake{animation:linear spin infinite 20s;-webkit-animation:linear spin infinite 20s;-moz-animation:linear spin infinite 20s;pointer-events:none;}
+	@keyframes spin{
+		0% {transform:rotate(0deg);}
+		100% {transform:rotate(359deg);}
+	}
+	@-webkit-keyframes spin{
+		0% {-webkit-transform:rotate(0deg);}
+		100% {-webkit-transform:rotate(359deg);}
+	}
+	@-moz-keyframes spin{
+		0% {-moz-transform:rotate(0deg);}
+		100% {-moz-transform:rotate(359deg);}
+	}
+		
+		
+		
+		
+		.wrap{
+			width: 500px;
+			height: 281px;
+			overflow: hidden;
+			margin: 0 auto;
+			position: relative;
+			background-color: #ccc;
+		}
+		.wrap img{
+			width: 500px;
+			position: absolute;
+		}
+		.leftBtn,.rightBtn{
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+			background-color: #ccc;
+			display: inline-block;
+			width: 25px;
+			height: 50px;
+			opacity: 0.5;
+			line-height: 50px;
+			text-align: center;
+		}
+		.leftBtn{
+			left: 50px;
+		}
+		.rightBtn{
+			right: 50px;
+		}
+		.btn{
+			width: 40px;
+			margin: 0 auto;
+		}
+		.btn span{
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: #ccc;
+			border-radius: 5px;
+		}
+		.middle{
+			/*width: 9999px;*/
+			height: 281px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.snow{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 50px;
+			background-color: white;
+			border-radius: 50% 50% 0 0 / 30px 30px 0 0;
+			box-shadow: 0px -10px 10px 10px white;
+		}
+	</style>
+</head>
+<body>
+	<div class="all">
+		<div class="wrap">
+			<div class="middle" style="background-color: ;">
+				<img style="left: 0;" src="img/0.jpg" alt="" />
+				<img style="left: 500px;" src="img/1.jpg" alt="" />
+				<img style="left: 1000px;" src="img/2.jpg" alt="" />
+			</div>
+			<span class="leftBtn">《</span>
+			<span class="rightBtn">》</span>
+		</div>
+		<div class="btn">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<div class="snow"></div>
+		<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			createSnow('',200);
+			function qS(xzq){
+				return document.querySelector(xzq);
+			}
+			function qSs(xzq){
+				return document.querySelectorAll(xzq);
+			}
+			var nextBtn = qS(".rightBtn");
+			var lastBtn = qS(".leftBtn");
+			var wrapDiv = qS(".wrap");
+			var middleDiv = qS(".middle");
+			var divs = qSs(".btn>span");
+			var imgs = qSs(".middle>img");
+			
+//			middleDiv.style.width = wrapDiv.offsetWidth * divs.length + "px";
+			
+			//判断当前页数
+			var index = 0;
+			
+			var timer = null;
+			var timer2 = null;
+			var timer3 = null;
+			var timer4 = null;
+			autoRoll();
+			nbc();
+			lbc();
+			//单次向下滚动
+			function nextRoll(){
+				index++;
+				var t = 0;
+				var b = middleDiv.offsetLeft;
+				var c;
+				if(index > 2){
+					c = 0 - b;
+					index = 0;
+				}else{
+					c = -wrapDiv.offsetWidth;
+				}
+				var d = 100;
+				clearInterval(timer);
+				clearInterval(timer3);
+				timer = setInterval(function(){
+					t++;
+					if(t>d){
+						clearInterval(timer);
+						nbc();
+						lbc();
+					}else{
+						middleDiv.style.left = Tween.Linear(t,b,c,d) + "px";
+						nextBtn.onclick = function(){
+							return false;
+						}
+						lastBtn.onclick = function(){
+							return false;
+						}
+					}
+				},10)
+			}
+			
+			//循环滚动
+			function autoRoll(){
+				clearInterval(timer2);
+				timer2 = setInterval(function(){
+					nextRoll();
+				},2000)
+			}
+			
+			//next按钮点击事件
+			function nbc(){
+				nextBtn.onclick = function(){
+					nextBtnClick();
+				}
+			}
+			function nextBtnClick(){
+				clearInterval(timer2);
+				nextRoll();
+			}
+			
+			//last按钮点击事件
+			function lbc(){
+				lastBtn.onclick = function(){
+					lastBtnClick();
+				}
+			}
+			function lastBtnClick(){
+				clearInterval(timer2);
+				lastRoll();
+			}
+			//单次向上滚动
+			function lastRoll(){
+				index--;
+				var t = 0;
+				var b = middleDiv.offsetLeft;
+				var c;
+				if(index < 0){
+					c = -1000 - b;
+					index = 2;
+				}else{
+					c = wrapDiv.offsetWidth;
+				}
+				var d = 100; 
+				clearInterval(timer3);
+				clearInterval(timer);
+				timer3 = setInterval(function(){
+					t++;
+					if(t > d){
+						clearInterval(timer3);
+						//当动画执行完毕，重新把last按钮的点击事件加上
+						lbc();
+						nbc();
+					}else{
+						middleDiv.style.left = Tween.Linear(t,b,c,d) + "px";
+						//当动画正在运行中，取消last按钮的点击事件
+						lastBtn.onclick = function(){
+							return false;
+						}
+						nextBtn.onclick = function(){
+							return false;
+						}
+					}
+				},10)
+			}
+			
+			//当鼠标放在wrap上时，不再自动滚动
+			wrapDiv.onmouseover = function(){
+				clearInterval(timer2);
+			}
+			//当鼠标离开wrap时，继续自动滚动
+			wrapDiv.onmouseout = function(){
+				autoRoll();
+			}
+			
+			for(var i = 0; i < divs.length; i++){
+				divs[i].aaa = i;
+				divs[i].onmouseover = function(){
+					clearInterval(timer2);
+					numsRoll(this);
+				}
+				divs[i].onmouseout = function(){
+					autoRoll();
+				}
+			}
+			//鼠标移入下面的数字时，进行滚动
+			function numsRoll(sei){
+				index = sei.aaa;
+				var t = 0;
+				var b = middleDiv.offsetLeft;
+				var end = -sei.aaa * wrapDiv.offsetWidth;
+				var c = end - b;
+				var d = 100;
+				clearInterval(timer4);
+				timer4 = setInterval(function(){
+					t++;
+					if(t > d){
+						clearInterval(timer4);
+					}else{
+						middleDiv.style.left = Tween.Linear(t,b,c,d) + "px";
+					}
+				},10)
+			}
+	</script>
+</body>
+</html>

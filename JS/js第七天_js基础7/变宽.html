@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>变宽</title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		
+		
+	<script type="text/javascript">
+		var div1=document.getElementById("div1");
+		div1.onmouseover=function(){
+			addWidth();
+		}
+		var timer=null;
+		function addWidth(){
+			//在使用循环定时器，先清除再使用；在使用时把运动和清除隔开使用（if...else...）
+			clearInterval(timer);
+			var speed=5;//speed正数是加，负数是减
+			 timer=setInterval(function(){
+				//如果可见宽度为300的话
+				if(div1.offsetWidth>=1000){
+				//不再继续增加（停止定时器）
+					clearInterval(timer);
+					
+					
+				}else{
+					//如果没大于等于300的话，就继续增加
+				var w=div1.offsetWidth+speed;
+				div1.style.width=w+"px";
+				}
+				
+			},10);
+//		  改变运动速度和轨迹的方式:
+//		  1.改变speed;
+//		  2.改变执行循环时间
+		}
+	
+
+		  
+	</script>
+	
+	
+	
+</body>
+</html>
+
+
+

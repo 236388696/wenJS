@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2ul循环瀑布流</title>
+		<style>
+		/*岭深常得蛟龙在 梧高自有凤凰栖*/
+			.wrap{
+				width: 800px;
+				border: 1px solid #ccc;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.wrap ul{
+				list-style: none;
+				width: 200px;
+				padding: 10px;
+				float: left;
+				box-sizing: border-box;
+			}
+			.wrap ul li{
+				background-color: orange;
+				font-size: 50px;
+				margin-bottom: 10px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+		<script type="text/javascript">
+			var uls=document.getElementsByTagName("ul");
+			
+			//定义一个随机高度的函数
+			function randHeight(min,max){
+				return parseInt(Math.random()*(max-min+1)+min);
+			}
+			
+			
+			function createLi(){
+				for(var i=0;i<20;i++){
+				var li=document.createElement("li");
+				li.style.height=randHeight(100,300)+"px";
+				li.innerHTML=i ;
+				
+				//下一步，需要找到当前最短的列，然后ul.appendChild(li);
+				//设置第一列为默认最短的列
+				 
+				    //minIndex是最短的下标
+				var minIndex =0;
+				var minHeight=uls[0].offsetHeight;
+				for(var j=1; j<uls.length; j++){
+					if(minHeight>uls[j].offsetHeight){
+						minIndex=j;
+						minHeight=uls[j].offsetHeight;
+					}
+				}
+				//找到最短的一列，然后添加
+				uls[minIndex].appendChild(li);
+				
+			}
+				
+			}
+			createLi();
+			
+			
+			//监听页面滚动的状态
+			window.onscroll=function(){
+				//当前四列，最长的那列出现之后，需要再点调用createLi方法
+				
+				//当前窗口的高度
+				var windowH =document.documentElement.clientHeight;
+				//内容高度，body被内容撑开
+				var bodyH =document.body.offsetHeight;
+				//计算滚动距离
+				var gunH=bodyH-windowH;
+//				console.log(bodyH-windowH);
+				//滚动条的offsetTop
+				var gunTop=document.body.scrollTop;
+				console.log(gunTop);
+                
+                //
+                if(gunTop>=gunH){
+                	 createLi();
+                }
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

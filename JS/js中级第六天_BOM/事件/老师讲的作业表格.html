@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table td {
+				width: 200px;
+				height: 100px;
+				font-size: 40px;
+				text-align: center;
+				color: coral;
+			}
+			
+			table td:last-child {
+				text-decoration: underline;
+			}
+			
+			table td:last-child:hover {
+				color: blue;
+			}
+			
+			#addTd {
+				width: 608px;
+				height: 100px;
+				background-color: aqua;
+				text-align: center;
+				line-height: 100px;
+				font-size: 50px;
+				color: coral;
+				border: 1px solid #ccc;
+				margin-top: 20px;
+			}
+			#test{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table border="1" cellspacing="0" cellpadding="0">
+		</table>
+		<div id="addTd">
+			添加一个新的表格
+		</div>
+		<div id="test">
+			
+		</div>
+		<script type="text/javascript">
+			var addTd = document.getElementById("addTd");
+			var tables = document.querySelector("table");
+			var arr = ["张三", "20", "Delete"];
+			var nameArr = ["张三", "李四", "王五", "赵六"];
+			var ageArr = [20, 25, 30, 35];
+
+			function rand() {
+				return Math.floor(Math.random() * 4);
+			}
+			addTd.onclick = function() {
+				addRow();
+			}
+
+			function addRow() {
+				var a = rand();
+				var newTr = document.createElement("tr");
+				//				for(var i=0;i<arr.length;i++){
+				//					var newTd=document.createElement("td");
+				//					if(i==2){
+				//						newTd.onclick=function(){
+				//							tables.removeChild(newTr);
+				//						}
+				//					}
+				//					newTd.innerHTML=arr[i];
+				//					newTr.appendChild(newTd);
+				//				}
+				var newTd1 = document.createElement("td");
+				newTd1.innerHTML = nameArr[a];
+				var newTd2 = document.createElement("td");
+				newTd2.innerHTML = ageArr[a];
+				var newTd3 = document.createElement("td");
+				newTd3.innerHTML = "Delete";
+				newTd3.onclick = function() {
+					tables.removeChild(newTr);
+				}
+				newTr.appendChild(newTd1);
+				newTr.appendChild(newTd2);
+				newTr.appendChild(newTd3);
+				tables.appendChild(newTr);
+			}
+			addRow();
+			var test=document.getElementById("test");
+			test.onclick=function(ev){
+				var evObj=ev;
+				console.log(evObj.target);
+			}
+			
+////			evObj.target:获取操作的目标元素
+
+
+
+         for (var i=1; i<=9; i++) {
+     setTimeout( function timer(){
+     console.log( i );
+     },1000 );
+  }
+         
+         
+         for (var i=1; i<=9; i++) {
+     (function(){
+      var j = i;
+      setTimeout( function timer(){
+           console.log( j );
+      }, 1000 );
+     })();
+     
+ }
+         
+       
+
+		</script>
+	</body>
+
+</html>

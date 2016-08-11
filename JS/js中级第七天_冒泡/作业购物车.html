@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车</title>
+		<style type="text/css">
+		  
+			table{
+				border:  1px solid skyblue;
+				margin: 0 auto;
+				margin-top: 20px;
+				overflow: hidden;
+				
+			}
+			th{
+				background-color: lightskyblue;
+				text-align: center;
+				height: 20px;
+				width: 150px;
+			}
+			#th1{
+				width: 50px;
+			}
+			#th2{
+				width: 240px;
+				
+			}
+			
+			tr img{
+				width: 150px;
+				height: 120px;
+		    }
+			tr td{
+				text-align: center;
+			}
+			
+		    #span1{
+		    	display: inline;
+		     margin-left: 5px;
+		     margin-top: 50px;
+		     margin-right: 5px;
+		     float: right;
+		    }
+			#td2{
+				
+				padding: 10px;
+				
+			}
+			#td3{
+				width: 50px;
+			}
+			#bottom{
+				width: 930px;
+				height: 80px;
+				background-color: orange;
+				margin: 0 auto;
+				margin-top: 10px;
+				line-height: 80px;
+			}
+			#inp{
+				margin-left: 20px;
+			}
+			#span2{
+				margin-left: 50px;
+			}
+			#span3{
+				margin-left: 320px;
+			}
+			#span4{
+				margin-left: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<table border="1" cellspacing="0" cellpadding="2" >
+			<tr id="tr1">
+				<th id="th1"><input type="checkbox" id="checkbox1"/></th>
+				<th id="th2">商品</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+				<th>操作</th>
+			</tr>
+			<tr id="tr2">
+				<td><input id="input2" type="checkbox" name=""  value="" /></td>
+				<td id="td2"><img src="../js第九天_js动画3/img/6.jpg"/><div id="span1">图书</div></td>
+				<td>65.00</td>
+				<td><input type="button" value="-" /> <input type="text" id="td3" value="0" /> <input type="button" value="+" /></td>
+				<td>65.00</td>
+				<td>删除</td>
+			</tr>
+			<tr id="tr3">
+				<td><input id="input3" type="checkbox" name=""  value="" /></td>
+				<td id="td2"><img src="../js第九天_js动画3/img/6.jpg"/><div id="span1">图书</div></td>
+				<td>65.00</td>
+				<td><input type="button" value="-" /> <input type="text" id="td3" value="0"/> <input type="button" value="+" /></td>
+				<td>65.00</td>
+				<td>删除</td>
+			</tr>
+			<tr id="tr4">
+				<td><input id="input4" type="checkbox" name=""  value="" /></td>
+				<td id="td2"><img src="../js第九天_js动画3/img/6.jpg"/><div id="span1">图书</div></td>
+				<td>65.00</td>
+				<td><input type="button" value="-" /> <input type="text" id="td3" value="0" /> <input type="button" value="+" /></td>
+				<td>65.00</td>
+				<td>删除</td>
+			</tr>
+			<tr id="tr5">
+				<td><input id="input5" type="checkbox" name=""  value="" /></td>
+				<td id="td2"><img src="../js第九天_js动画3/img/6.jpg"/><div id="span1">图书</div></td>
+				<td>65.00</td>
+				<td><input type="button" value="-" /> <input type="text" id="td3" value="0" /> <input type="button" value="+" /></td>
+				<td>65.00</td>
+				<td>删除</td>
+			</tr>
+			<tr id="tr6">
+				<td><input id="input6" type="checkbox" name="" value="" /></td>
+				<td id="td2"><img src="../js第九天_js动画3/img/6.jpg"/><div id="span1">图书</div></td>
+				<td>65.00</td>
+				<td><input type="button" value="-" /> <input type="text" id="td3" value="0" /> <input type="button" value="+" /></td>
+				<td>65.00</td>
+				<td>删除</td>
+			</tr>
+			
+			
+		</table>
+		<div id="bottom">
+				<input id="inp" type="checkbox" />全选
+				<span id="span2">删除</span>
+				<span id="span3">所选商品：0 件</span>
+				<span id="span4">合计：0.00</span>
+		</div>
+		<script type="text/javascript">
+			var tr1=document.getElementById("tr1");
+			var tr1=document.getElementById("tr2");
+			var tr1=document.getElementById("tr3");
+			var tr1=document.getElementById("tr4");
+			var tr1=document.getElementById("tr5");
+			var tr1=document.getElementById("tr6");
+			var checkbox1=document.getElementById("checkbox1");
+			var input2=document.getElementById("input2");
+			var input3=document.getElementById("input3");
+			var input4=document.getElementById("input4");
+			var input5=document.getElementById("input5");
+			var input6=document.getElementById("input6");
+			var minuses = document.querySelectorAll("input[value='-']");
+			var add=document.querySelectorAll("input[value='+']");
+			var span2=document.getElementById("span2");
+			var span3=document.getElementById("span3");
+			var span4=document.getElementById("span4");
+//			console.log(add);
+//			console.log(minuses);
+            var td3=document.getElementById("td3");
+			for(var i=0;i<minuses.length;i++){
+				minuses[i].onclick=function(){
+					//parseInt 强转成数字类型
+					if(parseInt(this.nextElementSibling.value)<2){
+						this.nextElementSibling.value=1;
+					}else{
+						var newValue = parseInt(this.nextElementSibling.value)-1;
+					this.nextElementSibling.value=newValue;
+					}
+				 	Sum+=parseInt(this.nextElementSibling.value);
+				 	span3.innerHTML=Sum*5;
+
+				}
+			}
+			
+			for(var i=0;i<add.length;i++){
+				add[i].onclick=function(){
+					var newValue =parseInt(this.previousElementSibling.value)+1;
+					this.previousElementSibling.value=newValue;
+				}
+			}
+			
+			 var Sum=0;
+			minuses[i].onclick=function(){
+				 for(i=0;i<minuses.length;i++){
+				 	Sum+=parseInt(this.nextElementSibling.value);
+				 	span3.innerHTML=Sum*5;
+				 }
+				
+				
+			}
+			
+
+		</script>
+	</body>
+</html>

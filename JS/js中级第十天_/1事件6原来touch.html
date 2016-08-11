@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>touch只能使用在移动端</title>
+		<style>
+			div{
+				width: 300px;
+				height: 300px;
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		
+		<script type="text/javascript">
+			var div=document.querySelector("div");
+//			div.onclick=function(){
+//				onclick有延时
+//			}
+
+           //触摸开始
+            div.ontouchstart=function(){
+            	 console.log("触摸开始");
+            }
+            
+            
+            div.ontouchmove=function(){
+            	 console.log("触摸移动");
+            }
+            
+            div.ontouchend=function(){
+            	 console.log("触摸结束");
+            }
+            
+            //比如来电话等效果的时候会触发
+            div.ontouchcancel=function(){
+            	  console.log("触摸终止");
+            }
+            
+            
+            //绑定事件
+            div.addEventListener("touchstart",function(){
+            	        console.log("触摸开始");
+            	        console.log(event.type);
+            	        
+            	        //双击div时，会有默认事件（放大div），把默认事件取消
+            	        event.preventDefault();
+            },false);
+            
+            div.addEventListener("touchmove",function(){
+            	        console.log("触摸移动");
+            },false);
+            
+             div.addEventListener("touchend",function(){
+            	        console.log("触摸结束");
+            },false);
+            
+             div.addEventListener("touchcancel",function(){
+            	        console.log("触摸终止"); 
+            },false);
+			
+		</script>
+	</body>
+</html>

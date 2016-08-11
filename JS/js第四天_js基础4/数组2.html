@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: orangered;
+			}
+		</style>
+	</head>
+	<body>
+		<!--div.div$*3-->
+		<div class="div1"></div>
+		<div class="div2"></div>
+		<div class="div3"></div>
+		<script type="text/javascript">
+			var divs=document.getElementsByTagName("div");
+            for(var i=0;i<divs.length;i++){
+            	       alert(i);
+            	    divs[i].onclick=function(){
+            	    	   this.style.backgroundColor="green";
+            	    }
+			}
+		</script>
+	</body>
+</html>

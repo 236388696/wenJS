@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>课堂练习</title>
+	</head>
+	<body>
+		<input type="text" />
+		<div id="all"></div>
+	</body>
+	<script type="text/javascript">
+		var inu=document.getElementsByTagName("input")[0];
+		var all1=document.getElementById("all");
+		inu.onkeydown=function(en){
+			enObj=en||window.event;
+			if(enObj.keyCode==13){
+				var div1=document.createElement("div");
+				var tex=inu.value;
+			  div1.innerHTML=tex;
+			  all1.insertBefore(div1,all1.firstElementChild);
+			}
+			
+		}
+		
+		
+	</script>
+</html>

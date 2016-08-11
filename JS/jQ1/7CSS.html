@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS</title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				background-color: thistle;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div></div>
+
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//把点击事件封装一个函数
+			//			$("div").click(function(event){
+			//			  //pageX和client是一样的,获取鼠标当前的位置
+			//			alert(event.clientX);
+			//			alert(event.pageX);
+			//			//	alert("你好");
+			//			 $("div").css({
+			//			 	"width":"500px",
+			//			 	"height":"500px"
+			//			 })
+			//			});
+			//			
+
+            
+            //拖拽事件   
+			$("div").on("mousedown",function(ev) {
+				var dix = ev.clientX - $("div")[0].offsetLeft;
+				var diy = ev.clientY - $("div")[0].offsetTop;
+				$("div").on("mousemove",function(et) {
+						$("div")[0].style.left = et.clientX - dix + "px";
+						$("div")[0].style.top = et.clientY - diy + "px";
+					})
+				 $("div").on("mouseup",function(){
+				 	//unbind事件解绑
+				 	$("div").unbind("mousemove");
+				 })
+					
+			})
+		</script>
+	</body>
+
+</html>

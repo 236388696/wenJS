@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>老师选字游戏</title>
+		<style type="text/css">
+			.wrap {
+				width: 400px;
+				height: 600px;
+				border: 1px solid black;
+				margin: 0 auto;
+			}
+			
+			.head {
+				width: 100%;
+				height: 50px;
+				/*background-color: yellow;*/
+				overflow: hidden;
+			}
+			
+			.time {
+				float: left;
+				width: 150px;
+				height: 100%;
+				text-align: center;
+				line-height: 50px;
+				font-size: 30px;
+				/*background-color: red;*/
+			}
+			
+			.score {
+				float: right;
+				width: 150px;
+				height: 100%;
+				text-align: center;
+				line-height: 50px;
+				font-size: 30px;
+				/*background-color: red;*/
+			}
+			
+			.middle {
+				width: 100%;
+				height: 450px;
+				/*background-color: #CCCCCC;*/
+			}
+			
+			.text {
+				width: 100%;
+				height: 300px;
+				text-align: center;
+				line-height: 300px;
+				font-size: 200px;
+			}
+			
+			.alert {
+				width: 100%;
+				height: 150px;
+				text-align: center;
+				font-size: 40px;
+			}
+			
+			.bottom {
+				width: 100%;
+				height: 100px;
+			}
+			
+			.bottomText {
+				width: 80px;
+				height: 100%;
+				text-align: center;
+				line-height: 100px;
+				font-size: 70px;
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="head">
+				<div class="time">时间: 10</div>
+				<div class="score">分数: <span class="scoreSpan">0</span></div>
+			</div>
+			<div class="middle">
+				<div class="text">哈</div>
+				<div class="alert">根据上面的字的颜色从下面选择正确的字，选择正确自动开始</div>
+			</div>
+			<div class="bottom">
+				<div class="bottomText">红</div>
+				<div class="bottomText">绿</div>
+				<div class="bottomText">蓝</div>
+				<div class="bottomText">黄</div>
+				<div class="bottomText">黑</div>
+			</div>
+		</div>
+		</head>
+
+		<body>
+			<script type="text/javascript">
+				function qs(sei) {
+					return document.querySelector(sei);
+				}
+
+				function qsAll(sei) {
+					return document.querySelectorAll(sei);
+				}
+				var bigText = qs(".text");
+				var smallTexts = qsAll(".bottomText");
+				var scores=qs(".scoreSpan");
+				var gameTime=qs(".time");
+				var textArr = ["红", "黄", "蓝", "绿", "黑"];
+				var colorArr = ["red", "yellow", "blue", "green", "black"];
+                
+				//随机数
+				function rand(min, max) {
+					var a = Math.floor(Math.random() * (max - min + 1) + min);
+					return a;
+				}
+
+				var c;
+				//大字随机字和颜色
+				function bigRandom() {
+					//在textArr数组中，随机一个文字
+					var t = textArr[rand(0, 4)];
+					//把大字的文字改成随机到的文字
+					bigText.innerHTML = t;
+					//在colorArr数组中，随机一个颜色
+					c = rand(0, 4);
+					//把大字的颜色改成随机到的颜色
+					bigText.style.color = colorArr[c];
+				}
+
+				//小字随机字和颜色
+				function smallRandom() {
+					//用来装小字的随机字(红黄蓝绿黑）和颜色
+					var small_textArr = [];
+					var small_colorArr = [];
+
+					//当数组长度不到5个，则继续随机
+					while(small_textArr.length < 5) {
+						//在textarr里随机到一个文字：（红黄蓝绿黑字，而不是数字）
+						var t = textArr[rand(0, 4)];
+						//判断随机到的文字，新数组里有没有
+						if(small_textArr.indexOf(t) == -1) {
+							//如果没有，把随机到的文字，放到新数组里(查重)
+							small_textArr.push(t);
+						}
+					}
+					//检查一下找出的数组对不对
+					//				console.log(small_textArr);
+
+					while(small_colorArr.length < 5) {
+						var k = colorArr[rand(0, 4)];
+						if(small_colorArr.indexOf(k) == -1) {
+							small_colorArr.push(k);
+						}
+						//			         console.log(small_colorArr);
+					}
+					//for循环是用来遍历下面所有的小子
+					for(var i = 0; i < smallTexts.length; i++) {
+						//用新随机到的颜色数组，给下面所有的小字的颜色赋值
+						smallTexts[i].style.color = small_colorArr[i];
+						//用新随机到的文字数组，给下面所有的小字的内容赋值
+						smallTexts[i].innerHTML = small_textArr[i];
+					}
+				}
+
+				//函数不调用的话，就不会运行，所以一定要调用这个函数
+				smallRandom();
+				bigRandom();
+
+				for(var i = 0; i < smallTexts.length;i++) {
+					smallTexts[i].onclick = function(){
+						//两种方法：1.用点击的内容和 大字随机到的颜色的下标对应的文字 去比较
+						if(this.innerHTML == textArr[c]) {
+							bigRandom();
+							smallRandom();
+							//加分
+						    addSore();
+						    timers=11;
+						}
+
+						//2.获取点击的内容在文字数组里的下标，然后和大字随机到的颜色下标去比较
+						//   if(textArr.indexOf(this.innerHTML)==c){
+						//       
+						//     }
+						
+						//时间归位
+						else{
+							gameOver();							
+						}
+					}
+				}
+				//总得分
+				var score=0;
+				function addSore(){
+					score++;
+					scores.innerHTML=score;
+				}
+				
+				//总时间
+				var timers=10;
+				//倒计时
+				var timer=setInterval(function(){
+					if(timers<=0){
+						clearInterval(timer);
+						alert("gameover");
+					}else{
+						timers--;
+						gameTime.innerHTML="时间:"+timers;
+					}
+				},1000);
+				
+				//游戏结束
+				function gameOver(){
+					clearInterval(timer);
+					alert("ganmeover,你的得分是："+score);
+					//取消小字的默认点击事件
+					for(var i=0;i<smallTexts.length;i++){
+						smallTexts[i].onclick=function(){
+							return false;
+						}
+					}
+				}
+			</script>
+		</body>
+
+</html>

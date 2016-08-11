@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		div{
+				width: 200px;
+				height: 200px;
+				background-color: #ccc;
+				font-size: 100px;
+				text-align: center;
+				line-height: 200px;
+				display: none;
+			}
+			.current{
+				background-color: skyblue;
+			}
+			.show{
+				display: block;
+			}
+	</style>
+</head>
+<body>
+	<input class="current" type="button" value="A" />
+	<input type="button" value="B" />
+	<input type="button" value="C" />
+	<div class="show">A</div>
+	<div>B</div>
+	<div>C</div>
+	
+	<script type="text/javascript">
+		var inputs = document.getElementsByTagName("input");
+		var divs = document.getElementsByTagName("div");
+		
+		for(var i = 0; i < inputs.length; i++){
+			//保存每一个inputs［i］的下标
+			inputs[i].aaa = i;
+			inputs[i].onclick = function(){
+				for(var j = 0; j < inputs.length; j++){
+					inputs[j].className = "";
+					divs[j].className = "";
+				}
+				this.className = "current";
+				//使用保存的下标
+				divs[this.aaa].className = "show";
+			}
+		}
+	</script>
+</body>
+</html>

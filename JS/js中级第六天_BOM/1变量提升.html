@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>变量提升</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//		    alert(a);
+//			var a=10;
+			
+//			var a;
+//			alert(a);
+//			a=10;
+//			
+			
+			
+			//自调用函数
+//			(function test(){
+//				alert("111111");
+//			})()
+			
+			//传参数
+			(function test(a){
+				alert(a);
+			})(12345);
+			
+			//跟上面的方法是相通的
+			function test(b){
+				alert(b)
+			}
+			test(78954)
+//			
+			
+			
+			
+//			var a=10;
+//			function test(){
+//				alert(a);
+//				var a=20;
+//			}
+//			test();
+//		
+
+	        //这个是上面函数的翻译
+//			var a=10;
+//			function test(){
+//				var a;
+//		        alert(a);
+//		        a=20;
+//			}
+//			test();
+
+
+
+            
+//          
+//          var a=1;
+//          function fn(){
+             //a是未定义，取反就是执行
+//          	if(!a){
+//          		var a=2;
+//          	}
+//          	alert(a);
+//          }
+//          fn();
+//			
+            
+            
+            
+            
+            
+//          
+//           test();
+//          var test=function(){
+//          	   alert("11111")
+//          }
+//          
+//          
+//          //上面那句的翻译
+//           var test;
+//           test();
+//           test=function(){
+//          	   alert("11111")
+//          }
+//			
+
+
+
+            //变量提升
+//           test();
+//           function test(){
+//           	alert("2222");
+//           }
+             
+             
+             //当使用一个变量的时候，如果变量还没有定义，js会把变量的定义进行提升，然后能保证变量使用的时候不出错，使用完之后进行复制
+             
+             console.log(a);
+             var a=20;
+             //等同于
+             var a;
+             console.log(a);
+             a=20;
+             
+             //以后再写代码的时候要注意,使用变量前最好先定义变量,然后再使用
+			
+			 
+			var m = 100;
+	function test () {
+		console.log(m);
+		m=1000;
+		console.log(m);
+		console.log(this.m);
+		var m;
+		console.log(m);
+	}
+//	test();
+		
+		</script>
+	</body>
+</html>

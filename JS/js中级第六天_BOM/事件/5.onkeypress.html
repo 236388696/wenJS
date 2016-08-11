@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>onkeypress</title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			//onkeypress: 会在键盘按钮并且释放一个键的时候发生
+			document.onkeypress=function(ev){
+				var evObj=ev||window.event;
+				console.log(evObj.keyCode);
+			}
+			
+			//onkeypress事件不适用于所有的按键，像ALT,Ctrl,shift,esc等，如果想监听用户输入内容，还是使用onkeydown
+		</script>
+	</body>
+</html>

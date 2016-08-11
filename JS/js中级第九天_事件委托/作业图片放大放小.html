@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    img {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="../js中级第八天_放大镜/周末作业img/dt2.jpg" />
+    </div>
+    <script type="text/javascript">
+    var img = document.querySelector("img");
+    img.onmousewheel = function(ev) {
+        evObj = ev || window.event;
+        console.log(evObj);
+        //判断滚动方向
+        var delta = evObj.wheelDelta>1?1:-1;
+         // 每次改大小 平滑改变 大小
+        img.style.width =img.width + (30 * delta) + "px";
+        //防止页面滚轮滑动
+        return false;
+    }
+    </script>
+</body>
+
+</html>

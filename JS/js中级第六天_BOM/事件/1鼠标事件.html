@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;
+				margin-bottom: 10px;
+			}
+			#div2{
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;
+				margin-bottom: 10px;
+			}
+			#div3{
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;
+				margin-bottom: 10px;
+			}
+			#div4{
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">1</div>
+		<div id="div2" onclick="txt1()">2</div>
+		<div id="div3" onclick="txt2(this)">3</div>
+		<div id="div4">4</div>
+		<input type="button" name="" id="" value="" />
+		<script type="text/javascript">
+			//事件是js里常用的功能，绝大部分的交互事件都可以做
+			//事件的作用：事件可以用于表单验证，用户的输入，用户行为以及浏览器的动作
+			//事件通常是跟函数一起用
+			//常见的事件：1.鼠标事件 2.键盘事件 3.框架/对象事件onload onresize 4.表单事件 5.拖拽事件。
+			var div1=document.getElementById("div1");
+			
+			div1.onclick=function () {
+				console.log(this);//this指的是div
+			}			
+			function txt1() {
+				console.log(this);//指的是window
+			}
+			function txt2 (obj) {
+				console.log(obj);//指的是div
+			}
+			//因为绑定事件的方式不同，函数里的this也不同
+			//如果是通过div.onclick来绑定事件方法相当于div里的属性这种方式绑定，this代表这个标签
+			//如果在行间进行绑定，这个方法是window的，方法里的this是window的对象，如果想在这种方式下把触发的标签获取到,可以在onclick="test(this)"通过this进行传递,这个  this就是触发的标签
+			
+			
+			
+			var div4=document.getElementById("div4");
+			//双击事件
+			div4.ondblclick=function(){
+				console.log("双击");
+			}
+			div4.onmousedown=function () {
+				console.log("鼠标向下点击");
+			}
+			div4.onmouseup=function () {
+				console.log("鼠标松手");
+			}
+			div4.onclick=function () {
+				console.log("鼠标点击事件");
+				//这个过程，点击事件最后一个执行
+			}
+			
+		</script>
+	</body>
+</html>

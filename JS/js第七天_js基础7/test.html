@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ce3shi</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var aa = prompt("请输入你的姓名");
+    var bb = prompt("请输入你的年龄");
+    var cc = prompt("请输入你的性别");
+
+    function eee(ff, gg, hh) {
+        if (hh == "男") {
+            if (gg > 20) {
+                alert("你好" + ff + "先生");
+            } else {
+                alert("你好" + ff + "小伙");
+            }
+
+        } else {
+            if (gg > 20) {
+                alert("你好" + ff + "女士");
+            } else {
+                alert("你好" + ff + "小姐");
+            }
+        }
+    }
+    //eee(aa,bb,cc);
+
+    var aa = prompt("请输入数字");
+
+    function fff(dd) {
+        if (!isNaN(dd)) {
+            for (var i = 0; i < dd; i++) {
+                alert(i);
+            }
+        } else {
+            alert("是输入有误")
+        }
+
+    }
+    fff(aa);
+    
+    
+    
+    var aa = prompt("请输入数字");
+
+  //正常函数 调用方式  函数名(参数);
+  
+    function fff(dd) {
+        if (!isNaN(dd)) {
+            for (var i = 0; i < dd; i++) {
+                alert(i);
+            }
+        } else {
+            alert("是输入有误")
+        }
+
+    }
+    fff(aa);
+
+ // 又返回值的函数
+function bbb(cc){
+return cc+1;
+    
+}
+ //又返回值的函数 意思就是  整个方法 有个结果  结果 需要拿变量 接受  
+ // 参数 传入一个参数   参数也相当于一个变量 作用范围时当前函数  赋值是在 调用方法时候 
+
+
+ var bnn =  bbb(1);
+
+
+
+ // 匿名函数 
+ // 获取页面对象
+ var a = docmnet.getEcBYID("div");
+
+ a.onclick = function (){
+ 
+ }
+    </script>
+</body>
+
+</html>

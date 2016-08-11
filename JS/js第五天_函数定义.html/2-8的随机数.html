@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title作业数组</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var array = [5, 3, 2, 6, 1, 4, 8, 9, 7];
+
+    // function minArray(array = []) {
+	/**外层for 目的是当前数组位数的值 用来取最小的 
+	*里层for 目的 比较出最小的值放在当前i所在指向的位数
+	*也就是说 外层第一轮for 循环 选出 数组下标 为0 数 实际应该的的值 第二轮选出
+	＊下标为  1 的数的值  以此 类推 
+	＊举例 当i = 0时   下标为0的值为5 与第二位数 比较  3 如果碰见小于自身的值 ＊就互换位置  比较之后 为 下标为0的数 变成 3 在用下标为0的数 与 第三位数比较 同理 ＊直至 下标为0的数 选出最小值 
+	**/
+    for (var i = 0; i <= array.length - 1; i++) {
+        for (var j = i + 1; j <= array.length - 1; j++) {
+            if (array[i] > array[j]) {
+                var temp = array[j];
+                array[j] = array[i];
+                array[i] = temp;
+            }
+        }
+
+    }
+    // }
+
+    //var b =   minArray(arrayNum);
+    console.log(array);
+    </script>
+</body>
+
+</html>

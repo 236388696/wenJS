@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script>
+    var num = prompt("请输入分数");
+    num = Number(num);
+
+    if (num == 100) {
+        alert("很优秀");
+    } else if (num <= 90 && num >= 80) {
+        alert("优秀");
+    } else if (num < 80 && num >= 70) {
+        alert("良");
+    } else if (num < 70 && num >= 60) {
+        alert("及格");
+    } else if (num < 60 && num >=0) {
+        alert("不及格");
+    } else {
+        alert("滚吧");
+    }
+    </script>
+</body>
+
+</html>

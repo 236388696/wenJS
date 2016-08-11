@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="txt" type="text" />
+		<input type="button" onclick="func()" value="提交"/>
+		
+		<script type="text/javascript">
+			var txt=document.getElementById("txt");
+			function func(){
+				var str=txt.value;
+				var rege=/^1[3|5|8]\d{9}$/;
+				if(rege.test(str)){
+					alert("输入正确");
+				}
+				else{
+					alert("输入错误");
+				}
+			}
+		</script>
+	</body>
+</html>

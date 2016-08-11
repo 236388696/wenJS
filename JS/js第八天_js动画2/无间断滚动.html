@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width:400px;
+				margin:100px auto;
+				border: 1px solid red;
+				height: 113px;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#middle {
+				/*width: 99999px;*/
+				height: 113px;
+			}
+			
+			#middle img {
+				float: left;
+				width: 200px;
+				/*图片跟红框不贴合,加上高度100%,就贴合了*/
+				height: 100%;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="middle">
+				<img style="left: 0px" src="img/0.jpg" alt="" />
+				<img style="left: 200px" src="img/1.jpg" alt="" />
+				<img style="left: 400px" src="img/2.jpg" alt="" />
+			</div>
+		</div>	
+		
+		<script type="text/javascript">
+			var wrapDiv=document.getElementById("wrap");
+			var middleDiv=document.getElementById("middle");
+			var imgs=document.getElementsByTagName("img");
+			
+			//动态设置middle宽度
+			middleDiv.style.width=imgs.length*imgs[2].offsetWidth+"px";
+			
+			//w每次运动的终点
+			var w=0;
+			//运动的速度
+			var speed=1 ;
+			var timer=setInterval(function(){
+				//判断某个图片是否该换位置
+				for(var i=0;i<imgs.length;i++){
+					//offsetleft左边距的距离    offsetwidth自身宽度
+					if(imgs[i].offsetLeft<=-imgs[i].offsetWidth){
+						//换位置（换到两个图片长度的后面,图片不能写px值，容易出现错误）
+						imgs[i].style.left=(imgs.length-1)*imgs[i].offsetWidth+"px";
+					}
+					//向左移动
+					w=imgs[i].offsetLeft-speed;
+					imgs[i].style.left=w+"px";
+				}
+			},10);
+			
+		</script>
+	</body>
+</html>

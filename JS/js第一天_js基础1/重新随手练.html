@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{
+   width: 100px;
+   height: 150px;
+   background-color: yellow;
+}
+  
+	</style>
+
+</head>
+<body>
+	<input type="button" value="显示／隐藏">
+	<div id="div1"> </div>
+
+	<script>
+      var aa=document.getElementsByTagName("input")[0];
+      var b=document.getElementById("div1");
+      
+      var abc=true;
+      aa.onclick=function(){
+      	if(abc){
+      		b.style.display="none";
+      	abc=false;
+      	}else{
+      		b.style.display="block";
+      	abc=true;
+      	}
+
+      	
+      }
+	</script>
+</body>
+</html>

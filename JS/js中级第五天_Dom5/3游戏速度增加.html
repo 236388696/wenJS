@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>速度增加</title>
+<style>
+			.wrap{
+				width: 800px;
+				height: 500px;
+				border: 1px solid #CCCCCC;
+				margin: 0 auto;
+				position: relative;
+			}
+			.row{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				
+			}
+			.row>div{
+				width: 20px;
+				height: 20px;
+				border: 1px solid red;
+				background-color: gray;
+				float: left;
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			
+			
+		</div>
+		<script type="text/javascript">
+			var wrap=document.querySelector(".wrap");
+			
+		    //设置一个用于变化的bottom
+		    var bottom=0;
+		    
+		    //把时间也设置成变量
+		    var timeNum=500;
+		    
+		    function createRow(){
+		    	//创建行的div，并且设置它的class
+		    var row=document.createElement("div");
+//		    row.setAttribute("class","row");
+            row.className="row";
+            row.style.bottom=bottom+"px";
+		    
+		      //for创建20个小div
+		      for(var i=0;i<20;i++){
+		      	var div=document.createElement("div");
+		      	row.appendChild(div);
+		      }
+		    wrap.appendChild(row);
+		    
+		     //让row动起来
+		    //需要一个速度变量
+		    var speed=20;
+		    row.timer=setInterval(function(){
+		    	    row.style.left=row.offsetLeft+speed+"px";
+		    	    
+		    	    //判断碰壁反弹
+                //由于游戏的小块越来越少，所以400不能写死，需要计算最大的偏移量
+		    	    var maxOffset=wrap.clientWidth-row.offsetWidth;
+		    	     if(row.offsetLeft>=maxOffset||row.offsetLeft<=0){
+		    	     	speed*=-1;
+		    	     }
+		    	    
+		    },timeNum);
+		         return row;
+		    }
+		    
+		    //上来先创建一行
+		   createRow();
+		   //先加bottom，后创建
+		   wrap.onclick=function(){
+		   	 bottom+=20;
+		   	 
+		   	 //点一下，速度变快
+		   	 timeNum-=50;
+		   	 if(timeNum<=50){
+		   	 	timeNum=50;
+		   	 }
+		   	 
+//		   	 var daoshu2=wrap.children[wrap.children.length-2];
+		   	 var newDiv=createRow();
+		   	 //让newDiv前一个元素的定时器停止
+//		   	 clearInterval(daoshu2.timer);
+		   	 clearInterval(newDiv.previousElementSibling.timer);
+		   }
+		   
+		   
+		</script>
+		
+	</body>
+</html>

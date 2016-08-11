@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>内容移动</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				width: 300px;
+				height: 300px;
+				border: 1px solid blue;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				font-size: 40px;
+				overflow: hidden;
+			}
+			#sliderwrap{
+				position: absolute;
+				right: 0;
+				top: 0;
+				height: 100%;
+				width: 20px;
+				background-color: gray;
+			}
+			#middle{
+				position: absolute;
+			}
+			#slider{
+				position: absolute;
+				height: 50px;
+				width: 20px;
+				background-color: red;
+				border-radius: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="middle">
+				森佛山封疆大吏感觉；德骨科学烹饪概括地说，法国部队；可搞笑片看过的开心吧 v；离开法国航空大学公开军事基地放松自己给的价格都看鬼片开拓更多新款复古 v 看过的辛苦收款人放大镜看过肉大惊小怪的空格各方面的乐观面对美国的项目该；了代码；给力的密歇根湖铃木达行；乐观面对；幸福感满；对方公民的小马哥；什么都干了什么故事中克服；深圳某方面来说诹；干嘛；大型免费观看的新年福利哭丧着脸说这段绕口令淑女翻领款式大方技术装备夫人技术装备风口浪尖还是作为欧冠和世界杯发噶我大概 u 我感动发生地方会死哦饭后送饭还送话费 i 双方都 is 回复 i 还送俄方 i 和视频合肥撇还是放屁sdf厄双方是否 i 俄双方好
+			</div>
+			<div id="sliderwrap">
+				<div id="slider">
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var wrap=document.querySelector("#wrap");
+			var middle=document.querySelector("#middle");
+			var sliderWrap=document.querySelector("#sliderwrap");
+			var slider=document.querySelector("#slider");
+			
+			//计算显示区域和总体的比例，为了滑块的高度的计算（内容少，红色滑块就高）
+			var scale=wrap.clientHeight/middle.offsetHeight;
+			var h=sliderWrap.offsetHeight*scale;
+			if(h<50){
+				h=50;
+			}
+			slider.style.height=h+"px";  //最大的时候就是400*1
+			
+			//添加移动的事件
+			slider.onmousedown=function(){
+				var ev=ev||window.event;
+				var disY=ev.clientY-slider.offsetTop;
+				document.onmousemove=function(ev){
+					var e=ev||window.event;
+					//计算滑块的偏移量
+					var y=e.clientY-disY;
+					slider.style.top=y+"px"; 
+				}
+				document.onmouseup=function(){
+					document.onmousemove="";
+				}
+				return false;
+			}
+			
+		</script>
+	</body>
+</html>

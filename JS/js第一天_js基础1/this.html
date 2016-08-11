@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>this变量</title>
+		<style type="text/css">
+			#div1,#div2{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<!--<div id="div2"></div>-->
+		
+		<script type="text/javascript">
+			var div1 =document.querySelector("#div1");
+//			alert(this);
+			div1.onmouseover =function(){
+//				this变量:永远指向所在函数拥有者.          
+//              如果没有的话,则指向window
+			this.style.backgroundColor="green";
+//				alert(this);
+			}
+		
+		</script>
+	</body>
+</html>

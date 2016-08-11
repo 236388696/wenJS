@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+//			alert("1");
+			var div=document.getElementById("div1");
+			console.log(div);
+			//window.onload是最后执行的方法
+			//包括图片加载，标签创建之后才会调用这个方法
+			window.onload=function(){
+				alert("1");
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">1</div>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+			function add(a,b){
+				var aaa = 0;
+				if(isNaN(a)||isNaN(b)){
+            	  	return"输入有误";
+            	 }else if((a==0)&&(b==0)){
+            	 	return"请输入非零数"
+			 }else if(a>b){			 	
+			 	for(var i=b;i>0;i--){
+			 		if((a%i==0)&&(b%i==0)){
+			 			aaa = i;
+			 			break;
+			 		}
+			 	}
+			 }
+			 return"这是最大公约数"+aaa;
+            	 }
+			 var bbb=prompt("请输入第一个数：");
+			 bbb=Number(bbb);
+			 var ccc=prompt("请输入第二个数");
+			 ccc=Number(ccc);
+			 var ddd=add(bbb,ccc);
+			 alert(ddd);
+			
+		</script>
+	</body>
+</html>

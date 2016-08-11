@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="text1" id="text1" value="" />
+		<input type="button" value="转换"/>
+		<input type="text" name="text1" id="text2" value="" />
+		
+		<script>
+		 var text1=document.getElementById("text1");
+		 var text2=document.getElementById("text2");
+		 
+		 var zhuan=document.getElementsByTagName("input")[2];
+		 zhuan.onclick=function(){
+		 	
+		text1.value="A";
+		code = text1.value.charCodeAt(97); 
+		text1 = String.fromCharCode(code);
+		text2 = String.fromCharCode(0x65+32);
+		
+		document.write(text2);
+		}
+</script>
+	</body>
+</html>

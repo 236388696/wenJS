@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单事件</title>
+	</head>
+	<body>
+		<form action="http://www.baidu.com" method="get">
+			
+			<input type="text" name="" id="txt" />
+			<input type="submit" value="提交"/>
+		</form>
+		<script type="text/javascript">
+			var form=document.querySelector("form");
+			var txt=document.querySelector("#txt");
+			//onsubmit提交表单
+			form.onsubmit=function(ev){
+				//先会执行onsubmit方法，然后再根据对应action完成页面的跳转
+//				alert("111");
+             if(!txt.value){
+             	var evObj=ev ||window.event;
+             	evObj.preventDefault();
+             }
+			}
+			
+			//阻止默认事件的方式有两种，一种是在事件方法的最后，写上return false，另外一种是通过事件对象来完成，事件对象.preventDefauly();
+			
+		</script>
+	</body>
+</html>

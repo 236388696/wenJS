@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>quanxuan</title>
+</head>
+
+<body>
+    <div class="all">
+        <input type="radio" value="quan" name="xuan">全选
+        <input type="radio" value="fan" name="xuan">反选
+        <input type="checkbox" name="xuanze">1
+        <input type="checkbox" name="xuanze">2
+        <input type="checkbox" name="xuanze">3
+        <input type="checkbox" name="xuanze">4
+        <input type="checkbox" name="xuanze">5
+        <input type="checkbox" name="xuanze">6
+    </div>
+    <script>
+    var aaa = document.querySelector("[name=xuan]");
+    aaa.onclick = function() {
+    var bbb = document.getElementsByName('xuanze');
+
+        for (var i = 0; i < bbb.length; i++) {
+            bbb[i].checked = true;
+        }
+
+    }
+    var ccc = document.getElementsByName('xuan');
+    ccc[1].onclick = function() {
+        var bbb = document.getElementsByName('xuanze');
+
+        for (var i = 0; i < bbb.length; i++) {
+            if (bbb[i].checked == true) {
+                bbb[i].checked = false;
+            } else {
+                bbb[i].checked = true;
+
+            }
+
+        }
+
+
+    }
+    </script>
+</body>
+
+</html>
+ 

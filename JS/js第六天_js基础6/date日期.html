@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>date日期</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//创建了一个Date对象
+//		(1)创建一个当前时间的date对象
+			var myDate=new Date();
+
+//      (2)自己定义的时间的date对象
+//			var newDate=new Date(2020,10,20,18,30,58);
+//			alert(newDate);
+			
+			//返回一个4位数的年份
+//			alert(myDate.getFullYear());
+			
+			//返回月份0——11
+			alert(myDate.getMonth()+1);
+			
+			//返回一周的星期几
+			alert(myDate.getDay());
+			
+			//返回一个月的第几天
+			alert(myDate.getDate());
+			
+			//返回小时（24小时制）
+			alert(myDate.getHours());
+			
+			//返回分钟
+			alert(myDate.getMinutes());
+			
+			//返回秒数
+			alert(myDate.getSeconds());
+			
+			//返回毫秒（1秒＝1000毫秒）
+			alert(myDate.getMilliseconds());
+			
+			//从1970年1月1日到现在的毫秒数
+			alert(myDate.getTime());
+		</script>
+	</body>
+</html>

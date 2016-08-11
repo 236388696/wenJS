@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM操作</title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #ccc;
+			}
+			.red{
+				background: red;
+			}
+			.green{
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		 <div id="div1">
+		 	div
+		 </div>
+		 <div id="red" class="red">
+		 	红
+		 </div>
+		 <div id="green" class="green">
+		 	绿
+		 </div>
+		 <script type="text/javascript">
+		 	var redDiv=document.getElementById("red");
+		 	//设置属性
+//		 	redDiv.setAttribute("class","red")
+		 	
+		 	var div1=document.getElementById("div1");
+		 	var greenDiv=document.getElementById("green");
+		 	 redDiv.onclick=function(){
+		 	 	div1.setAttribute("class","red");
+		 	 }
+		 	 greenDiv.onclick=function(){
+		 	 	div1.setAttribute("class","green");
+		 	 }
+		 </script>
+	</body>
+</html>

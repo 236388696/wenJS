@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片预加载</title>
+		<script type="text/javascript">
+			//第一步：先在head里创建一个图片数组，将所有图片资源的scr作为字符串存进去
+			var imgArr = ["http://image.kejixun.com/2015/0923/20150923104113224.jpg",
+				"http://img1.gamedog.cn/2014/06/06/119-140606094H70.jpg",
+				"http://i0.sinaimg.cn/gm/2015/0325/U11284P115DT20150325153725.jpg",
+				"http://img0.imgtn.bdimg.com/it/u=4107847679,2891846411&fm=11&gp=0.jpg"
+			];
+			
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		
+		<script type="text/javascript">
+			//计数器
+			var count=0;
+			
+			//第二步：定义一个数组，用来保存image对象
+			//通过循环产生img对象，讲新生成的img对象的src的值设置成head数组里的对应的值 
+			var imgs=[];
+			for(var i=0;i<imgArr.length;i++){
+				var img =new Image();
+				//设置图片的src属性
+				img.src=imgArr[i];
+				//图片进行加载
+				img.onload=function(){
+					//方法内，就是图片已经加载完成
+					 count++;
+					 //第三步：通过push方法，将各个img对象添加到图片数组中
+					 imgs.push(this);
+					 if(count==4){
+					 	for(var j=0;j<imgs.length;j++){
+					 		document.body.appendChild(imgs[j]);
+					 	}
+					 }
+				}
+				
+			}
+			
+			//图片预加载
+			//图片预加载为了解决图片重复的请求，当图片的数据源没有发生变化，浏览器优先使用缓存进行提取图片
+			//状态码是200代表从服务器请求的图片
+			//状态码是304代表从服务器缓存提取图片
+		</script>
+	</body>
+</html>

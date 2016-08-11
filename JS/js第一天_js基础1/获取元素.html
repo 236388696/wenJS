@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<div id="div5"></div>
+		<div id="div4"></div>
+		
+		<a href="###">abc</a>
+		<a href="###">abc</a>
+		<a href="###">abc</a>
+		
+		<div name="divs"></div>
+		<div name="divs"></div>
+		<div name="divs"></div>
+		
+		<p class="ps">p1</p>
+		<p class="ps">p2</p>
+		<p class="ps">p3</p>
+		
+		<script type="text/javascript">
+//     元素获取
+//    （1）通过id获取：getElementById();
+//        如果获取的id不存在,则返回null;             
+		var a = document.getElementById("div1");
+//		div1.style.backgroundColor = "green";
+		console.log(div1);
+			
+//		(2)通过标签名字获取多个元素:getElementsByTagName();
+//         返回一个数组;
+		var abcs = document.getElementsByTagName("a");
+		abcs[1].style.textDecoration="none";
+		
+//		(3)通过name属性获取多个元素：getElementsByName();
+//		  返回一个数组;
+		var divs = document.getElementsByName("divs");
+		
+//		(4)通过class属性获取多个元素:getElementsByClassName();
+//		返回一个数组;
+		var ps = document.getElementsByClassName("ps");
+		
+		
+//		(5)通过选择器查找一个元素:
+//		querySelector();
+//		如果有重复的则只选择第一个
+		var a = document.querySelector("#div1");
+		// var a = document.querySelector(".ps"); (class:.)
+		  console.log(a);
+		
+		
+//		(6)通过CSS选择器查找多个元素:
+//		querySelectorAll
+//      返回一个数组;
+         var b = document.querySelectorAll("div")
+        
+		</script>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width: 800px;
+				border: 1px solid #ccc;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.wrap ul{
+				list-style: none;
+				width: 200px;
+				padding: 10px;
+				float: left;
+				box-sizing: border-box;
+			}
+			.wrap ul li{
+				background-color: orange;
+				font-size: 50px;
+				margin-bottom: 10px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+		
+		<script type="text/javascript">
+			//瀑布流的摆放时找当前所有列里，最短的列
+			var uls=document.getElementsByTagName("ul");
+			
+			//定义一个随机高度的函数
+			function randHeight(min,max){
+				return parseInt(Math.random()*(max-min+1)+min);
+			}
+			
+			//循环创建20个li
+			//并且寻找ul里最短的列里
+			for(var i=0;i<20;i++){
+				var li=document.createElement("li");
+				li.style.height=randHeight(100,300)+"px";
+				li.innerHTML=i ;
+				
+				//下一步，需要找到当前最短的列，然后ul.appendChild(li);
+				//设置第一列为默认最短的列
+				 
+				    //minIndex是最短的下标
+				var minIndex =0;
+				var minHeight=uls[0].offsetHeight;
+				for(var j=1; j<uls.length; j++){
+					if(minHeight>uls[j].offsetHeight){
+						minIndex=j;
+						minHeight=uls[j].offsetHeight;
+					}
+				}
+				//找到最短的一列，然后添加
+				uls[minIndex].appendChild(li);
+				
+				
+			}
+			
+		</script>
+	</body>
+</html>

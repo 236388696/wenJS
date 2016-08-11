@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>输入年月判断当前的天数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var day=18;
+			var month=6;
+			switch(month-1){
+				case 11:
+				day+=30;
+				case 10:
+				day+=30;
+				case 9:
+				day+=30;
+				case 8:
+				day+=31;
+				case 7:
+				day+=31;
+				case 6:
+				day+=30;
+				case 5:
+				day+=31;
+				case 4:
+				day+=30;
+				case 3:
+				day+=31;
+				case 2:
+				day+=28;
+				case 1:
+				day+=31;
+				
+			}
+			alert(day);
+			
+			
+			//同桌版：没算1，3，5，7，8，10，12的31天
+			function test(a,b){
+				switch(a){
+					case 1:
+					case 3:
+					case 5:
+					case 7:
+					case 8:
+					case 10:
+					case 12:
+					 alert(a*31+b);
+					 break;
+					 
+					 case 2:
+					 alert(a*28+b);
+					 
+					 default:
+					 alert(a*30+b);
+				}
+			}
+            
+            test(3,29);
+			
+		</script>
+	</body>
+</html>

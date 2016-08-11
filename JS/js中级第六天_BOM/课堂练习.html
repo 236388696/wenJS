@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>课堂练习</title>
+		<style type="text/css">
+			#shijian {
+				width: 50px;
+				height: 50px;
+				background: red;
+				border-radius: 25px;
+				text-align: center;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="text" name="" id="qian" value="" />
+		<span id="">+</span>
+		<input type="text" name="" id="hou" value="" />
+		<span id="">=</span>
+		<input type="text" name="" id="zong" value="" />
+
+		<div id="shijian">
+
+		</div>
+	</body>
+	<script type="text/javascript">
+		var qian = document.getElementById("qian");
+		var hou = document.getElementById("hou");
+		var zong = document.getElementById("zong");
+		var shijian = document.getElementById("shijian");
+		var timer = null;
+
+		function rand(min, max) {
+			return parseInt(Math.random() * (max - min + 1) + min);
+		}
+
+		qian.value = rand(0, 9);
+		hou.value = rand(10, 19);
+
+		var he = Number(qian.value) + Number(hou.value);
+
+		var ind = 11;
+
+		timer = setInterval(function() {
+			ind--; 
+			shijian.innerHTML = ind;
+
+			if(ind <= 0) {
+				if(!zong.value) {
+					alert("超时了");
+				} else {
+					if(zong.value == he) {
+						alert("right");
+					} else {
+						alert("wrong");
+					}
+				}
+            clearInterval(timer);
+			}
+
+		}, 1000);
+
+		
+	</script>
+
+</html>

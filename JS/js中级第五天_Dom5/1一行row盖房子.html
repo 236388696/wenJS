@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>一行row盖房子1</title>
+		<style>
+			.wrap{
+				width: 800px;
+				height: 500px;
+				border: 1px solid #CCCCCC;
+				margin: 0 auto;
+				position: relative;
+			}
+			.row{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				
+			}
+			.row>div{
+				width: 20px;
+				height: 20px;
+				border: 1px solid red;
+				background-color: gray;
+				float: left;
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			
+			
+		</div>
+		<script type="text/javascript">
+			var wrap=document.querySelector(".wrap");
+			
+		    //创建行的div，并且设置它的class
+		    var row=document.createElement("div");
+		    row.setAttribute("class","row");
+		    
+		      //for创建20个小div
+		      for(var i=0;i<20;i++){
+		      	var div=document.createElement("div");
+		      	row.appendChild(div);
+		      }
+		    wrap.appendChild(row);
+		    
+		    //让row动起来
+		    //需要一个速度变量
+		    var speed=20;
+		    row.timer=setInterval(function(){
+		    	    row.style.left=row.offsetLeft+speed+"px";
+		    	    
+		    	    //判断碰壁反弹
+//		    	    if(row.offsetLeft>=400){
+//		    	    	     speed*=-1;
+//		    	    }else if(row.offsetLeft<=0){
+//		    	    	     speed*=-1;
+//		    	    }
+		    	    
+		    	    //由于游戏的小块越来越少，所以400不能写死，需要计算最大的偏移量
+		    	    var maxOffset=wrap.clientWidth-row.offsetWidth;
+		    	     if(row.offsetLeft>=maxOffset||row.offsetLeft<=0){
+		    	     	speed*=-1;
+		    	     }
+		    	    
+		    },500);
+		    
+		    
+		    
+		</script>
+		
+	</body>
+</html>

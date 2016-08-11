@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    .ccc {
+        height: 100px;
+        display: none;
+    }
+    
+    .ccc a {
+        display: block;
+    }
+    
+    .bu {
+        background-color: skyblue;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <a href="">设置</a>
+        <div class="ccc">
+            <a href=""  class="ss" name="alink">搜索设置</a>
+            <a href="" class="ss" name="alink">高级搜索</a>
+            <a href="" class="ss" name="alink">关闭预测</a>
+            <a href="" class="ss" name="alink">搜索历史</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var c = document.getElementById("div1");
+    var f = document.getElementsByClassName("ccc");
+    c.onmouseover = function() {
+        f[0].style.display = "block";
+    }
+    c.onmouseout = function() {
+        f[0].style.display = "none";
+    }
+    var alink = document.getElementsByName("alink");
+    for (var a = 0; a <= alink.length-1; a++) {
+        alink[a].onmouseover = function(){
+            this.className="bu";
+        };
+         alink[a].onmouseout = function() {
+           this.className="ss";
+        }
+    }
+    // document.getElementsByName("alink").each(function() {
+    //     this.onmouseover=function(){
+    //         this.className="bu";
+    //     }
+
+    // })
+    </script>
+</body>
+
+</html>

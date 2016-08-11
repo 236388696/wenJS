@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>大图滚动tween版</title>
+	<style type="text/css">
+		.all{
+			
+		}
+		.wrap{
+			width: 500px;
+			height: 281px;
+			overflow: hidden;
+			margin: 0 auto;
+			position: relative;
+			background-color: #ccc;
+		}
+		.wrap img{
+			width: 500px;
+			position: absolute;
+		}
+		.leftBtn,.rightBtn{
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+			background-color: #ccc;
+			display: inline-block;
+			width: 25px;
+			height: 50px;
+			opacity: 0.5;
+			line-height: 50px;
+			text-align: center;
+		}
+		.leftBtn{
+			left: 50px;
+		}
+		.rightBtn{
+			right: 50px;
+		}
+		.btn{
+			width: 40px;
+			margin: 0 auto;
+		}
+		.btn span{
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: #ccc;
+			border-radius: 5px;
+		}
+		.middle{
+			/*width: 9999px;*/
+			height: 281px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			/*-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-ms-transition: all 1s;
+			-o-transition: all 1s;
+			transition: all 1s;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="all">
+		<!--wrap是窗口-->
+		<div class="wrap">
+			<div class="middle" style="background-color: ;">
+				<img style="left: 0;" src="img/0.jpg" alt="" />
+				<img style="left: 500px;" src="img/1.jpg" alt="" />
+				<img style="left: 1000px;" src="img/2.jpg" alt="" />
+			</div>
+			<!--左右按钮-->
+			<span class="leftBtn">《</span>
+			<span class="rightBtn">》</span>
+		</div>
+		<!--下面三个按钮-->
+		<div class="btn">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+		<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		 var wrapdiv=document.getElementsByClassName("wrap");
+		 var middlediv=document.getElementsByClassName("middle");
+		 var leftbtn=document.getElementsByClassName("leftBtn");
+		 var rightbtn=document.getElementsByClassName("rightBtn");
+		 var spans=document.querySelectorAll("btn>span");
+		 
+		 middleDiv.style.width=wrapDiv.offsetWidth*3+"px";
+			
+		function qs(sei){
+			return document.querySelector(sei);
+		}
+		function qsAll(sei){
+			return document.querySelectorAll(sei);
+		}
+		var wrapDiv=qs(".wrap");
+		var middleDiv=qs(".middle");
+		var leftBtn=qs(".leftBtn");
+		var rightBtn=qs(".rightBtn");
+	    //.btn>span直系子元素选择器（大于号）
+		var spans=qsAll(".btn>span");
+		//不可读的，可更改
+//		middleDiv.style.width=wrapDiv.style.width*3;
+
+         //设置的宽度 ：middleDiv小火车的宽度
+        middleDiv.style.width=wrapDiv.offsetWidth*3+"px";
+          
+       var timer=null;
+       var timer2=null;
+       var index=0;
+       //向右滚动
+       function roll(){
+       	var t=0;
+       	var b=middleDiv.offsetLeft;
+       	var c;
+       	index++;
+       	if(index>2){
+    		    //c=(3-1)*wrapDiv.offsetWidth;
+       		c=(index-1)*wrapDiv.offsetWidth;
+       		index=0;
+       	}else{
+       		c=-wrapDiv.offsetWidth;
+       	}
+       	var d=100;
+       	clearInterval(timer);
+       	timer=setInterval(function(){
+       		t++;
+       		if(t>=d){
+       			clearInterval(timer);
+       		}
+       		middleDiv.style.left=Tween.Back.easeOut(t,b,c,d)+"px";
+       	},10);
+       }
+//     roll();
+   
+       //自动滚动
+       function autoRoll(){
+       clearInterval(timer2);
+       	timer2=setInterval(function(){
+       		roll();
+       	},2000);
+       }
+        autoRoll();
+		</script>
+	</body>
+</html>
