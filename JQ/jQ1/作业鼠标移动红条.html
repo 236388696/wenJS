@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>红条</title>
+<style type="text/css">
+		.wrap {
+			width: 400px;
+			height: 100px;
+		}
+		
+		.middle {
+			width:208px;
+			height: 20px;
+			background-color: #ccc;
+			
+		}
+		
+		.middle>div {
+			width: 50px;
+			height: 100%;
+			text-align: center;
+			line-height: 80px;
+            float: left;
+            border: 1px solid yellow;
+            display: inline-block;
+		}
+		
+		.slider {
+			width: 50px;
+			height: 10px;
+			border-radius: 5px;
+			background-color: blue;
+			position: absolute;
+			left: 8px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="middle">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="slider"></div>
+	</div>
+	<script src="../js第八天_js动画2/js/tween.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var slider=document.querySelector(".slider");
+		var navs=document.querySelectorAll(".middle>div");
+		for(var i=0;i<navs.length;i++){
+			navs[i].onmouseover=function(){
+				move(this);
+			}
+		}
+		
+		var timer=null;
+		function move(mudidi){
+			var t=0;
+			var b=slider.offsetLeft;
+			var c=mudidi.offsetLeft-b;
+			var d=100;
+			clearInterval(timer);
+			timer=setInterval(function(){
+				t++;
+				if(t>=d){
+					clearInterval(timer);
+				}else{
+					slider.style.left=Tween.Back.easeOut(t,b,c,d)+"px";
+				}
+			},10);
+		}
+		
+		
+		
+		
+		
+		
+		
+		var moneyCount=10000000;
+		var day=0;
+		
+		
+		while(moneyCount){
+			moneyCount=parseInt(moneyCount/2);
+			day++;
+		}
+
+       
+//      for(moneyCount){
+//       	moneyCount=parseInt(moneyCount/2);
+//			day++;
+//       }
+		alert(day);
+	</script>
+	</body>
+</html>

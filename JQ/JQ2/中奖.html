@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		    #zhen{
+		    	  /*width: 1px;
+		    	  height: 1px;*/
+		    	  border: 20px solid white;
+		    	  border-top-color:red ;
+		    	  position: absolute;
+		    	  left: 240px;
+		    	  top:35px;
+		    	  z-index: 1;
+		    	  
+		    }
+			#beijing{
+				
+				margin-top: 80px;
+				width: 515px;
+				height: 517px;
+				/*border-radius:20px ;*/
+				/*background-image: url(images/jiang.png);*/
+				position: relative;
+				transition: all 2s ease 0s;
+			}
+			#slider{
+				width: 150px;
+				height: 150px;
+				background-color: red;
+				border-radius: 150px;
+				position: absolute;
+				top: 185px;
+				left: 184px;
+			}
+			.zi{
+				position: absolute;
+				top: 334px;
+				left: 231px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<div id="zhen"></div>
+			<div id="beijing">
+				<img src="images/jiang.png"/>
+				<div id="slider"></div>
+			</div>
+			<div class="zi">点击中奖</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		var beijing=document.getElementById("beijing");		
+		var slider=document.getElementById("slider");
+		
+		var arr=[];
+		var ccc=0;
+		slider.onclick=function(){
+		    var aaa=Math.floor(Math.random()*360+800);
+		    ccc=aaa+ccc;
+			beijing.style.transform="rotate("+ccc+"deg)";
+		    
+			
+			
+		}
+	</script>
+</html>

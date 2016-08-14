@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				position: absolute;
+			
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//$.fn.extend是JQ插件的标准写法
+			$.fn.extend({
+				//冒号前面放的是功能的名
+//				 json格式 里面的每一个大括号{}后面不能加(;分号)  要用(,逗号 )   最后一个大括号不能加符号
+				"toRed":function(){
+					$(this).css({
+						"background":"red"
+					})
+				}, //(用,号)
+				"toGreen":function(){
+					$(this).css({
+						"border":"1px solid green"
+					})
+				},//(用,号)
+				"toMove":function(){
+					$(this).on("mousedown",function(ev){
+						var disx=ev.clientX-$(this)[0].offsetLeft;
+						var disy=ev.clientY-$(this)[0].offsetTop;
+					$(this).on("mousemove",function(et){
+						$(this)[0].style.left=et.clientX-disx+"px";
+						$(this)[0].style.top=et.clientY-disy+"px";
+					})
+					$(this).on("mouseup",function(){
+						$(this).unbind("mousemove");
+					})
+					})
+				}//最后一个大括号不用加；分号
+			})
+			
+			$(function(){
+				$("div").toRed();
+				$("div").toGreen();
+				$("div").toMove();
+			})
+			
+		</script>
+	</body>
+</html>

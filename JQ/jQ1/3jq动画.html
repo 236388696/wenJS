@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: thistle;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			var div=document.querySelector("div");
+//			
+//			setInterval(function(){
+//				console.log(div);
+//				div.style.width=div.offsetWidth+5+"px";
+//			},30);
+
+
+
+//         $("div").animate({
+//         	"width":"500px",
+//         	"height":"500px",
+//         	"opacity":"0.8"
+//			},10000)
+//         
+//         //让隐藏的标签出现
+//         $("div").show();
+           
+           //淡入淡出
+           $("div").fadeOut();
+           $("div").fadeIn();
+
+
+           $("div").show(1000,function(){
+           	console.log($(this));
+           	$(this)[0].innerHTML="文字";
+           });
+			
+		</script>
+	</body>
+</html>

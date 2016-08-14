@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		div{
+			width: 300px;
+			height: 300px;
+			background-color: red;
+		}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+	<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$.fn.extend({
+			"mouseWheel":function(fn){
+				//先判断浏览器
+				if(window.navigator.userAgent.indexOf("Firefox")!==-1){
+					//把这个事件用[0]取出来，不然光this的话，就是一个数组了
+					$(this)[0].addEventListener("DOMMouseScroll",fnWheel,false)
+				}else{
+					$(this)[0].addEventListener("mousewheel",fnWheel,false)
+				}
+				
+				//鼠标滚轮函数
+				function fnWheel(ev){
+					var ev=ev||window.event;
+					var down=true;
+					if(ev.wheelDelta){
+						down=ev.wheelDelta<0;
+					}else{
+						down=ev.detail>0;
+					}
+					//调用传过来的fn
+					fn(down,ev);
+					
+					if(ev.preventDefault){
+						ev.preventDefault();
+					}
+					return false;
+				}
+			}
+		})
+		
+		 $(function(){
+		 	$("div").mouseWheel(function(down,ev){
+		 		console.log(down);
+		 	})
+		 })
+		
+	</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			position: relative;
+			width: 750px;
+			height: 500px;
+			overflow: hidden;
+		}
+		#middle{
+			position: absolute;
+			width: 99999px;
+			left: 0;
+			height: 500px;
+		}
+		#middle img{
+			float: left;
+		}
+		</style>
+	</head>
+	<body>
+	<div id="wrap">
+		<div id="middle">
+			<img src="img/1.jpg" alt="">
+			<img src="img/2.jpg" alt="">
+			<img src="img/3.jpg" alt="">
+			<img src="img/4.jpg" alt="">
+		</div>
+	</div>
+	<div id="nav">
+		<input type="button" value="按钮1">
+		<input type="button" value="按钮2">
+		<input type="button" value="按钮3">
+		<input type="button" value="按钮4">
+	</div>
+	
+	<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//先给input加事件
+			$("input").on("click",function(){
+				console.log($(this).index());
+                $("#middle").animate({
+                	    //这里的this是指向上面点击事件function
+                	  "left":-$(this).index()*$("img").width()+"px"
+                })
+			})
+		})
+		  
+		  
+	
+	</script>
+	</body>
+</html>

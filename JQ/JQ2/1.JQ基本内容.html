@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 300px;
+				height: 300px;
+				background-color:thistle;
+				
+			}	
+			.di{
+				width: 50px;
+				height: 50px;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			1
+			<div id="div2">
+				2
+				<div id="div4">3</div>
+			</div>
+			<div id="div3">4</div>
+		</div>
+		<span id="sp1"></span>
+		<div>5</div>
+		
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//ready
+			$(function(){
+//				//添加属性
+//				$("#div1").attr({
+//					"name":"test",
+//					"value":"zhang"
+//				})
+//				//添加class
+//				$("#div1").addClass("di")
+//				
+//				//添加元素
+//				//after同级添加，加到指定标签的后面
+//				$("#div1").after("<div>我是DIV</div>")
+//				//before同级添加，加到指定标签的后面
+//				$("#div1").before("<div>我是DIV2</div>")
+//				
+//				//找指定元素的子元素,只能找儿子辈的，孙子辈的找不到
+//				console.log($("#div1").children())
+				
+				
+				
+				//js的遍历所有的指定的标签
+//				for (var i=0;i<$("div").length;i++) {
+//					console.log($("div")[i]);
+//				}
+                
+                // JQ 封装好的遍历
+                //index:0，1，2，3   val:0,1,2,3里的内容
+                $("div").each(function(index,val){
+//              	     console.log(val);
+//              	     console.log(index);
+                //当前标签所包含的所有文字内容
+//                 console.log($(this).text()) 
+                })
+                
+                
+              
+			
+			
+			
+			
+			//［0］取的是标签，标签不能用JQ函数的
+//			console.log($("div")[0]); 
+     
+            //.eq方法取出来的是能继续使用JQ功能的对象
+//			console.log($("div").eq(0));
+//			$("div").eq(0).css({
+//				"width":"1000px"
+//			})
+			
+			
+			//.find
+//			console.log($("div").find("#div2"))
+
+            
+            //.next 找下级元素，是兄弟级的
+            console.log($("#div1").next())
+			 
+			
+			
+			})
+		</script>
+		
+		
+		<script type="text/javascript">
+		//回调函数
+			//用JS实现类似JQ的each的函数  index：下标   val：index里的内容
+			eachEL("div",function(index,val){
+				console.log(index);
+				console.log(val);
+//				alert("111");
+			})
+			function eachEL(elName,fn){
+				console.log(fn);
+				var els=document.getElementsByTagName(elName);
+				for (var i=0;i<els.length;i++) {
+					fn(i,els[i])
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

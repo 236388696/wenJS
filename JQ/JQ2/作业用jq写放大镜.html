@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>放大镜</title>
+		<style type="text/css">
+			#min_wrap{
+				border: 1px solid #ccc;
+				position: absolute;
+			}
+			#max_wrap{
+				border: 1px solid #ccc;
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				left: 370px;
+				overflow: hidden;
+				display: none;
+			}
+			
+			#slider{
+				width: 175px;
+				height: 175px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: none;
+				background-color: rgba(255,255,0,0.3);
+			}
+			
+			#max_wrap img{
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="min_wrap">
+			<img src="images/min.jpg" />
+			<div id="slider"></div>
+		</div>
+		<div id="max_wrap">
+			<img src="images/max.jpg"/>
+		</div>
+		
+		<script src="../jQ1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		
+		     $(function(){
+		     	//点击到小图，趟黄快和大图出现
+		     	$("#min_wrap").on("mousemove",function(ev){
+		     		$("#man_Wrap").show();
+		     		$("#slider").show();
+		     		
+		     		var x=ev.clientX-$("slider").width()/2-$("#min_wrap").offset().left;
+		     		var y=ev.clientY-$("slider").height()/2-$("#min_wrap").offset().top;
+		     		  
+		     		  // x对应的偏移量
+		     		if(y<=0){
+		     			y=0;
+		     		}else if(x>=$("#min_wrap").width()-$("#slider").width()){
+		     			
+		     		}
+		     		
+		     	})
+		     	
+		     	
+		     })
+		
+		
+		
+		
+			var maxWrap = document.querySelector("#max_wrap");
+			var minWrap = document.querySelector("#min_wrap");
+			var slider = document.querySelector("#slider");
+			var maxImg = maxWrap.children[0];
+			
+			// 要把鼠标的移入事件加在小图的div上
+			minWrap.onmousemove = function(ev){
+				// 显示滑块和大的div
+				slider.style.display = "block";
+				maxWrap.style.display = "block";
+				
+				var evObj = ev || window.event;
+				
+				// 先获取鼠标点击位置和minWrap的位置
+				var x = evObj.clientX - minWrap.offsetLeft - slider.offsetWidth / 2;
+				var y = evObj.clientY - minWrap.offsetTop - slider.offsetHeight / 2;
+				
+				// 计算滑块移动的最大距离
+				var maxWidth = minWrap.offsetWidth - slider.offsetWidth / 2;
+				var maxHeight = minWrap.offsetHeight - slider.offsetHeight / 2;
+				
+				// 做判断
+				if(x < 0){
+					x = 0;
+				} else if(evObj.clientX >= maxWidth){
+					x = maxWidth - slider.offsetWidth / 2;
+				}
+				if(y < 0){
+					y = 0;
+				} else if(evObj.clientY >= maxHeight){
+					y = maxHeight - slider.offsetHeight / 2;
+				}
+				slider.style.left = x + "px";
+				slider.style.top = y + "px";	
+				
+				
+				//计算x和y的比例
+				var scaleX=x/(maxWidth - slider.offsetWidth / 2);
+				var scaleY=y/(maxHeight - slider.offsetHeight / 2);
+				
+				maxWrap.scrollLeft=scaleX*(maxImg.offsetWidth);
+				maxWrap.scrollTop=scaleY*(maxImg.offsetHeight);
+				
+				
+			}
+			
+			minWrap.onmouseout=function(){
+				slider.style.display="none";
+				maxWrap.style.display="none";
+			}
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

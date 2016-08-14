@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.all {
+				width: 1000px;
+				height: 1000px;
+				background-color: white;
+			}
+			
+			.top {
+				width: 100%;
+				height: 80px;
+				background-color: gray;
+				text-align: center;
+			}
+			
+			input {
+				width: 150px;
+				height: 50px;
+				background-color: white;
+				margin: 10px auto;
+				font-size: 20px;
+				border-radius: 10px;
+			}
+			
+			.gray {
+				width: 100%;
+				height: 100px;
+				background-color: gray;
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="all">
+			<div class="top">
+				<input type="button" id="btn1" value="增加" />
+				<input type="button" id="btn2" value="删除" />
+				<input type="button" id="btn3" value="小于0" />
+				<input type="button" id="btn4" value="大于0" />
+				<input type="button" id="btn5" value="刷新" />
+			</div>
+			<div id="bottom"> </div>
+		</div>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var textArr = [];
+
+			function rand() {
+				var a = Math.floor(Math.random() * 50);
+				if(a % 2 == 0) {
+					a = -a;
+					return a;
+				} else {
+					return a;
+				}
+			}
+			
+			$("#btn1").on("click", function() {
+				var num = rand();
+				$("<div>", {
+					"html":num,
+					"class":"gray"
+            }).appendTo("#bottom");
+              textArr.push(num);
+			});
+			
+
+			$("#btn2").on("click", function() {
+				$("#bottom  div:last-child").remove()
+			})
+			
+			
+			$("#btn3").on("click",function(){
+				$("#bottom div").remove()
+				for(var i=0;i<textArr.length;i++){
+					if(textArr[i]<0){
+					$("<div>",{
+						"html":textArr[i],
+						"class":"gray"
+					}).appendTo("#bottom")
+					}
+				}
+			})
+			
+			
+			$("#btn4").on("click",function(){
+				$("#bottom div").remove()
+				for (var j=0;j<textArr.length;j++) {
+					if(textArr[j]>0){
+					$("<div>",{
+						"html":textArr[j],
+						"class":"gray"
+					}).appendTo("#bottom")
+					}
+				}
+			})
+			
+		</script>
+
+	</body>
+
+</html>
