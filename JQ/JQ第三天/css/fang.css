@@ -1,0 +1,41 @@
+ body {
+ 	padding: 10px;
+ }
+ 
+ #minWrap {
+ 	width: 350px;
+ 	height: 350px;
+ 	border: 1px solid #ccc;
+ 	position: relative;
+ }
+ 
+ #minWrap img {
+ 	width: 350px;
+ 	height: 350px;
+ }
+ 
+ #slider {
+ 	height: 175px;
+ 	width: 175px;
+ 	background-color: yellow;
+ 	opacity: 0.3;
+ 	position: absolute;
+ 	left: 0;
+ 	top: 0;
+ 	display: none;
+ }
+ 
+ #maxWrap {
+ 	display: none;
+ 	position: absolute;
+ 	left: 370px;
+ 	width: 400px;
+ 	height: 400px;
+ 	border: 1px solid #ccc;
+ 	overflow: hidden;
+ 	top: 8px;
+ }
+ 
+ #maxWrap img {
+ 	position: absolute;
+ }

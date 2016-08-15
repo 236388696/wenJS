@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<script src="js/zepto.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			console.log($); //这时候的$是属于jq的
+         var jq=$.noConflict();//解绑jq里的$
+         console.log(jq);
+         console.log($);//$属于的是zepto的
+         
+         console.log(jq("div"));
+         //以后可能会在一个html里有多个API,这些API可能都公用了$,所以使用时候要先将$符号解绑，解除冲突，zepto才能使用$
+         //zepto里没有动画，如果想实现动画，自己写定时器
+		</script>
+	</body>
+</html>
