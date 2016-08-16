@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//判断字符串是否包含数字
+//			var str="8213456";
+//			var isIn=false;
+//			for(i=0;i<str.length;i++){
+//				if(str[i]>=0&&str[i]<=9{
+//					isIn=false;
+//				}isIn=true;
+//				
+//			}
+			
+			//RegExp 专门写正则的类型
+			var reg=new RegExp();
+
+           
+//正则写法一:  判断是否含有数字,正则写法虽然很像字符串，但是它跟字符串是两种不同的类型
+            var reg=/\d/;
+			console.log(reg);
+
+//正则写法二: 单独的一个\号是打印不出来的，需要两个\\才能表示一个\
+            var reg=new RegExp("\\d");
+            console.log(reg);
+            
+            
+            
+           //Regrxp对象提供了三种方法
+           //1.test()判断当前字符串是否符合正则的格式，符合的话返回true，否则返回false;
+           var reg=/\d/;
+           var str="sdfrgdg";
+//         alert(reg.test(str));
+           
+           //判断开头是否含有数字，需要使用^
+           //^作用是找到当前字符串开始位置进行匹配
+           var reg=/^\d/;
+           var str="1sdfrgdg2";
+//         alert(reg.test(str));
+           
+           //匹配结束位置$
+           var reg=/\d$/
+           var str="1sdfrgdg";
+//         alert(reg.test(str));
+
+
+
+
+
+          //2.exec()   用于检查字符串对正则匹配的结果，返回一个结果，如果没有匹配的内容，返回null;
+          //加号：进行一次或者多次匹配
+          //g：全局   代表的是整个字符串范围进行匹配
+          //exec只匹配到第一次 符合条件的格式就停止了
+          var str="sdfsdfmnrin43mo5p1";
+          var reg=/\d+/;
+          console.log(reg.exec(str));
+          
+          
+          //3.compile() 对已经存在的正则表达式进行重新编译
+          var reg=/name/;
+          reg.compile("age");
+          console.log(reg);
+          
+          
+          //字符串使用正则：
+          //替换 replace
+          //参数1:正则表达式
+          //参数2:要替换的内容
+          var str="    sdfdsfr";
+          var reg=/^\s+/;
+          console.log(111+str.replace(reg,""));
+
+
+    
+          //match 
+          var str="sdfsdfmnrin43mo5p1";
+          var reg=/\d+/g;
+          console.log(str.match(reg));
+      
+		</script>
+		
+	</body>
+</html>

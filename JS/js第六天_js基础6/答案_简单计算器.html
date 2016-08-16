@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#screen{
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="screen"/>
+		<input type="button" id="clear" value="C"/>
+		<br />
+		<input type="button" class="num" value="1" />
+		<input type="button" class="num" value="2" />
+		<input type="button" class="num" value="3" />
+		<input type="button" class="num" value="4" />
+		<input type="button" class="num" value="5" />
+		<br />
+		<input type="button" class="num" value="6" />
+		<input type="button" class="num" value="7" />
+		<input type="button" class="num" value="8"/>
+		<input type="button" class="num" value="9" />
+		<input type="button" class="num" value="0" />
+		<br />
+		<input type="button" class="symbols" value="+" />
+		<input type="button" class="symbols" value="-" />
+		<input type="button" class="symbols" value="*" />
+		<input type="button" class="symbols" value="/" />
+		<input type="button" id="myResult" value="=" />
+		
+		<script>
+			var myScreen=document.getElementById("screen");
+			var myClear=document.getElementById("clear");
+			var myResult=document.getElementById("myResult");
+			var nums=document.getElementsByClassName("num");
+			var symbols=document.getElementsByClassName("symbols");
+			myScreen.value=0;
+			var nowSymbol=null;
+			//用来判断是否点击运算符
+			var isSymbol=false;
+			//点击数字
+			for(var i=0;i<nums.length;i++){
+				nums[i].onclick=function(){
+					//如果点击运算符再来点击数字，则先把显示器置为空
+					if(isSymbol==true){
+						myScreen.value=null;
+						isSymbol=false;
+					}
+					//判断输入数字之前，显示器的值是否为0，如果为0则忽略掉，如果不为0则进行拼接
+					if(myScreen.value==0){
+						myScreen.value=this.value;
+					}else{
+						myScreen.value+=this.value;
+					}
+				}
+			}
+			//点击运算符
+			for(var i=0;i<symbols.length;i++){
+				symbols[i].onclick=function(){
+					isSymbol=true;
+					myScreen.name=myScreen.value;
+					nowSymbol=this.value;
+				}
+			}
+			myResult.onclick=function(){
+				myScreen.value=eval(myScreen.name+nowSymbol+myScreen.value);
+			}
+			myClear.onclick=function(){
+				isSymbol=false;
+				nowSymbol=null;
+				myScreen.name=null;
+				myScreen.value=0;
+			}
+		</script>
+	</body>
+</html>

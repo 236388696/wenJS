@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//正则：使用普通的字符，如123，ABC和特殊含义的字符(元字符)组成
+			
+			//1.匹配符合条件的内容
+			var str="asdfkrigm20sdfjig";
+			//效果和/\d+/g一样   \d==[0-9]
+//			var reg=/[0-9]+/g;
+//			console.log(str.match(reg));
+
+//          var reg=/[20]+/;
+//          //找到为包含的任意字符,加一个^
+//          var reg=/[^20]+/;
+//          var reg=/[^20]+/g;
+//          console.log(str.match(reg));
+
+            
+            //2.去空格
+            //去掉所有空格
+            var str="  sdfd2 p2 a2-  ";
+//          var reg=/\s+/g;
+//          console.log(str.replace(reg,""));
+            
+//          //去后面的空格
+//          var reg=/\s$/;
+//          console.log(str.replace(reg,""));
+             
+            
+            //去中间的空格
+            //先找到所有空格
+            var reg=/\s+/g;
+            var arr1=str.match(reg);
+//          console.log(arr1);
+            var reg1=/^\s/;
+            var reg2=/\s$/;
+            var arr2=[];
+            if (reg1.test(str)){
+            	    arr2.push(arr1[0]);
+            }
+            if(reg2.test(str)){
+            	   arr2.push(arr1[arr1.length-1]);
+            }
+            console.log(arr2[0]+str.replace(reg,"")+arr2[0]);
+//          console.log(str.replace(reg,"");
+
+
+
+            //去掉开头和结尾的空格
+            //|或者，能同时操作｜左右两边的等式
+            var str="   dfdrgt  df4  d35 55  "
+            var reg=/^\s+|\s+$/g;
+            console.log(111+str.replace(reg,"")+11);
+            
+            
+            
+            //找加号
+            var str="129+12+12";
+            //如果有特殊含义的字符，比如＋号，想搜索这个符号，需要进行转义
+            var reg=/\+/g;
+            console.log(str.match(reg));
+            
+            
+            
+            //换行 \n
+//          var str="werttgsd\ndgdse";
+//          console.log(str);
+            
+            var str="werttgsd\ndgdse";
+            console.log(str);
+            //找到并不带换行功能的\n,已经通过转义把功能取消了
+//          var reg=/\\n/;
+            //找的是回车键
+            var reg=/\n/;
+            console.log(str.match(reg));
+            //  \\n和\n的区别
+            
+            
+            //找反斜杠
+//          var str="ihj\\6dkgds\\n";
+//          console.log(str);
+//          
+//          var reg=/\/\//g;
+//          console.log(str.match(reg));
+
+
+
+            //{} 作用：一次匹配符合条件的长度，左<右
+            var str="13asdoem1r6515787sdfjiog839";
+            var reg=/\d{2,3}/g;
+            console.log(str.match(reg));
+            
+            
+            
+            //匹配单词
+            var str="Mr sen says34 hi";
+            var reg=/says/;
+            console.log(str.match(reg));
+            
+            
+            // \b:匹配单词的边界，起始，结束或者两边都有空格
+            var str="Mr sen says hi";
+            var reg=/\bsays\b/;
+            console.log(str.match(reg));
+            
+            
+            //手机号
+            var str="13845875667"
+            var reg=/^1[3578]\d{9}$/;
+            console.log(reg.test(str));
+            
+            
+            
+            //传真 (024)-72864282
+            var str="(0470)-7308875";
+            //   //区号：  开头()转义一下：^\()  开头保证是0：?0   0后面长度是2或者3:{2,3} 
+            //  电话号码第一位不可能有零，所以是［1-9]\d 的数字   剩下6位:{6}$ ;  如果剩下位数是7位，就是{7}$
+            var reg=/^\(?0\d{2,3}\)-[1-9]\d{6}$/;
+            console.log(reg.test(str));
+            
+            
+            //QQ 长度5-11位
+            var reg=/^\d{5,11}/;
+            console.log(reg.test("236388696"));
+            
+            
+         
+			
+			
+			
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>
