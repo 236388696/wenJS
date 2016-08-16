@@ -24,9 +24,10 @@
 			<!--中间-->
 			<div id="content">
 				<!--图1-->
-				<div class="center1">
+				<div id="tu1" class="center1">
 					<div class="center1_left">
-						<img src="img1/home_pic_one.png"/>
+						<img class="t1" src="img1/home_pic_one.png"/>
+						<img class="t1_1" src="img1/home_pic_one_h.png" alt="">
 					</div>
 					<div class="tiao"></div>
 					<div class="center1_right">
@@ -37,7 +38,7 @@
 					</div>
 				</div>
 				<!--图2-->
-				<div class="center2">
+				<div id="tu2" class="center2">
 					<div class="center2_left">
 						<a href="###">
 							<h1>BIM</h1>
@@ -46,13 +47,13 @@
 					</div>
 					<div class="tiao"></div>
 					<div class="center2_right">
-						<img src="img1/home_pic_two.jpg"/>
+						<img class="t2" src="img1/home_pic_two.jpg"/>
 					</div>
 				</div>
 				<!--图3-->
-				<div class="center1">
+				<div id="tu3" class="center1">
 					<div class="center1_left">
-						<img src="img1/homes_pic_three.jpg"/>
+						<img class="t3" src="img1/homes_pic_three.jpg"/>
 					</div>
 					<div class="tiao"></div>
 					<div class="center1_right">
@@ -89,7 +90,20 @@
 			var btn2=document.getElementsByClassName("btn2");
 			var caitu=["img2/facebook_h.jpg","img2/youtube_h.jpg","img2/linkedln_h.jpg","img2/twitter_h.jpg"];
 			var antu=["img2/facebook.jpg","img2/youtube.jpg","img2/linkedln.jpg","img2/twitter.jpg"];
-			
+
+			var tu1=document.getElementById("tu1");
+			var tu2=document.getElementById("tu2");
+			var tu3=document.getElementById("tu3");
+			var t1=document.getElementsByClassName("t1");
+			var t2=document.getElementsByClassName("t2");
+			var t3=document.getElementsByClassName("t3");
+			var t1_1=document.getElementsByClassName("t1_1");
+			var t2_2=document.getElementsByClassName("t2_2");
+			var t3=document.getElementsByClassName("t3");
+			// console.log(t1);
+			// 	console.log(t2);
+			// 		console.log(t3);
+
 			//给每个a标签 设置同一个class的名字，for循环给每个a标签设置鼠标移入和移开事件
 			for(i=0;i<btn.length;i++){
 					btn[i].onmouseover=function(){
@@ -103,7 +117,7 @@
 			
 			btn1.onmouseover=function(){
 				btn1.src="img2/mail_h.jpg";
-			  btn1.onmouseover=function(){
+			  btn1.onmouseout=function(){
 				btn1.src="img2/mail.jpg";
 			   }
 			}
@@ -118,6 +132,12 @@
 					this.src=antu[this.index];
 				}
 			}
+
+
+			//图1变颜色
+			tu1.onmouseover=function(){
+			   t1.style="opacity:1";
+               t1_1.style="opacity:0";
 		</script>
 	</body>
 </html>
