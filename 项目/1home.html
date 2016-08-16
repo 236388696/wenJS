@@ -100,7 +100,9 @@
 			var t1_1=document.getElementsByClassName("t1_1");
 			var t2_2=document.getElementsByClassName("t2_2");
 			var t3=document.getElementsByClassName("t3");
-			// console.log(t1);
+			var t2_2=document.getElementsByClassName("t3_3");
+
+			 console.log(t1);
 			// 	console.log(t2);
 			// 		console.log(t3);
 
@@ -136,8 +138,13 @@
 
 			//图1变颜色
 			tu1.onmouseover=function(){
-			   t1.style="opacity:1";
-               t1_1.style="opacity:0";
+			   t1[0].style.opacity=0;
+               t1_1[0].style.opacity=1;
+           }
+           	tu1.onmouseout=function(){
+			   t1[0].style.opacity=1;
+               t1_1[0].style.opacity=0;
+           }
 		</script>
 	</body>
 </html>
