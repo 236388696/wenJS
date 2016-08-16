@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="1home.css" />
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			<!--头部-->
+			<div id="head_wrap">
+				<div class="head_left">
+					<img src="img2/shininglogo.png"/>
+				</div>
+				<div class="head_right">
+					<a class="btn" href="">Home</a>
+					<a class="btn" href="">About</a>
+					<a class="btn" href="">Rendering</a>
+					<a class="btn" href="">3D Animation</a>
+					<a class="btn" href="">Bim</a>
+					<a class="btn" href="">Contact</a>
+				</div>
+			</div>
+			<!--中间-->
+			<div id="content">
+				<!--图1-->
+				<div class="center1">
+					<div class="center1_left">
+						<img src="img1/home_pic_one.png"/>
+					</div>
+					<div class="tiao"></div>
+					<div class="center1_right">
+						<a href="###">
+							<h1>RENDERINGS</h1>
+							<p>Masterplan、Public Building、commercial Building、Residential Building、Landscape Design</p>
+						</a>
+					</div>
+				</div>
+				<!--图2-->
+				<div class="center2">
+					<div class="center2_left">
+						<a href="###">
+							<h1>BIM</h1>
+							<p>Model Completion、Clash Detection、MEP Integration、Curtain Wall Remedying、BIM Consulting</p>
+						</a>
+					</div>
+					<div class="tiao"></div>
+					<div class="center2_right">
+						<img src="img1/home_pic_two.jpg"/>
+					</div>
+				</div>
+				<!--图3-->
+				<div class="center1">
+					<div class="center1_left">
+						<img src="img1/homes_pic_three.jpg"/>
+					</div>
+					<div class="tiao"></div>
+					<div class="center1_right">
+						<a href="###">
+							<h1>3D ANIMATION</h1>
+							<p>Real estate advertising animation Design scheme Animation Corporate promotional Animation</p>
+						</a>
+					</div>
+				</div>
+
+				
+			</div>
+			<!--尾部-->
+			<div class="bottom">
+				<div class="bottom_logo">
+					<div class="bottom_logo1">
+						<a  href="###"><img class="btn1" src="img2/mail.jpg"/></a>
+					</div>
+					<div class="bottom_logo2">
+						<a  href="###"><img class="btn2" src="img2/facebook.jpg"/></a>
+						<a  href="###"><img class="btn2" src="img2/youtube.jpg"/></a>
+						<a  href="###"><img class="btn2" src="img2/linkedln.jpg"/></a>
+						<a  href="###"><img class="btn2" src="img2/twitter.jpg"/></a>
+					</div>
+					<div class="bottom_logo3">
+						<span>Copyright © 1998-2015 shining Group</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var btn=document.getElementsByClassName("btn");
+			var btn1=document.querySelector(".btn1");
+			var btn2=document.getElementsByClassName("btn2");
+			var caitu=["img2/facebook_h.jpg","img2/youtube_h.jpg","img2/linkedln_h.jpg","img2/twitter_h.jpg"];
+			var antu=["img2/facebook.jpg","img2/youtube.jpg","img2/linkedln.jpg","img2/twitter.jpg"];
+			
+			//给每个a标签 设置同一个class的名字，for循环给每个a标签设置鼠标移入和移开事件
+			for(i=0;i<btn.length;i++){
+					btn[i].onmouseover=function(){
+					this.style.border="1px solid gray";
+				}
+					btn[i].onmouseout=function(){
+					this.style.border="";
+				}
+			}
+			
+			
+			btn1.onmouseover=function(){
+				btn1.src="img2/mail_h.jpg";
+			  btn1.onmouseover=function(){
+				btn1.src="img2/mail.jpg";
+			   }
+			}
+			
+			//存彩图.src到数组里，当鼠标移入到img上，把暗图的src变到彩图的下标上
+			for (i=0;i<btn2.length;i++) {
+				btn2[i].index=i;
+				btn2[i].onmouseover=function(){
+					this.src=caitu[this.index];
+				}
+				btn2[i].onmouseout=function(){
+					this.src=antu[this.index];
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="2about.css" />
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			<!--头部-->
+			<div id="head_wrap">
+				<div class="head_left">
+					<img src="img2/shininglogo.png"/>
+				</div>
+				<div class="head_right">
+					<a class="btn" href="">Home</a>
+					<a class="btn" href="">About</a>
+					<a class="btn" href="">Rendering</a>
+					<a class="btn" href="">3D Animation</a>
+					<a class="btn" href="">Bim</a>
+					<a class="btn" href="">Contact</a>
+				</div>
+			</div>
+			<!--中间-->
+			<div id="content">
+				<!--背景图片-->
+				<div class="content_bg">
+					<div class="content_left">
+					     <div class="left_about">
+					     	<h1>About Us</h1>
+					     </div>
+					     <div class="left_text">
+					     	<p>Shanghai Shining is a creative corporation which focuses on helping architects and owners turn their construction which is still in design stage into visual images or videos, perfectly showing the essence of construction. 
+					     	</p>
+					     	<p>Since the year of 1998, we have finished more than 20000 3D visualization creativities of all Kinds of architecture for nearly 2000 architect firms both at home and abroad. We have used 3D technology, shooting, drawing and architectonic to provide the clients with the services of CG images, CG animations, BIM and 3D products finally
+					     	</p>
+					     </div>
+				     </div>
+				     <!--下面的图标-->
+				     <div class="content_bottom">
+				     	<img src="img2/aedas.png"/>
+				     	<img src="img2/gensler.png"/>
+				     	<img src="img2/bdp.png"/>
+				     	<img src="img2/ch2mhill.png"/>
+				     	<img src="img2/benoy.png"/>
+				     	<img src="img2/sasaki.png" alt="" />
+				     	<img src="img2/edsa.png"/>
+				     	<img src="img2/kpf.png"/>
+				     </div>
+				 </div>
+			</div>
+			<!--尾部-->
+			<div class="bottom">
+				<div class="bottom_logo">
+					<div class="bottom_logo1">
+						<a  href="###"><img class="btn1" src="img2/mail.jpg"/></a>
+					</div>
+					<div class="bottom_logo2">
+						<a  href="###"><img class="btn2" src="img2/facebook.jpg"/></a>
+						<a  href="###"><img class="btn2" src="img2/youtube.jpg"/></a>
+						<a  href="###"><img class="btn2" src="img2/linkedln.jpg"/></a>
+						<a  href="###"><img class="btn2" src="img2/twitter.jpg"/></a>
+					</div>
+					<div class="bottom_logo3">
+						<span>Copyright © 1998-2015 shining Group</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var btn=document.getElementsByClassName("btn");
+			var btn1=document.querySelector(".btn1");
+			var btn2=document.getElementsByClassName("btn2");
+			var caitu=["img2/facebook_h.jpg","img2/youtube_h.jpg","img2/linkedln_h.jpg","img2/twitter_h.jpg"];
+			var antu=["img2/facebook.jpg","img2/youtube.jpg","img2/linkedln.jpg","img2/twitter.jpg"];
+			
+			//给每个a标签 设置同一个class的名字，for循环给每个a标签设置鼠标移入和移开事件
+			for(i=0;i<btn.length;i++){
+					btn[i].onmouseover=function(){
+					this.style.border="1px solid gray";
+				}
+					btn[i].onmouseout=function(){
+					this.style.border="";
+				}
+			}
+			
+			
+			btn1.onmouseover=function(){
+				btn1.src="img2/mail_h.jpg";
+			  btn1.onmouseover=function(){
+				btn1.src="img2/mail.jpg";
+			   }
+			}
+			
+			//存彩图.src到数组里，当鼠标移入到img上，把暗图的src变到彩图的下标上
+			for (i=0;i<btn2.length;i++) {
+				btn2[i].index=i;
+				btn2[i].onmouseover=function(){
+					this.src=caitu[this.index];
+				}
+				btn2[i].onmouseout=function(){
+					this.src=antu[this.index];
+				}
+			}
+		</script>
+	</body>
+</html>
